@@ -1,4 +1,4 @@
-"use client";
+ use client";
 
 import { BlurFade } from "@/components/ui/blur-fade";
 
