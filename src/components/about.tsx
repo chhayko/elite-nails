@@ -1,4 +1,4 @@
- use client";
+"use client";
 
 import { BlurFade } from "@/components/ui/blur-fade";
 
@@ -13,15 +13,11 @@ export function About() {
         </BlurFade>
 
         <BlurFade delay={0.2} inView>
-          <h2 className="font-serif text-4xl font-light text-white md:text-5xl lg:text-6xl">
+          <h1 className="font-serif text-4xl font-light text-white md:text-5xl lg:text-6xl">
             Where Precision
-          </h2>
-        </BlurFade>
-
-        <BlurFade delay={0.3} inView>
-          <h2 className="font-serif text-4xl font-light italic text-mauve-light md:text-5xl lg:text-6xl">
-            Meets Beauty
-          </h2>
+            <span className="block italic text-mauve-light">Meets Beauty</span>
+            <span className="sr-only"> â Nagelsalon Sint-Martens-Lierde</span>
+          </h1>
         </BlurFade>
 
         <BlurFade delay={0.4} inView>
