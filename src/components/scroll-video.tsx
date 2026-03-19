@@ -2,40 +2,89 @@
 
 import { useEffect, useRef } from "react";
 
+const FRAME_COUNT = 122;
+
+function getFrameSrc(index: number) {
+  const n = String(index).padStart(4, "0");
+  return `/frames/frame-${n}.jpg`;
+}
+
 export function ScrollVideo() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const heroTextRef = useRef<HTMLDivElement>(null);
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
+  const framesRef = useRef<HTMLImageElement[]>([]);
+  const currentFrameRef = useRef(0);
+  const rafRef = useRef<number>(0);
 
   useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    // Preload all frames
+    const frames: HTMLImageElement[] = [];
+    let loadedCount = 0;
+
+    for (let i = 1; i <= FRAME_COUNT; i++) {
+      const img = new Image();
+      img.src = getFrameSrc(i);
+      img.onload = () => {
+        loadedCount++;
+        // Draw first frame as soon as it's ready
+        if (i === 1) drawFrame(0);
+      };
+      frames.push(img);
+    }
+    framesRef.current = frames;
+
+    const drawFrame = (index: number) => {
+      const img = frames[index];
+      if (!img?.complete || !img.naturalWidth) return;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      // Cover behavior
+      const scale = Math.max(canvas.width / img.naturalWidth, canvas.height / img.naturalHeight);
+      const w = img.naturalWidth * scale;
+      const h = img.naturalHeight * scale;
+      const x = (canvas.width - w) / 2;
+      const y = (canvas.height - h) / 2;
+      ctx.drawImage(img, x, y, w, h);
+    };
+
     const onScroll = () => {
       const scrollTop = window.scrollY;
       const vh = window.innerHeight;
-      const textOpacity = Math.max(1 - (scrollTop / vh) * 1.2, 0);
-      const opacityStr = String(textOpacity);
-      heroTextRef.current?.style.setProperty("opacity", opacityStr);
-      scrollIndicatorRef.current?.style.setProperty("opacity", opacityStr);
+      const fraction = Math.min(scrollTop / (vh * 2.5), 1);
+      currentFrameRef.current = Math.round(fraction * (FRAME_COUNT - 1));
+
+      // Opacity via DOM — no React re-render
+      const opacity = Math.max(1 - (scrollTop / vh) * 1.2, 0);
+      heroTextRef.current?.style.setProperty("opacity", String(opacity));
+      scrollIndicatorRef.current?.style.setProperty("opacity", String(opacity));
     };
 
+    const tick = () => {
+      drawFrame(currentFrameRef.current);
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", () => drawFrame(currentFrameRef.current));
+
+    return () => {
+      cancelAnimationFrame(rafRef.current);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return (
     <>
-      {/* Fixed video background — autoplays and loops, always smooth */}
-      <div className="fixed inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="/hero-poster.jpg"
-          preload="auto"
-          className="h-full w-full object-cover"
-        >
-          <source src="/hero-video.webm" type="video/webm" />
-          <source src="/hero-video.mp4" type="video/mp4" />
-        </video>
+      {/* Fixed canvas background */}
+      <div className="fixed inset-0 z-0 bg-black">
+        <canvas ref={canvasRef} className="h-full w-full" />
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/15 to-charcoal/60" />
       </div>
 
