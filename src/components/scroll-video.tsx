@@ -85,7 +85,7 @@ export function ScrollVideo() {
       {/* Fixed canvas background */}
       <div className="fixed inset-0 z-0 bg-black">
         <canvas ref={canvasRef} className="h-full w-full" />
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/15 to-charcoal/60" />
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
       {/* Hero text overlay */}
@@ -113,7 +113,7 @@ export function ScrollVideo() {
         <p className="text-xs uppercase tracking-[0.3em] text-white/50 font-sans">
           Scroll
         </p>
-        <div className="h-10 w-px bg-white/30 animate-pulse" />
+        <div className="h-10 w-px bg-white/40 animate-pulse" />
       </div>
     </>
   );
