@@ -1,12 +1,12 @@
 "use client";
 
 import { BlurFade } from "@/components/ui/blur-fade";
-import ServicesShowcase from "@/components/ui/services-showcase";
+import { ServicesAccordion } from "@/components/ui/services-accordion";
 
 export function Services() {
   return (
     <section id="services" className="relative py-32 px-6 bg-charcoal/20 backdrop-blur-md">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <div className="text-center">
           <BlurFade delay={0.1} inView>
             <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-mauve-light font-sans">
@@ -26,7 +26,7 @@ export function Services() {
         </div>
 
         <BlurFade delay={0.4} inView>
-          <ServicesShowcase />
+          <ServicesAccordion />
         </BlurFade>
       </div>
     </section>
