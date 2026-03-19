@@ -15,7 +15,7 @@ const inter = Inter({
   weight: ["300", "400", "500", "600"],
 });
 
-const BASE_URL = "https://elite-nails.vercel.app"; // Update when custom domain is set
+const BASE_URL = "https://elitenails.biz";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

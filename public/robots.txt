@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /frames/
 
-Sitemap: https://elite-nails.vercel.app/sitemap.xml
+Sitemap: https://elitenails.biz/sitemap.xml

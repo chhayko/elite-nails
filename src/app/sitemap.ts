@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const BASE_URL = "https://elite-nails.vercel.app"; // Update when custom domain is set
+const BASE_URL = "https://elitenails.biz";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
