@@ -35,12 +35,15 @@ export function ScrollVideo() {
       <div className="fixed inset-0 z-0">
         <video
           ref={videoRef}
-          src="/hero-video.mp4"
+          poster="/hero-poster.jpg"
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           className="h-full w-full object-cover"
-        />
+        >
+          <source src="/hero-video.webm" type="video/webm" />
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/15 to-charcoal/60" />
       </div>
 
