@@ -3,65 +3,33 @@
 import { useEffect, useRef } from "react";
 
 export function ScrollVideo() {
-  const videoRef = useRef<HTMLVideoElement>(null);
   const heroTextRef = useRef<HTMLDivElement>(null);
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
-  const targetTimeRef = useRef(0);
-  const rafRef = useRef<number>(0);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
     const onScroll = () => {
       const scrollTop = window.scrollY;
       const vh = window.innerHeight;
-      const scrollFraction = Math.min(scrollTop / (vh * 2.5), 1);
-
-      if (video.duration) {
-        targetTimeRef.current = scrollFraction * video.duration;
-      }
-
-      // Update opacity via DOM directly — no React re-render
       const textOpacity = Math.max(1 - (scrollTop / vh) * 1.2, 0);
       const opacityStr = String(textOpacity);
       heroTextRef.current?.style.setProperty("opacity", opacityStr);
       scrollIndicatorRef.current?.style.setProperty("opacity", opacityStr);
     };
 
-    // RAF loop: smoothly lerp currentTime toward target
-    const tick = () => {
-      if (video.duration) {
-        const current = video.currentTime;
-        const target = targetTimeRef.current;
-        const diff = target - current;
-
-        // Only seek if meaningfully different (avoids unnecessary seeks)
-        if (Math.abs(diff) > 0.01) {
-          video.currentTime = current + diff * 0.15;
-        }
-      }
-      rafRef.current = requestAnimationFrame(tick);
-    };
-
-    rafRef.current = requestAnimationFrame(tick);
     window.addEventListener("scroll", onScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      cancelAnimationFrame(rafRef.current);
-    };
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <>
-      {/* Fixed video background */}
+      {/* Fixed video background — autoplays and loops, always smooth */}
       <div className="fixed inset-0 z-0">
         <video
-          ref={videoRef}
-          poster="/hero-poster.jpg"
+          autoPlay
+          loop
           muted
           playsInline
+          poster="/hero-poster.jpg"
           preload="auto"
           className="h-full w-full object-cover"
         >
