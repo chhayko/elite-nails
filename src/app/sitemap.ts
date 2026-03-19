@@ -1,4 +1,4 @@
-import { MetadataRoute } from "next";
+ mport { MetadataRoute } from "next";
 
 const BASE_URL = "https://elitenails.biz";
 
