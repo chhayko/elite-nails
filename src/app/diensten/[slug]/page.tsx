@@ -196,7 +196,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const BASE_URL = "https://www.elitenails.biz";
   const canonical = `${BASE_URL}/diensten/${slug}`;
   return {
-    title: `${service.name} | Elite Nails Lierde`,
+    title: service.name,
     description: service.metaDescription,
     alternates: { canonical },
     openGraph: {
