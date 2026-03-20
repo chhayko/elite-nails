@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-const FRAME_COUNT = 122;
+const FRAME_COUNT = 145;
 
 function getFrameSrc(index: number) {
   const n = String(index).padStart(4, "0");
