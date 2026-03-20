@@ -15,16 +15,15 @@ const inter = Inter({
   weight: ["300", "400", "500", "600"],
 });
 
-const BASE_URL = "https://elitenails.biz";
+const BASE_URL = "https://www.elitenails.biz";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Elite Nails Lierde — Russian Manicure & Nail Salon Belgium",
+    default: "Elite Nails Lierde â Russian Manicure & Nail Salon Belgium",
     template: "%s | Elite Nails Lierde",
   },
-  description:
-    "Premium nail salon in Sint-Martens-Lierde, Belgium. Specializing in Russian manicure, BIAB, gel nails, pedicure, and lash & brow lamination. Clean & safe. Book via Instagram.",
+  description: "Premium nail salon in Sint-Martens-Lierde, Belgium. Specializing in Russian manicure, BIAB, gel nails, pedicure, and lash & brow lamination. Clean & safe. Book via Instagram.",
   keywords: [
     "nail salon Sint-Martens-Lierde",
     "nagelsalon Lierde",
@@ -39,29 +38,30 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Elite Nails Lierde" }],
   creator: "Elite Nails Lierde",
+  verification: {
+    google: "ZDlaElaoPHvz_bb5Z1e0oLbqLvvdh1-knT1otHdooMA",
+  },
   openGraph: {
     type: "website",
     locale: "nl_BE",
     alternateLocale: "en_GB",
     url: BASE_URL,
     siteName: "Elite Nails Lierde",
-    title: "Elite Nails Lierde — Russian Manicure & Nail Salon Belgium",
-    description:
-      "Premium nail salon in Sint-Martens-Lierde, Belgium. Russian manicure, BIAB, gel nails & lash treatments. Clean & safe.",
+    title: "Elite Nails Lierde â Russian Manicure & Nail Salon Belgium",
+    description: "Premium nail salon in Sint-Martens-Lierde, Belgium. Russian manicure, BIAB, gel nails & lash treatments. Clean & safe.",
     images: [
       {
         url: "/frames/frame-0001.jpg",
         width: 960,
         height: 653,
-        alt: "Elite Nails Lierde — Nail Salon in Sint-Martens-Lierde, Belgium",
+        alt: "Elite Nails Lierde â Nail Salon in Sint-Martens-Lierde, Belgium",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Elite Nails Lierde — Russian Manicure & Nail Salon Belgium",
-    description:
-      "Premium nail salon in Sint-Martens-Lierde, Belgium. Russian manicure, BIAB, gel nails & lash treatments.",
+    title: "Elite Nails Lierde â Russian Manicure & Nail Salon Belgium",
+    description: "Premium nail salon in Sint-Martens-Lierde, Belgium. Russian manicure, BIAB, gel nails & lash treatments.",
     images: ["/frames/frame-0001.jpg"],
   },
   robots: {
@@ -84,8 +84,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "NailSalon",
   name: "Elite Nails Lierde",
-  description:
-    "Premium nail salon in Sint-Martens-Lierde, Belgium. Specializing in Russian manicure, BIAB, gel nails, pedicure, and lash & brow lamination.",
+  description: "Premium nail salon in Sint-Martens-Lierde, Belgium. Specializing in Russian manicure, BIAB, gel nails, pedicure, and lash & brow lamination.",
   url: BASE_URL,
   image: `${BASE_URL}/frames/frame-0001.jpg`,
   address: {
@@ -100,7 +99,7 @@ const jsonLd = {
     longitude: 3.8333,
   },
   sameAs: ["https://www.instagram.com/elite_nails_lierde/"],
-  priceRange: "€€",
+  priceRange: "â¬â¬",
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Nail & Beauty Services",
