@@ -171,7 +171,7 @@ export function TreatmentQuiz() {
   };
 
   return (
-    <section id="quiz" className="relative py-24 px-6 overflow-hidden bg-charcoal/30 backdrop-blur-md">
+    <section id="quiz" className="relative py-24 px-6 overflow-hidden">
       <div className="mx-auto max-w-2xl">
 
         {/* Heading */}
