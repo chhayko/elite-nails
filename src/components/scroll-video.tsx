@@ -98,7 +98,7 @@ export function ScrollVideo() {
         <p className="mb-4 text-sm font-light uppercase tracking-[0.4em] text-white/80 font-sans">
           {t("location")}
         </p>
-        <h1 className="font-serif text-6xl font-light tracking-wide text-white md:text-8xl lg:text-9xl">
+        <h1 className="font-serif text-4xl font-light tracking-wide text-white md:text-6xl lg:text-7xl text-balance px-4 max-w-4xl">
           {t("title")}
         </h1>
         <div className="mt-6 h-px w-24 bg-white/40" />

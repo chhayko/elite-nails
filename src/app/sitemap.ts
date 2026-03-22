@@ -2,62 +2,19 @@ import { MetadataRoute } from "next";
 
 const BASE_URL = "https://www.elitenails.biz";
 const locales = ["en", "nl", "fr", "ru"];
-const slugs = [
+const serviceSlugs = [
   "russische-manicure",
   "biab",
   "gelnagels",
   "pedicure",
   "wimper-wenkbrauw",
 ];
-
-const gemeenten = [
-  "sint-martens-lierde",
-  "sint-maria-lierde",
-  "deftinge",
-  "hemelveerdegem",
-  "brakel",
-  "nederbrakel",
-  "parike",
-  "sint-maria-oudenhove",
-  "zottegem",
-  "elene",
-  "erwetegem",
-  "grotenberge",
-  "strijpen",
-  "velzeke-ruddershove",
-  "herzele",
-  "borsbeke",
-  "ressegem",
-  "sint-lievens-esse",
+const citySlugs = [
   "geraardsbergen",
-  "viane",
-  "moerbeke",
-  "ronse",
-  "oudenaarde",
-  "gavere",
-  "nazareth",
-  "maarkedal",
-  "kluisbergen",
-  "nukerke",
-  "horebeke",
-  "zwalm",
-  "munkzwalm",
-  "rozebeke",
-  "nederzwalm",
   "ninove",
-  "denderleeuw",
-  "aalst",
-  "roosdaal",
-  "wortegem-petegem",
-  "anzegem",
-  "kruishoutem",
-  "lessines",
-  "enghien",
-];
-
-const blogSlugs = [
-  "russische-manicure-uitgelegd",
-  "biab-nagels-alles-wat-je-moet-weten",
+  "brakel",
+  "ronse",
+  "zottegem",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -69,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const serviceRoutes = locales.flatMap((locale) =>
-    slugs.map((slug) => ({
+    serviceSlugs.map((slug) => ({
       url: BASE_URL + "/" + locale + "/diensten/" + slug,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
@@ -77,18 +34,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  const locatieRoutes = gemeenten.map((gemeente) => ({
-    url: BASE_URL + "/nl/locaties/" + gemeente,
+  const cityRoutes = citySlugs.map((slug) => ({
+    url: BASE_URL + "/nl/nagelstudio-" + slug,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
-    priority: 0.8,
-  }));
-
-  const blogRoutes = blogSlugs.map((slug) => ({
-    url: BASE_URL + "/nl/blog/" + slug,
-    lastModified: new Date(),
-    changeFrequency: "yearly" as const,
-    priority: 0.7,
+    priority: 0.85,
   }));
 
   return [
@@ -100,7 +50,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...localeRoutes,
     ...serviceRoutes,
-    ...locatieRoutes,
-    ...blogRoutes,
+    ...cityRoutes,
   ];
 }

@@ -1,22 +1,24 @@
-"use client";
+// Server Component — no "use client" so Next.js renders full HTML on the server.
+// ReactLenis is wrapped in LenisWrapper (a client component) so smooth scrolling
+// still hydrates client-side without making the entire page CSR-only.
 
-import { ReactLenis } from "lenis/react";
-import { ScrollVideo } from "@/components/scroll-video";
-import { Navbar } from "@/components/navbar";
-import { About } from "@/components/about";
-import { Services } from "@/components/services";
-import { MarqueeSection } from "@/components/marquee-section";
-import { Gallery } from "@/components/gallery";
-import { NailCustomizer } from "@/components/nail-customizer";
-import { TreatmentQuiz } from "@/components/treatment-quiz";
-import { Testimonials } from "@/components/testimonials";
-import { ContactBooking } from "@/components/contact-booking";
-import { Footer } from "@/components/footer";
-import { SectionDivider } from "@/components/section-divider";
+import { LenisWrapper }    from "@/components/lenis-wrapper";
+import { ScrollVideo }     from "@/components/scroll-video";
+import { Navbar }          from "@/components/navbar";
+import { About }           from "@/components/about";
+import { Services }        from "@/components/services";
+import { MarqueeSection }  from "@/components/marquee-section";
+import { Gallery }         from "@/components/gallery";
+import { NailCustomizer }  from "@/components/nail-customizer";
+import { TreatmentQuiz }   from "@/components/treatment-quiz";
+import { Testimonials }    from "@/components/testimonials";
+import { ContactBooking }  from "@/components/contact-booking";
+import { Footer }          from "@/components/footer";
+import { SectionDivider }  from "@/components/section-divider";
 
 export default function Home() {
   return (
-    <ReactLenis root>
+    <LenisWrapper>
       <main className="relative">
         <Navbar />
 
@@ -42,6 +44,6 @@ export default function Home() {
           <Footer />
         </div>
       </main>
-    </ReactLenis>
+    </LenisWrapper>
   );
 }
