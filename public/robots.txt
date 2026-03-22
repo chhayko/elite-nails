@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /frames/
 
 Sitemap: https://www.elitenails.biz/sitemap.xml

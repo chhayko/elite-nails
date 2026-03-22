@@ -99,6 +99,7 @@ const jsonLd = {
   description:
     "Premium nail salon in Sint-Martens-Lierde, Belgium. Specializing in Russian manicure, BIAB, gel nails, pedicure, and lash & brow lamination.",
   url: BASE_URL,
+  telephone: "+32494175267",
   image: `${BASE_URL}/frames/frame-0001.jpg`,
   address: {
     "@type": "PostalAddress",
@@ -110,9 +111,15 @@ const jsonLd = {
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 50.8167,
-    longitude: 3.8333,
+    latitude: 50.8108566,
+    longitude: 3.796871,
   },
+  availableLanguage: [
+    { "@type": "Language", name: "Dutch" },
+    { "@type": "Language", name: "English" },
+    { "@type": "Language", name: "French" },
+    { "@type": "Language", name: "Russian" },
+  ],
   sameAs: ["https://www.instagram.com/elite_nails_lierde/"],
   priceRange: "€€",
   hasOfferCatalog: {
@@ -176,8 +183,8 @@ export default async function LocaleLayout({
       <head>
         <meta name="geo.region" content="BE-VOV" />
         <meta name="geo.placename" content="Sint-Martens-Lierde" />
-        <meta name="geo.position" content="50.8167;3.8333" />
-        <meta name="ICBM" content="50.8167, 3.8333" />
+        <meta name="geo.position" content="50.8108566;3.796871" />
+        <meta name="ICBM" content="50.8108566, 3.796871" />
       </head>
       <body
         className={`${cormorant.variable} ${inter.variable} font-sans antialiased cursor-none`}
