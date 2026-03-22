@@ -317,6 +317,12 @@ const imageMap: Record<string, string> = {
 const locales = ["en", "nl", "fr", "ru"];
 const slugs = ["russische-manicure", "biab", "gelnagels", "pedicure", "wimper-wenkbrauw"];
 
+// Navigation labels per locale (matches serviceData names)
+function getServiceName(locale: string, slug: string): string {
+  const localeData = serviceData[locale] ?? serviceData["en"];
+  return localeData?.[slug]?.name ?? slug;
+}
+
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };
@@ -367,6 +373,13 @@ export default async function ServicePage({ params }: Props) {
 
   const imageUrl = imageMap[slug] ?? "/services/russian-manicure.jpg";
 
+  // Prev / Next navigation
+  const slugIndex = slugs.indexOf(slug);
+  const prevSlug = slugIndex > 0 ? slugs[slugIndex - 1] : null;
+  const nextSlug = slugIndex < slugs.length - 1 ? slugs[slugIndex + 1] : null;
+  const prevName = prevSlug ? getServiceName(locale, prevSlug) : null;
+  const nextName = nextSlug ? getServiceName(locale, nextSlug) : null;
+
   const BASE_URL = "https://www.elitenails.biz";
 
   const jsonLd = {
@@ -406,6 +419,37 @@ export default async function ServicePage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+
+      {/* Floating prev / next service arrows */}
+      {prevSlug && (
+        <Link
+          href={`/${locale}/diensten/${prevSlug}`}
+          className="fixed left-3 top-1/2 -translate-y-1/2 z-50 group flex items-center gap-2"
+          aria-label={`Previous: ${prevName}`}
+        >
+          <div className="flex items-center gap-2 rounded-full bg-charcoal/80 border border-white/10 backdrop-blur-sm px-3 py-2.5 transition-all duration-300 group-hover:border-mauve/40 group-hover:bg-mauve/10">
+            <span className="text-white/60 group-hover:text-white text-base leading-none transition-colors">&#8592;</span>
+            <span className="max-w-0 overflow-hidden whitespace-nowrap text-xs text-white/0 group-hover:max-w-[120px] group-hover:text-white/80 transition-all duration-300 font-sans tracking-wide">
+              {prevName}
+            </span>
+          </div>
+        </Link>
+      )}
+      {nextSlug && (
+        <Link
+          href={`/${locale}/diensten/${nextSlug}`}
+          className="fixed right-3 top-1/2 -translate-y-1/2 z-50 group flex items-center gap-2"
+          aria-label={`Next: ${nextName}`}
+        >
+          <div className="flex items-center gap-2 rounded-full bg-charcoal/80 border border-white/10 backdrop-blur-sm px-3 py-2.5 transition-all duration-300 group-hover:border-mauve/40 group-hover:bg-mauve/10">
+            <span className="max-w-0 overflow-hidden whitespace-nowrap text-xs text-white/0 group-hover:max-w-[120px] group-hover:text-white/80 transition-all duration-300 font-sans tracking-wide text-right">
+              {nextName}
+            </span>
+            <span className="text-white/60 group-hover:text-white text-base leading-none transition-colors">&#8594;</span>
+          </div>
+        </Link>
+      )}
+
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 bg-charcoal/80 backdrop-blur-md border-b border-white/5">
         <Link
           href={`/${locale}/#services`}

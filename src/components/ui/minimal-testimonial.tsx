@@ -6,8 +6,8 @@ import Image from "next/image";
 const GOOGLE_REVIEW_URL =
   "https://www.google.com/maps/place/Elite+Nails+Lierde/@50.8108566,3.796871,17z/data=!4m8!3m7!1s0x47c30930aac56601:0x94f00dba27dbb94a!8m2!3d50.8108566!4d3.796871!9m1!1b1!16s%2Fg%2F11n9vch6ps";
 
-const testimonials = [
-  // Real Google reviews
+// Real Google reviews (used as fallback if API is unavailable)
+const STATIC_GOOGLE = [
   {
     quote: "Mijn vrouw is haar nagels gaan laten doen en ze was heel tevreden met het resultaat. De persoon was super vriendelijk en professioneel. Zeker een aanrader!",
     name: "Narek Khachatryan",
@@ -24,7 +24,10 @@ const testimonials = [
     image: null,
     google: true,
   },
-  // Original testimonials
+];
+
+// Real clients with photos — always shown
+const STATIC_WITH_PHOTOS = [
   {
     quote: "Absolutely love my nails every single time! The Russian manicure is so precise and clean. Best nail salon in the area!",
     name: "Marisha",
@@ -57,80 +60,10 @@ const testimonials = [
     image: "/testimonials/rosa.png",
     google: false,
   },
-  // Additional testimonials
-  {
-    quote: "De Russian manicure is werkelijk perfect. Mijn nagels zien er altijd verzorgd uit, weken na de behandeling. Echt een aanrader!",
-    name: "Lien V.",
-    role: "Russian manicure client",
-    initials: "LV",
-    image: null,
-    google: false,
-  },
-  {
-    quote: "I had the brow lamination done and I'm obsessed! My brows look so full and groomed. I won't go anywhere else.",
-    name: "Sophie D.",
-    role: "Brow lamination client",
-    initials: "SD",
-    image: null,
-    google: false,
-  },
-  {
-    quote: "Super professioneel en hygiënisch. Het is duidelijk dat er veel zorg en aandacht gaat naar elke klant. Mijn nagels zijn prachtig!",
-    name: "Elien M.",
-    role: "Gel nails client",
-    initials: "EM",
-    image: null,
-    google: false,
-  },
-  {
-    quote: "The pedicure was so thorough and relaxing. My feet look and feel amazing. Will definitely be back every month!",
-    name: "Julie B.",
-    role: "Pedicure client",
-    initials: "JB",
-    image: null,
-    google: false,
-  },
-  {
-    quote: "Ik kom hier al maanden en elke keer ben ik tevreden. De sfeer is warm, het resultaat is altijd top. Absolute aanrader in de regio!",
-    name: "Hilde K.",
-    role: "Regular client",
-    initials: "HK",
-    image: null,
-    google: false,
-  },
-  {
-    quote: "Got my BIAB done for the first time and I'm never going back to regular gel. My nails are so strong and the finish is flawless.",
-    name: "Laura S.",
-    role: "BIAB client",
-    initials: "LS",
-    image: null,
-    google: false,
-  },
-  {
-    quote: "Très professionnelle et très douce. Mes ongles sont magnifiques et ont duré plus de 4 semaines. Je recommande vivement!",
-    name: "Amélie F.",
-    role: "Gel nails client",
-    initials: "AF",
-    image: null,
-    google: false,
-  },
-  {
-    quote: "De wimperlamination is fantastisch gedaan. Zo natuurlijk en mooi. Mijn ogen lijken veel groter. Echt super tevreden!",
-    name: "Nathalie P.",
-    role: "Lash lamination client",
-    initials: "NP",
-    image: null,
-    google: false,
-  },
-  {
-    quote: "Clean, professional and incredibly talented. The attention to detail with the Russian manicure is unlike anything I've experienced before.",
-    name: "Emma R.",
-    role: "Russian manicure client",
-    initials: "ER",
-    image: null,
-    google: false,
-  },
 ];
+
+// Default display: real Google reviews + real photo clients
+const DEFAULT_TESTIMONIALS = [...STATIC_GOOGLE, ...STATIC_WITH_PHOTOS];
 
 function Avatar({
   t,
@@ -161,7 +94,7 @@ function Avatar({
   );
 }
 
-type Testimonial = (typeof testimonials)[0];
+type Testimonial = (typeof DEFAULT_TESTIMONIALS)[0];
 
 const MAX_TOTAL = 15;
 
@@ -176,7 +109,7 @@ const GoogleIcon = ({ size = 18 }: { size?: number }) => (
 
 export function TestimonialsMinimal() {
   const [active, setActive] = useState(0);
-  const [merged, setMerged] = useState<Testimonial[]>(testimonials);
+  const [merged, setMerged] = useState<Testimonial[]>(DEFAULT_TESTIMONIALS);
   const [googleRating, setGoogleRating] = useState<{ rating: number; total: number } | null>(null);
 
   useEffect(() => {
@@ -184,9 +117,18 @@ export function TestimonialsMinimal() {
       .then((r) => r.json())
       .then((data) => {
         if (data.reviews?.length) {
-          // Google reviews first, then fill remaining slots with static ones
-          const staticOnes = testimonials.filter((t) => !t.google);
-          const combined = [...data.reviews, ...staticOnes].slice(0, MAX_TOTAL);
+          // Merge: Google API reviews first, then the 4 real photo clients
+          // Filter out any API reviews that duplicate our static Google names
+          const staticNames = new Set(STATIC_GOOGLE.map((t) => t.name));
+          const newApiReviews = (data.reviews as Testimonial[]).filter(
+            (r) => !staticNames.has(r.name)
+          );
+          // Order: static Google (Narek + Karine) → new Google API → photo clients
+          const combined = [
+            ...STATIC_GOOGLE,
+            ...newApiReviews,
+            ...STATIC_WITH_PHOTOS,
+          ].slice(0, MAX_TOTAL);
           setMerged(combined);
         }
         if (data.rating) {
@@ -194,7 +136,7 @@ export function TestimonialsMinimal() {
         }
       })
       .catch(() => {
-        // Silently fall back to static testimonials
+        // Silently fall back to DEFAULT_TESTIMONIALS (real Google + photo clients)
       });
   }, []);
 

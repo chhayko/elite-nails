@@ -88,31 +88,36 @@ function BookingModal({
     e.preventDefault();
     setStatus("loading");
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("https://formsubmit.co/ajax/info@elitenails.biz", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
-          subject: `Inquiry about ${service || "Elite Nails"} — Elite Nails`,
-          from_name: name,
+          name,
           email,
           message: `Service: ${service || "—"}\n\n${message}`,
-          botcheck: "",
+          _subject: `Inquiry about ${service || "Elite Nails"} — Elite Nails`,
+          _captcha: "false",
+          _replyto: email,
+          _template: "table",
         }),
       });
       const data = await res.json();
-      if (data.success) {
+      if (data.success === "true" || data.success === true) {
         setStatus("success");
-        setName("");
-        setEmail("");
-        setMessage("");
-        setService("");
       } else {
         setStatus("error");
       }
     } catch {
       setStatus("error");
     }
+  };
+
+  const resetForm = () => {
+    setStatus("idle");
+    setName("");
+    setEmail("");
+    setMessage("");
+    setService(preselectedService);
   };
 
   if (!isOpen) return null;
@@ -146,17 +151,11 @@ function BookingModal({
 
         {status === "success" ? (
           <div className="py-8 text-center">
-            <p className="text-mauve-light font-serif text-xl mb-2">✓</p>
-            <p className="text-white/80 font-sans text-sm mb-6">{t("modalSuccess")}</p>
+            <p className="text-mauve-light font-serif text-3xl mb-3">✓</p>
+            <p className="text-white/80 font-sans text-sm mb-8">{t("modalSuccess")}</p>
             <button
-              onClick={() => {
-                setStatus("idle");
-                setName("");
-                setEmail("");
-                setMessage("");
-                setService("");
-              }}
-              className="text-xs uppercase tracking-[0.2em] text-white/50 hover:text-white transition-colors font-sans"
+              onClick={resetForm}
+              className="w-full rounded-lg border border-mauve/40 bg-mauve/10 py-3 text-sm font-medium text-white font-sans tracking-wide hover:bg-mauve/20 hover:border-mauve transition-colors duration-200"
             >
               {t("modalSendAnother")}
             </button>
