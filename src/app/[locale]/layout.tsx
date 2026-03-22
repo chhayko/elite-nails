@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getLocale } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { CustomCursor } from "@/components/custom-cursor";
 import "../globals.css";
 
@@ -162,7 +162,13 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const messages = await getMessages();
+
+  // Explicitly seed the locale into next-intl's request context so that
+  // getMessages() and useTranslations() always use the URL's locale,
+  // regardless of what the proxy sets in the request headers.
+  setRequestLocale(locale);
+
+  const messages = await getMessages({ locale });
   const htmlLang = localeToHtmlLang[locale] ?? "en";
 
   return (
@@ -176,7 +182,7 @@ export default async function LocaleLayout({
       <body
         className={`${cormorant.variable} ${inter.variable} font-sans antialiased cursor-none`}
       >
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>
         <CustomCursor />
