@@ -10,25 +10,53 @@ const serviceSlugs = [
   "wimper-wenkbrauw",
 ];
 const citySlugs = [
+  // ~3–5 km
+  "hemelveerdegem",
+  "deftinge",
+  "sint-maria-lierde",
   // ~5–10 km
   "horebeke",
   "geraardsbergen",
   "brakel",
-  // ~12 km
+  "parike",
+  "moerbeke",
+  "grotenberge",
+  "elene",
+  "erwetegem",
+  "strijpen",
+  "nederzwalm",
+  // ~10–12 km
   "herzele",
   "zwalm",
   "maarkedal",
   "bever",
-  // ~15 km
   "ninove",
   "kluisbergen",
   "galmaarden",
   "zottegem",
-  // ~17–20 km
+  "sint-lievens-houtem",
+  "nederbrakel",
+  "sint-lievens-esse",
+  "sint-maria-oudenhove",
+  "velzeke-ruddershove",
+  "borsbeke",
+  "ressegem",
+  "munkzwalm",
+  "rozebeke",
+  "nukerke",
+  "viane",
+  // ~15–20 km
   "wortegem-petegem",
   "ronse",
   "oudenaarde",
-  "sint-lievens-houtem",
+  "roosdaal",
+  "gavere",
+  "anzegem",
+  "kruishoutem",
+  // ~25–30 km
+  "nazareth",
+  "denderleeuw",
+  "aalst",
 ];
 const blogSlugs = [
   "russische-manicure-uitgelegd",
