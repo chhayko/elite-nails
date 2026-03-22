@@ -12,6 +12,7 @@ export function Navbar() {
     { href: "#about", label: t("about") },
     { href: "#services", label: t("services") },
     { href: "#gallery", label: t("gallery") },
+    { href: "#contact", label: t("contact") },
     { href: "#booking", label: t("book") },
   ];
 

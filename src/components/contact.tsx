@@ -139,7 +139,19 @@ function BookingModal({
         {status === "success" ? (
           <div className="py-8 text-center">
             <p className="text-mauve-light font-serif text-xl mb-2">✓</p>
-            <p className="text-white/80 font-sans text-sm">{t("modalSuccess")}</p>
+            <p className="text-white/80 font-sans text-sm mb-6">{t("modalSuccess")}</p>
+            <button
+              onClick={() => {
+                setStatus("idle");
+                setName("");
+                setEmail("");
+                setMessage("");
+                setService("");
+              }}
+              className="text-xs uppercase tracking-[0.2em] text-white/50 hover:text-white transition-colors font-sans"
+            >
+              {t("modalSendAnother")}
+            </button>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">

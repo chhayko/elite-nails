@@ -5,6 +5,7 @@
     "services": "Services",
     "gallery": "Gallery",
     "testimonials": "Testimonials",
+    "contact": "Questions",
     "book": "Book"
   },
   "hero": {
@@ -65,6 +66,7 @@
     "modalMessagePlaceholder": "Tell us what you'd like to know…",
     "modalSubmit": "Send message",
     "modalSuccess": "Thank you! We'll be in touch soon.",
+    "modalSendAnother": "Send another message",
     "modalError": "Something went wrong. Please try again."
   },
   "booking": {

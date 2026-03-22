@@ -5,6 +5,7 @@
     "services": "Услуги",
     "gallery": "Галерея",
     "testimonials": "Отзывы",
+    "contact": "Вопросы",
     "book": "Записаться"
   },
   "hero": {
@@ -65,6 +66,7 @@
     "modalMessagePlaceholder": "Расскажите, что вы хотите узнать…",
     "modalSubmit": "Отправить сообщение",
     "modalSuccess": "Спасибо! Мы скоро свяжемся с вами.",
+    "modalSendAnother": "Задать ещё вопрос",
     "modalError": "Что-то пошло не так. Пожалуйста, попробуйте снова."
   },
   "booking": {

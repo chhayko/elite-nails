@@ -5,6 +5,7 @@
     "services": "Diensten",
     "gallery": "Galerij",
     "testimonials": "Reviews",
+    "contact": "Vragen",
     "book": "Boeken"
   },
   "hero": {
@@ -65,6 +66,7 @@
     "modalMessagePlaceholder": "Vertel ons wat u wilt weten…",
     "modalSubmit": "Bericht versturen",
     "modalSuccess": "Bedankt! We nemen snel contact met u op.",
+    "modalSendAnother": "Nog een vraag stellen",
     "modalError": "Er is iets misgegaan. Probeer het opnieuw."
   },
   "booking": {
