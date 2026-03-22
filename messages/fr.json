@@ -54,10 +54,10 @@
   "contact": {
     "eyebrow": "Contactez-Nous",
     "heading": "Des questions sur nos services ?",
-    "bookCall": "Réserver un appel",
+    "bookCall": "Réserver une consultation",
     "whatsapp": "WhatsApp",
     "email": "Nous écrire",
-    "modalTitle": "Réserver un appel",
+    "modalTitle": "Réserver une consultation",
     "modalService": "Service",
     "modalServicePlaceholder": "Choisir un service",
     "modalName": "Votre nom",

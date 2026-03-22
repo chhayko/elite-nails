@@ -54,10 +54,10 @@
   "contact": {
     "eyebrow": "Свяжитесь с Нами",
     "heading": "Есть вопросы об услугах?",
-    "bookCall": "Записаться на звонок",
+    "bookCall": "Записаться на консультацию",
     "whatsapp": "WhatsApp",
     "email": "Написать нам",
-    "modalTitle": "Записаться на звонок",
+    "modalTitle": "Записаться на консультацию",
     "modalService": "Услуга",
     "modalServicePlaceholder": "Выберите услугу",
     "modalName": "Ваше имя",
