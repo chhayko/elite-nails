@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (locale !== "nl") return {};
   const canonical = `${BASE_URL}/nl/nagelstudio-${data.slug}`;
   return {
-    title: data.metaTitle,
+    title: { absolute: data.metaTitle },
     description: data.metaDescription,
     alternates: { canonical },
     openGraph: {

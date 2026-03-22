@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { CITIES } from "@/lib/city-data";
 import { CityLanding } from "@/components/city-landing";
 
-const data = CITIES.ronse;
+const data = CITIES.kluisbergen;
 const BASE_URL = "https://www.elitenails.biz";
 
 type Props = { params: Promise<{ locale: string }> };

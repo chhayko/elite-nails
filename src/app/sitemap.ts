@@ -10,11 +10,29 @@ const serviceSlugs = [
   "wimper-wenkbrauw",
 ];
 const citySlugs = [
+  // ~5–10 km
+  "horebeke",
   "geraardsbergen",
-  "ninove",
   "brakel",
-  "ronse",
+  // ~12 km
+  "herzele",
+  "zwalm",
+  "maarkedal",
+  "bever",
+  // ~15 km
+  "ninove",
+  "kluisbergen",
+  "galmaarden",
   "zottegem",
+  // ~17–20 km
+  "wortegem-petegem",
+  "ronse",
+  "oudenaarde",
+  "sint-lievens-houtem",
+];
+const blogSlugs = [
+  "russische-manicure-uitgelegd",
+  "biab-nagels-alles-wat-je-moet-weten",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -41,6 +59,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
+  const blogRoutes = blogSlugs.map((slug) => ({
+    url: BASE_URL + "/nl/blog/" + slug,
+    lastModified: new Date(),
+    changeFrequency: "yearly" as const,
+    priority: 0.8,
+  }));
+
   return [
     {
       url: BASE_URL,
@@ -51,5 +76,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...localeRoutes,
     ...serviceRoutes,
     ...cityRoutes,
+    ...blogRoutes,
   ];
 }

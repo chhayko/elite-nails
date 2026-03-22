@@ -315,6 +315,35 @@ const imageMap: Record<string, string> = {
   "wimper-wenkbrauw": "/services/lash-lamination.jpg",
 };
 
+// SEO-optimised titles & descriptions for NL service pages (from brand guidelines)
+const nlSeoMeta: Record<string, { title: string; description: string }> = {
+  "russische-manicure": {
+    title: "Russische Manicure Lierde | Droge Techniek | Elite Nails",
+    description:
+      "Professionele Russische manicure bij Elite Nails in Sint-Martens-Lierde. Droge techniek voor perfect gehechte gel en langdurig resultaat. Boek nu!",
+  },
+  biab: {
+    title: "BIAB Nagels Lierde | Builder In A Bottle | Elite Nails",
+    description:
+      "BIAB bij Elite Nails — versterkende gel op de natuurlijke nagel voor stevige, mooie nagels. Studio in Sint-Martens-Lierde. Boek via Instagram.",
+  },
+  gelnagels: {
+    title: "Gelnagels Lierde | Professionele Gelmanicure | Elite Nails",
+    description:
+      "Prachtige gelnagels bij Elite Nails in Sint-Martens-Lierde — gecombineerd met Russische manicuretechniek voor langdurig, perfect resultaat. Boek!",
+  },
+  pedicure: {
+    title: "Pedicure Lierde | Professionele Voetverzorging | Elite Nails",
+    description:
+      "Professionele pedicure bij Elite Nails in Sint-Martens-Lierde. Verzorgde, mooie voeten in een cozy studio. Op 10 min van Geraardsbergen. Boek nu!",
+  },
+  "wimper-wenkbrauw": {
+    title: "Wimpers Lamineren Lierde | Lash Lift | Elite Nails",
+    description:
+      "Wimpers lamineren bij Elite Nails in Sint-Martens-Lierde. Volle, gebogen wimpers zonder dagelijkse mascara. Professioneel & langdurig resultaat.",
+  },
+};
+
 const locales = ["en", "nl", "fr", "ru"];
 const slugs = ["russische-manicure", "biab", "gelnagels", "pedicure", "wimper-wenkbrauw"];
 
@@ -344,13 +373,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonical = `${BASE_URL}/${locale}/diensten/${slug}`;
   const imageUrl = imageMap[slug] ?? "/services/russian-manicure.jpg";
 
+  // Use SEO-optimised meta for NL; fall back to service data for other locales
+  const nlOverride = locale === "nl" ? nlSeoMeta[slug] : undefined;
+  const metaTitle = nlOverride
+    ? nlOverride.title
+    : `${service.name} | Elite Nails Lierde`;
+  const metaDescription = nlOverride ? nlOverride.description : service.description;
+
   return {
-    title: service.name,
-    description: service.description,
+    title: nlOverride ? { absolute: nlOverride.title } : service.name,
+    description: metaDescription,
     alternates: { canonical },
     openGraph: {
-      title: `${service.name} | Elite Nails Lierde`,
-      description: service.description,
+      title: metaTitle,
+      description: metaDescription,
       url: canonical,
       siteName: "Elite Nails",
       images: [
