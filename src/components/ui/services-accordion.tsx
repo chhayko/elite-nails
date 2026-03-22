@@ -7,28 +7,25 @@ const services = [
     id: 1,
     name: "Russian Manicure",
     role: "PRECISION CUTICLE CARE",
-    imageUrl:
-      "https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800&auto=format&fit=crop",
+    imageUrl: "/services/russian-manicure.jpg",
   },
   {
     id: 2,
     name: "BIAB",
     role: "BUILDER IN A BOTTLE",
-    imageUrl:
-      "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&auto=format&fit=crop",
+    imageUrl: "/services/biab.jpg",
   },
   {
     id: 3,
     name: "Gel Nails",
     role: "LONG-LASTING COLOR",
-    imageUrl:
-      "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=800&auto=format&fit=crop",
+    imageUrl: "/services/gel-nails.jpg",
   },
   {
     id: 4,
     name: "Pedicure",
     role: "COMPLETE FOOT CARE",
-    imageUrl: "/services/pedicure.png",
+    imageUrl: "/services/pedicure.jpg",
   },
   {
     id: 5,
