@@ -8,17 +8,16 @@ import { BlurFade } from "@/components/ui/blur-fade";
 const QUESTIONS = [
   {
     id: "q1",
-    text: "How are your nails right now?",
+    text: "What are you looking to treat?",
     options: [
-      { id: "A", text: "Weak and brittle" },
-      { id: "B", text: "Short and bare" },
-      { id: "C", text: "Already have gel or BIAB" },
-      { id: "D", text: "Healthy, just need care" },
+      { id: "A", text: "Hands only" },
+      { id: "B", text: "Feet only" },
+      { id: "C", text: "Hands and feet" },
     ],
   },
   {
     id: "q2",
-    text: "What's your priority?",
+    text: "What is your priority?",
     options: [
       { id: "A", text: "Strength and growth" },
       { id: "B", text: "Clean natural look" },
@@ -37,12 +36,12 @@ const QUESTIONS = [
   },
   {
     id: "q4",
-    text: "Would you like to combine with anything else?",
+    text: "Any extra interest?",
     options: [
-      { id: "A", text: "Add lashes or brows" },
-      { id: "B", text: "Add a pedicure" },
-      { id: "C", text: "Add lashes + pedicure" },
-      { id: "D", text: "Just nails, please" },
+      { id: "A", text: "Lashes" },
+      { id: "B", text: "Brows" },
+      { id: "C", text: "Lashes and brows" },
+      { id: "D", text: "Just nails" },
     ],
   },
 ] as const;
@@ -75,52 +74,41 @@ const ADDON_REASONS: Record<string, string> = {
 type Result = { treatments: string[]; reason: string };
 
 function recommend(a: Answers): Result {
-  const { q1, q2, q3, q4 } = a;
+  const { q1, q2, q4 } = a;
 
-  /* — Nail treatment scoring (Q1 + Q2 + Q3) — */
-  const nail: Record<string, number> = {
-    "Russian Manicure": 0,
-    "BIAB": 0,
-    "Gel Nails": 0,
-    "Pedicure": 0,
-  };
+  /* — Primary nail treatment (Q1 + Q2) — */
+  let primaryNail: string;
 
-  // Q1 — nail condition
-  if (q1 === "A") nail["BIAB"] += 3;
-  if (q1 === "B") { nail["Russian Manicure"] += 1; nail["Gel Nails"] += 1; }
-  if (q1 === "C") { nail["Russian Manicure"] += 2; nail["Gel Nails"] += 2; }
-  if (q1 === "D") { nail["Russian Manicure"] += 2; nail["Pedicure"] += 1; }
+  if (q1 === "B") {
+    // Feet only → always Pedicure
+    primaryNail = "Pedicure";
+  } else {
+    // Hands only or Hands and feet — Q2 decides the hand treatment
+    if (q2 === "A")      primaryNail = "BIAB";
+    else if (q2 === "C") primaryNail = "Gel Nails";
+    else                 primaryNail = "Russian Manicure"; // B (clean) or D (low maintenance)
+  }
 
-  // Q2 — priority
-  if (q2 === "A") nail["BIAB"] += 3;
-  if (q2 === "B") nail["Russian Manicure"] += 3;
-  if (q2 === "C") nail["Gel Nails"] += 3;
-  if (q2 === "D") { nail["BIAB"] += 1; nail["Pedicure"] += 3; }
-
-  // Q3 — frequency
-  if (q3 === "A") { nail["Russian Manicure"] += 1; nail["Gel Nails"] += 1; }
-  if (q3 === "B") { nail["BIAB"] += 1; nail["Gel Nails"] += 1; }
-  if (q3 === "C") { nail["BIAB"] += 1; nail["Pedicure"] += 2; }
-
-  const primaryNail = Object.entries(nail).sort((a, b) => b[1] - a[1])[0][0];
-
-  /* — Add-on determination (Q4 only) — */
+  /* — Add-ons — */
   const addons: string[] = [];
 
+  // Hands and feet: always add Pedicure as second service
+  if (q1 === "C" && primaryNail !== "Pedicure") {
+    addons.push("Pedicure");
+  }
+
+  // Q4 extras
   if (q4 === "A") {
-    // Lashes or brows — pick Lash Lamination as the headline add-on
     addons.push("Lash Lamination");
   } else if (q4 === "B") {
-    // Pedicure add-on — only meaningful if primary nail isn't already Pedicure
-    if (primaryNail !== "Pedicure") addons.push("Pedicure");
+    addons.push("Brow Lamination");
   } else if (q4 === "C") {
-    // Both lashes + pedicure
     addons.push("Lash Lamination");
-    if (primaryNail !== "Pedicure") addons.push("Pedicure");
+    addons.push("Brow Lamination");
   }
   // q4 === "D" → no add-ons
 
-  /* — Build treatments list + reason — */
+  /* — Build result — */
   const treatments = [primaryNail, ...addons];
 
   let reason = NAIL_REASONS[primaryNail] ?? "";
@@ -140,7 +128,7 @@ export function TreatmentQuiz() {
   const [step, setStep]       = useState(0);
   const [dir, setDir]         = useState(1);
   const [answers, setAnswers] = useState<Answers>({});
-  const [result, setResult]   = useState<{ treatments: string[]; reason: string } | null>(null);
+  const [result, setResult]   = useState<Result | null>(null);
 
   const question = QUESTIONS[step] as typeof QUESTIONS[number] | undefined;
 
@@ -171,7 +159,7 @@ export function TreatmentQuiz() {
   };
 
   return (
-    <section id="quiz" className="relative py-24 px-6 overflow-hidden bg-charcoal/20 backdrop-blur-md">
+    <section id="quiz" className="relative py-24 px-6 overflow-hidden">
       <div className="mx-auto max-w-2xl">
 
         {/* Heading */}
@@ -187,7 +175,7 @@ export function TreatmentQuiz() {
 
         {/* Card */}
         <BlurFade delay={0.2} inView>
-          <div className="relative rounded-2xl border border-white/10 bg-charcoal/35 backdrop-blur-xl
+          <div className="relative rounded-2xl border border-white/10 bg-charcoal/30 backdrop-blur-xl
                           px-8 py-10 md:px-12 md:py-12 min-h-[300px] overflow-hidden">
             <AnimatePresence mode="wait" custom={dir}>
 
@@ -275,7 +263,11 @@ export function TreatmentQuiz() {
 
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <a
-                      href="#booking"
+                      href="#contact"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                      }}
                       className="inline-flex items-center gap-2 bg-mauve hover:bg-mauve/90
                         text-white px-8 py-3 rounded-full text-xs uppercase tracking-[0.2em]
                         font-sans transition-colors duration-200"

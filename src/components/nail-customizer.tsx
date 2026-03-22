@@ -4,20 +4,14 @@ import { useState } from "react";
 import { BlurFade } from "@/components/ui/blur-fade";
 
 /*
- * Nail illustration built directly from the reference SVG
- * (oval nail-svgfind-com.svg), transformed to viewBox "0 0 120 270".
+ * Nail Customizer — redesigned illustration
  *
- * Source analysis:
- *   x: 320–480 (centre 400, width 160)  →  target x: 35–85 (centre 60, width 50)
- *   y: 181.6 (nail tip) – 629.2 (base)  →  target y: 8–262
- *
- * The reference supplies three structural paths:
- *   SKIN       – full finger+nail silhouette (skin base)
- *   NAIL_OVAL  – nail plate for the oval shape (extracted from reference)
- *   CUTICLE    – cuticle-fold detail drawn over the nail base
- *
- * Other nail shapes share the same cuticle section as NAIL_OVAL but
- * replace the upper portion with shape-specific geometry.
+ * Structure:
+ *   SKIN       – shape-neutral finger body: narrow nail-bed area (x 47-73)
+ *                transitioning to full finger width (x 35-85) below the cuticle.
+ *                Does NOT follow any nail shape outline.
+ *   NAILS      – nail plate per shape, shorter tip (y ≈ 45-52)
+ *   CUTICLE    – cuticle arch shared by every nail shape
  */
 
 type ShapeKey = "oval" | "almond" | "ballerina" | "square" | "stiletto";
@@ -30,10 +24,21 @@ const SHAPE_LABELS: Record<ShapeKey, string> = {
   stiletto:  "Stiletto",
 };
 
-/* ── Shared cuticle section (bottom of every nail plate) ──────────────────
- * These bezier segments define the cuticle arch from the right side
- * (72.74, 138.71) through the centre to the left side (47.12, 135.26).
- * Every nail shape uses this identical base. */
+/* ── Shape-neutral finger skin ────────────────────────────────────────────
+ * Narrow nail-bed section (x 47–73, rounded top at y≈32)
+ * expands to full finger tube (x 35–85) below the cuticle at y≈162-175.   */
+const SKIN =
+  "M 73 162 " +
+  "L 73 52 Q 73 30 60 30 Q 47 30 47 52 " +
+  "L 47 162 " +
+  "C 42 163 35 168 35 178 " +
+  "L 35 262 " +
+  "L 85 262 " +
+  "L 85 178 C 85 168 78 163 73 162 Z";
+
+/* ── Cuticle fold arch — shared by all shapes ────────────────────────────
+ * Traces from the right nail base (72.74, 138.71) downward through
+ * the cuticle fold (y ≈ 156) and back up to the left nail base (47.12, 135.26). */
 const CUTICLE_BASE =
   "C 72.66 145.23 71.37 151.52 69.07 156.54 " +
   "C 66.29 153.56 63.12 152.01 59.88 152.04 " +
@@ -41,85 +46,50 @@ const CUTICLE_BASE =
   "C 56.52 151.92 53.21 153.51 50.32 156.61 " +
   "C 48.38 151.69 47.29 144.54 47.12 135.26 ";
 
-/* ── Nail plate paths ─────────────────────────────────────────────────────
- * Each path: M (start) → cuticle-base section → left side up → tip → right side down → Z */
+/* ── Nail plate paths — tip shortened to y ≈ 45-52 ──────────────────────
+ * All paths: start (72.74, 138.71) → CUTICLE_BASE → left edge up → tip → right edge down → Z */
 const NAILS: Record<ShapeKey, string> = {
 
-  /* OVAL — exact reference shape (sub2 from transformed SVG) */
+  /* OVAL — smooth oval, tip at y≈48 */
   oval:
     "M 72.74 138.71 " + CUTICLE_BASE +
-    "L 47.11 135.15 " +
-    "C 46.03 115.58 46.0 95.87 47.03 76.3 " +
-    "C 48.34 55.01 51.07 10.72 59.87 10.72 " +
-    "C 69.37 10.72 71.23 48.7 72.45 73.82 " +
-    "C 72.52 75.26 72.59 76.67 72.66 78.02 " +
-    "V 78.02 " +
-    "C 73.73 98.2 73.76 118.52 72.74 138.71 Z",
+    "C 46.5 115 46 92 47 72 " +
+    "C 48 58 52 48 60 48 " +
+    "C 68 48 72 58 73 72 " +
+    "C 74 92 73.5 115 72.74 138.71 Z",
 
-  /* ALMOND — same cuticle base, tapers to soft rounded point */
+  /* ALMOND — tapers to a soft rounded point, tip at y≈42 */
   almond:
     "M 72.74 138.71 " + CUTICLE_BASE +
-    "C 46.3 108 47.0 60 52.0 30 " +
-    "C 55.0 16 65.0 16 68.0 30 " +
-    "C 73.0 60 73.7 108 72.74 138.71 Z",
+    "C 46.5 110 47.5 78 51.5 55 " +
+    "C 54.5 38 65.5 38 68.5 55 " +
+    "C 72.5 78 73.5 110 72.74 138.71 Z",
 
-  /* BALLERINA / COFFIN — tapered sides, flat top */
+  /* BALLERINA / COFFIN — tapered sides, flat squared-off top at y≈50 */
   ballerina:
     "M 72.74 138.71 " + CUTICLE_BASE +
-    "C 47.0 108 49.0 66 50.5 24 " +
-    "L 69.5 24 " +
-    "C 71.0 66 73.0 108 72.74 138.71 Z",
+    "C 47 108 49.5 75 52.5 52 " +
+    "L 67.5 52 " +
+    "C 70.5 75 73 108 72.74 138.71 Z",
 
   /* SQUARE — straight sides, flat top with slightly rounded corners */
   square:
     "M 72.74 138.71 " + CUTICLE_BASE +
-    "L 47.12 28 Q 47.12 22 52 22 " +
-    "L 68 22 Q 72.74 22 72.74 28 " +
+    "L 47.12 46 " +
+    "Q 47.12 38 53 38 " +
+    "L 67 38 " +
+    "Q 72.74 38 72.74 46 " +
     "L 72.74 138.71 Z",
 
-  /* STILETTO — curves to a fine sharp point */
+  /* STILETTO — narrows to a sharp fine point at y≈38 */
   stiletto:
     "M 72.74 138.71 " + CUTICLE_BASE +
-    "C 46.0 100 51.0 48 60.0 11 " +
-    "C 69.0 48 74.0 100 72.74 138.71 Z",
+    "C 46.5 100 50.5 62 60 38 " +
+    "C 69.5 62 73.5 100 72.74 138.71 Z",
 };
 
-/* ── Reference paths (exact from SVG, not shape-dependent) ───────────────── */
-
-/* Full finger+nail silhouette — fills with skin colour */
-const SKIN =
-  "M 84.92 158.75 " +
-  "C 84.91 156.46 84.91 154.03 84.91 151.45 " +
-  "C 84.91 131.28 84.92 103.84 74.87 96.48 " +
-  "C 74.74 90.78 74.51 84.77 74.16 77.78 " +
-  "C 74.09 76.43 74.02 75.02 73.95 73.58 " +
-  "V 73.58 " +
-  "C 73.47 59.42 72.35 45.35 70.61 31.51 " +
-  "C 68.27 15.68 64.76 7.99 59.87 7.99 " +
-  "C 55.38 7.99 51.97 16.23 49.43 33.17 " +
-  "C 47.57 47.26 46.27 61.57 45.54 76.0 " +
-  "C 45.11 82.94 44.89 89.92 44.8 96.54 " +
-  "C 35.23 105.91 35.15 132.82 35.1 152.57 " +
-  "C 35.09 154.71 35.09 156.77 35.07 158.75 " +
-  "C 34.82 188.68 34.99 259.0 34.99 261.97 " +
-  "L 36.5 261.96 " +
-  "C 36.49 258.99 36.33 188.7 36.58 158.79 " +
-  "C 36.59 156.8 36.6 154.73 36.61 152.59 " +
-  "C 36.66 133.05 36.73 108.98 44.77 99.74 " +
-  "V 99.74 " +
-  "C 44.68 111.65 44.96 123.55 45.62 135.4 " +
-  "C 46.15 163.12 54.43 167.28 59.35 167.28 " +
-  "H 59.5 " +
-  "C 62.25 167.1 64.92 165.59 67.24 162.91 " +
-  "C 70.15 159.55 73.73 152.65 74.24 138.9 " +
-  "C 74.83 125.8 75.06 112.65 74.93 99.51 " +
-  "C 83.41 106.94 83.41 132.52 83.4 151.45 " +
-  "C 83.4 154.03 83.4 156.48 83.42 158.79 " +
-  "C 83.67 188.72 83.51 258.98 83.5 261.96 " +
-  "L 85.0 261.98 " +
-  "C 85.01 259.0 85.18 188.71 84.92 158.75";
-
-/* Cuticle fold detail — small arch drawn over the nail base */
+/* ── Cuticle fold detail ─────────────────────────────────────────────────
+ * Small arch drawn on top of the nail base / skin boundary.              */
 const CUTICLE_DETAIL =
   "M 66.43 160.61 " +
   "C 64.35 163.0 61.96 164.36 59.5 164.55 " +
@@ -130,7 +100,7 @@ const CUTICLE_DETAIL =
   "C 62.71 154.74 65.5 156.02 67.98 158.5 " +
   "C 67.49 159.27 66.98 159.98 66.43 160.61 Z";
 
-/* Hyponychium band 1 & 2 — subtle skin tone lines in the finger body */
+/* Subtle skin-tone crease lines in the finger body */
 const HYPO_1 =
   "M 48.75 216.41 L 48.53 219.11 " +
   "C 52.99 220.32 57.5 220.92 62.01 220.92 " +
@@ -144,7 +114,7 @@ const HYPO_2 =
   "L 70.13 228.01 " +
   "C 63.25 231.63 55.98 232.17 48.96 229.61 Z";
 
-/* ── Colours ────────────────────────────────────────────────────────────── */
+/* ── Colours ─────────────────────────────────────────────────────────── */
 const COLORS = [
   { id: "sheer-nude", hex: "#F5DDD0", label: "Sheer Nude",  metallic: false },
   { id: "warm-nude",  hex: "#E8C4A8", label: "Warm Nude",   metallic: false },
@@ -163,7 +133,7 @@ type Color = typeof COLORS[number];
 
 const NUDE_IDS = new Set(["sheer-nude", "warm-nude", "baby-pink", "white"]);
 
-/* ── Component ──────────────────────────────────────────────────────────── */
+/* ── Component ─────────────────────────────────────────────────────────── */
 export function NailCustomizer() {
   const [activeShape, setActiveShape] = useState<ShapeKey>("oval");
   const [activeColor, setActiveColor] = useState<Color>(COLORS[4]);
@@ -204,7 +174,7 @@ export function NailCustomizer() {
 
         <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20">
 
-          {/* ── SVG illustration ─────────────────────────────────────────── */}
+          {/* ── SVG illustration ──────────────────────────────────────── */}
           <BlurFade delay={0.2} inView>
             <div
               className="flex-shrink-0"
@@ -212,11 +182,11 @@ export function NailCustomizer() {
             >
               <svg
                 viewBox="0 0 120 270"
-                className="w-[92px] lg:w-[110px] h-auto"
+                className="w-[80px] lg:w-[96px] h-auto"
                 aria-label={`${SHAPE_LABELS[activeShape]} nail, colour ${activeColor.label}`}
               >
                 <defs>
-                  {/* Lateral cylindrical shading on finger skin */}
+                  {/* Lateral cylindrical shading */}
                   <linearGradient id="nc-skin-lat" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%"   stopColor="#8B4A22" stopOpacity="0.50"/>
                     <stop offset="12%"  stopColor="#8B4A22" stopOpacity="0.16"/>
@@ -227,7 +197,7 @@ export function NailCustomizer() {
                     <stop offset="100%" stopColor="#8B4A22" stopOpacity="0.50"/>
                   </linearGradient>
 
-                  {/* Vertical warm shadow toward fingertip */}
+                  {/* Vertical warm shadow toward finger base */}
                   <linearGradient id="nc-skin-vert" x1="0%" y1="0%" x2="0%" y2="100%">
                     <stop offset="0%"   stopColor="#000000" stopOpacity="0.00"/>
                     <stop offset="60%"  stopColor="#000000" stopOpacity="0.00"/>
@@ -266,7 +236,8 @@ export function NailCustomizer() {
                   <clipPath id="nc-nail-clip">
                     <path d={nailPath}/>
                   </clipPath>
-                  {/* Clip to finger body */}
+
+                  {/* Clip to full skin area */}
                   <clipPath id="nc-skin-clip">
                     <path d={SKIN}/>
                   </clipPath>
@@ -275,27 +246,27 @@ export function NailCustomizer() {
                 {/* ── 1. SKIN BASE ── */}
                 <path d={SKIN} fill="#f5d5c0"/>
 
-                {/* Lateral cylindrical shading on skin */}
+                {/* Lateral cylindrical shading */}
                 <path d={SKIN} fill="url(#nc-skin-lat)" clipPath="url(#nc-skin-clip)"/>
 
-                {/* Vertical warm shadow on finger pad */}
+                {/* Vertical warm shadow */}
                 <path d={SKIN} fill="url(#nc-skin-vert)" clipPath="url(#nc-skin-clip)"/>
 
-                {/* Hyponychium bands (subtle skin details in finger body) */}
+                {/* Subtle skin crease lines in finger body */}
                 <path d={HYPO_1} fill="#e8c0b0" opacity="0.6"/>
                 <path d={HYPO_2} fill="#ddb8a8" opacity="0.5"/>
 
-                {/* ── 2. NAIL PLATE ── */}
+                {/* ── 2. NAIL PLATE (fades on shape change) ── */}
                 <g style={{ opacity: visible ? 1 : 0, transition: "opacity 0.18s ease" }}>
 
                   {/* Nail colour fill */}
                   <path d={nailPath} fill={nailFill}/>
 
-                  {/* Nail-bed oval — dark hollow; visible on nude/transparent tones */}
+                  {/* Nail-bed lunula — visible on nude tones */}
                   <ellipse
-                    cx="60" cy="138" rx="13" ry="5.5"
+                    cx="60" cy="138" rx="11" ry="4.5"
                     fill="#0D0204"
-                    opacity={isNude ? 0.55 : 0.12}
+                    opacity={isNude ? 0.50 : 0.10}
                     clipPath="url(#nc-nail-clip)"
                   />
 
@@ -304,14 +275,14 @@ export function NailCustomizer() {
 
                   {/* Gloss highlight — left-side shine stripe */}
                   <path
-                    d="M 51 135 C 49 108 49 70 51.5 35 C 48 65 47 100 48 132 Z"
-                    fill="white" opacity="0.48"
+                    d="M 51.5 134 C 50 110 49.5 78 51 52 C 48.5 74 48 108 49 132 Z"
+                    fill="white" opacity="0.46"
                     clipPath="url(#nc-nail-clip)"
                   />
 
                 </g>
 
-                {/* ── 3. CUTICLE FOLD (always on top of nail) ── */}
+                {/* ── 3. CUTICLE FOLD (always on top) ── */}
                 <path d={CUTICLE_DETAIL} fill="#f0cabb"/>
                 <path d={CUTICLE_DETAIL} fill="url(#nc-skin-lat)" opacity="0.55"/>
 
@@ -319,7 +290,7 @@ export function NailCustomizer() {
             </div>
           </BlurFade>
 
-          {/* ── Controls ─────────────────────────────────────────────────── */}
+          {/* ── Controls ──────────────────────────────────────────────── */}
           <div className="flex-1 w-full max-w-sm space-y-10">
 
             <BlurFade delay={0.3} inView>
