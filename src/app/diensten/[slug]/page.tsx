@@ -222,8 +222,43 @@ export default async function ServicePage({ params }: Props) {
   const service = services[slug];
   if (!service) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.name,
+    description: service.metaDescription,
+    url: `${BASE_URL}/diensten/${service.slug}`,
+    provider: {
+      "@type": "HealthAndBeautyBusiness",
+      name: "Elite Nails",
+      url: BASE_URL,
+      telephone: "+32494175267",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Steenweg 234b",
+        addressLocality: "Sint-Martens-Lierde",
+        postalCode: "9572",
+        addressCountry: "BE",
+      },
+    },
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "EUR",
+      price: service.price.replace(/[^0-9]/g, ""),
+      availability: "https://schema.org/InStock",
+    },
+    areaServed: {
+      "@type": "City",
+      name: "Sint-Martens-Lierde",
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 bg-charcoal/80 backdrop-blur-md border-b border-white/5">
         <Link
           href="/#services"
