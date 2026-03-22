@@ -70,7 +70,7 @@ function Avatar({
   active,
   onClick,
 }: {
-  t: (typeof testimonials)[0];
+  t: (typeof DEFAULT_TESTIMONIALS)[0];
   active: boolean;
   onClick: () => void;
 }) {
