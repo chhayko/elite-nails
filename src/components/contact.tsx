@@ -82,18 +82,20 @@ function BookingModal({
     e.preventDefault();
     setStatus("loading");
     try {
-      const res = await fetch("https://formsubmit.co/ajax/info@elitenails.biz", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          service,
-          name,
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          subject: `Inquiry about ${service || "Elite Nails"} — Elite Nails`,
+          from_name: name,
           email,
-          message,
-          _subject: `Inquiry about ${service} — Elite Nails`,
+          message: `Service: ${service || "—"}\n\n${message}`,
+          botcheck: "",
         }),
       });
-      if (res.ok) {
+      const data = await res.json();
+      if (data.success) {
         setStatus("success");
         setName("");
         setEmail("");
