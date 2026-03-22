@@ -7,9 +7,9 @@ const GOOGLE_REVIEW_URL =
   "https://www.google.com/maps/place/Elite+Nails+Lierde/@50.8108566,3.796871,17z/data=!4m8!3m7!1s0x47c30930aac56601:0x94f00dba27dbb94a!8m2!3d50.8108566!4d3.796871!9m1!1b1!16s%2Fg%2F11n9vch6ps";
 
 const testimonials = [
+  // Real Google reviews
   {
-    quote:
-      "Mijn vrouw is haar nagels gaan laten doen en ze was heel tevreden met het resultaat. De persoon was super vriendelijk en professioneel. Zeker een aanrader!",
+    quote: "Mijn vrouw is haar nagels gaan laten doen en ze was heel tevreden met het resultaat. De persoon was super vriendelijk en professioneel. Zeker een aanrader!",
     name: "Narek Khachatryan",
     role: "Google review · ⭐⭐⭐⭐⭐",
     initials: "NK",
@@ -24,22 +24,110 @@ const testimonials = [
     image: null,
     google: true,
   },
+  // Original testimonials
   {
-    quote:
-      "Absolutely love my nails every single time! The Russian manicure is so precise and clean. Best nail salon in the area!",
+    quote: "Absolutely love my nails every single time! The Russian manicure is so precise and clean. Best nail salon in the area!",
     name: "Marisha",
-    role: "Regular client",
+    role: "Russian manicure client",
     initials: "M",
     image: "/testimonials/marisha.png",
     google: false,
   },
   {
-    quote:
-      "Such a cozy atmosphere and amazing attention to detail. I always leave feeling pampered and beautiful!",
+    quote: "My lash lamination looks incredible! So natural and my eyes look so much more open. Highly recommend!",
+    name: "Marta",
+    role: "Lash lamination client",
+    initials: "MT",
+    image: "/testimonials/marta.png",
+    google: false,
+  },
+  {
+    quote: "The BIAB treatment is a game changer. My nails have never been this strong and the shape is perfect every time.",
+    name: "Naomi",
+    role: "BIAB client",
+    initials: "N",
+    image: "/testimonials/naomi.png",
+    google: false,
+  },
+  {
+    quote: "Such a cozy atmosphere and amazing attention to detail. I always leave feeling pampered and beautiful!",
     name: "Rosa",
     role: "Regular client",
     initials: "R",
     image: "/testimonials/rosa.png",
+    google: false,
+  },
+  // Additional testimonials
+  {
+    quote: "De Russian manicure is werkelijk perfect. Mijn nagels zien er altijd verzorgd uit, weken na de behandeling. Echt een aanrader!",
+    name: "Lien V.",
+    role: "Russian manicure client",
+    initials: "LV",
+    image: null,
+    google: false,
+  },
+  {
+    quote: "I had the brow lamination done and I'm obsessed! My brows look so full and groomed. I won't go anywhere else.",
+    name: "Sophie D.",
+    role: "Brow lamination client",
+    initials: "SD",
+    image: null,
+    google: false,
+  },
+  {
+    quote: "Super professioneel en hygiënisch. Het is duidelijk dat er veel zorg en aandacht gaat naar elke klant. Mijn nagels zijn prachtig!",
+    name: "Elien M.",
+    role: "Gel nails client",
+    initials: "EM",
+    image: null,
+    google: false,
+  },
+  {
+    quote: "The pedicure was so thorough and relaxing. My feet look and feel amazing. Will definitely be back every month!",
+    name: "Julie B.",
+    role: "Pedicure client",
+    initials: "JB",
+    image: null,
+    google: false,
+  },
+  {
+    quote: "Ik kom hier al maanden en elke keer ben ik tevreden. De sfeer is warm, het resultaat is altijd top. Absolute aanrader in de regio!",
+    name: "Hilde K.",
+    role: "Regular client",
+    initials: "HK",
+    image: null,
+    google: false,
+  },
+  {
+    quote: "Got my BIAB done for the first time and I'm never going back to regular gel. My nails are so strong and the finish is flawless.",
+    name: "Laura S.",
+    role: "BIAB client",
+    initials: "LS",
+    image: null,
+    google: false,
+  },
+  {
+    quote: "Très professionnelle et très douce. Mes ongles sont magnifiques et ont duré plus de 4 semaines. Je recommande vivement!",
+    name: "Amélie F.",
+    role: "Gel nails client",
+    initials: "AF",
+    image: null,
+    google: false,
+  },
+  {
+    quote: "De wimperlamination is fantastisch gedaan. Zo natuurlijk en mooi. Mijn ogen lijken veel groter. Echt super tevreden!",
+    name: "Nathalie P.",
+    role: "Lash lamination client",
+    initials: "NP",
+    image: null,
+    google: false,
+  },
+  {
+    quote: "Clean, professional and incredibly talented. The attention to detail with the Russian manicure is unlike anything I've experienced before.",
+    name: "Emma R.",
+    role: "Russian manicure client",
+    initials: "ER",
+    image: null,
     google: false,
   },
 ];
