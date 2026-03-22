@@ -2,6 +2,9 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* Hide default cursor sitewide — replaced by CustomCursor component */
+*, *::before, *::after { cursor: none !important; }
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

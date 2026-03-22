@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getLocale } from "next-intl/server";
+import { CustomCursor } from "@/components/custom-cursor";
 import "../globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -173,11 +174,12 @@ export default async function LocaleLayout({
         <meta name="ICBM" content="50.8167, 3.8333" />
       </head>
       <body
-        className={`${cormorant.variable} ${inter.variable} font-sans antialiased`}
+        className={`${cormorant.variable} ${inter.variable} font-sans antialiased cursor-none`}
       >
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
+        <CustomCursor />
 
         {/* Google Analytics */}
         <Script
