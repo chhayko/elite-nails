@@ -1,8 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { useRouter, usePathname } from "@/i18n/navigation";
-import { useState, useTransition } from "react";
+import { useState } from "react";
 
 const locales = [
   { code: "en", label: "EN", flag: "🇬🇧" },
@@ -11,28 +10,34 @@ const locales = [
   { code: "ru", label: "RU", flag: "🇷🇺" },
 ];
 
+const LOCALE_CODES = locales.map((l) => l.code);
+
 export function LanguageSwitcher() {
   const locale = useLocale();
-  const router = useRouter();
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [isPending, startTransition] = useTransition();
 
   const current = locales.find((l) => l.code === locale) ?? locales[0];
 
   const switchLocale = (newLocale: string) => {
     setOpen(false);
-    startTransition(() => {
-      router.replace(pathname, { locale: newLocale });
-    });
+    if (newLocale === locale) return;
+
+    // Hard navigation — guarantees server components re-render with new locale
+    const path = window.location.pathname;
+    // Strip existing locale prefix (e.g. /en/diensten/biab → /diensten/biab)
+    const withoutLocale = path.replace(
+      new RegExp(`^\\/(${LOCALE_CODES.join("|")})(\\b|$)`),
+      ""
+    ) || "/";
+
+    window.location.href = `/${newLocale}${withoutLocale === "/" ? "" : withoutLocale}`;
   };
 
   return (
     <div className="relative">
       <button
         onClick={() => setOpen((v) => !v)}
-        disabled={isPending}
-        className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.15em] text-white/70 hover:text-white transition-colors font-sans disabled:opacity-50"
+        className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.15em] text-white/70 hover:text-white transition-colors font-sans"
         aria-label="Switch language"
       >
         <span>{current.flag}</span>
@@ -50,11 +55,7 @@ export function LanguageSwitcher() {
 
       {open && (
         <>
-          {/* Backdrop */}
-          <div
-            className="fixed inset-0 z-40"
-            onClick={() => setOpen(false)}
-          />
+          <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
           <div className="absolute right-0 top-8 z-50 min-w-[100px] rounded-lg border border-white/10 bg-charcoal/90 backdrop-blur-md py-1 shadow-xl">
             {locales.map((l) => (
               <button

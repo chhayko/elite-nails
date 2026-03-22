@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { LanguageSwitcher } from "@/components/language-switcher";
 
 type ServiceEntry = {
   name: string;
@@ -464,14 +465,17 @@ export default async function ServicePage({ params }: Props) {
         >
           Elite Nails
         </Link>
-        <a
-          href="https://www.instagram.com/elite_nails_lierde/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-cream/60 hover:text-mauve text-xs tracking-[0.2em] uppercase transition-colors duration-300"
-        >
-          Instagram
-        </a>
+        <div className="flex items-center gap-4">
+          <LanguageSwitcher />
+          <a
+            href="https://www.instagram.com/elite_nails_lierde/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:block text-cream/60 hover:text-mauve text-xs tracking-[0.2em] uppercase transition-colors duration-300"
+          >
+            Instagram
+          </a>
+        </div>
       </nav>
 
       <main className="bg-charcoal min-h-screen text-cream">
