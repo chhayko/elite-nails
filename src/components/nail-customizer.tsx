@@ -4,23 +4,25 @@ import { useState } from "react";
 import { BlurFade } from "@/components/ui/blur-fade";
 
 /*
- * Single realistic fingertip illustration.
+ * Single realistic fingertip — viewBox "0 0 120 270"
  *
- * viewBox "0 0 120 260"
- * Finger: 48 px wide (x 36–84), center x = 60
- * Cuticle / nail base sits at y ≈ 102
- * Nail extends upward; fingertip pad rounds at bottom (y ≈ 252)
+ * Layout:
+ *   y  0–12   → top padding / nail tip area
+ *   y 12–124  → nail plate (extends from tip down to cuticle)
+ *   y 124–260 → finger body (cuticle to rounded pad)
  *
- * Each shape has:
- *   finger    — full finger body (same for all shapes)
- *   nail      — nail plate (only this path changes per shape)
- *   highlight — gloss stripe on the nail plate
+ * Finger: 48 px wide (x 36–84), centred at x = 60.
+ * Cuticle / nail base sits at y ≈ 124.
+ *
+ * OVAL shape is derived from the reference illustration:
+ *   straight parallel sides for most of the nail length,
+ *   rounding smoothly into an oval free-edge at the top.
  */
 
-type ShapeKey = "round" | "almond" | "ballerina" | "square" | "stiletto";
-const SHAPE_KEYS: ShapeKey[] = ["round", "almond", "ballerina", "square", "stiletto"];
+type ShapeKey = "oval" | "almond" | "ballerina" | "square" | "stiletto";
+const SHAPE_KEYS: ShapeKey[] = ["oval", "almond", "ballerina", "square", "stiletto"];
 const SHAPE_LABELS: Record<ShapeKey, string> = {
-  round:     "Round",
+  oval:      "Oval",
   almond:    "Almond",
   ballerina: "Ballerina",
   square:    "Square",
@@ -30,68 +32,85 @@ const SHAPE_LABELS: Record<ShapeKey, string> = {
 interface ShapePaths { finger: string; nail: string; highlight: string }
 
 /* ── Shared finger body ────────────────────────────────────────────────────
- * 48 px wide, centre at x = 60.
- * Gentle curve at the top (cuticle junction), straight sides, rounded pad. */
+ * 48 px wide, straight sides, rounded pad at the bottom.
+ * Same for all 5 shapes — only the nail plate changes. */
 const FINGER =
-  "M 36 108 Q 36 98 60 96 Q 84 98 84 108 " +
-  "L 84 206 Q 84 250 60 254 Q 36 250 36 206 Z";
+  "M 36 128 Q 36 116 60 114 Q 84 116 84 128 " +
+  "L 84 216 Q 84 260 60 264 Q 36 260 36 216 Z";
 
 const SHAPES: Record<ShapeKey, ShapePaths> = {
 
-  /* ── ROUND ──────────────────────────────────────────────────────────────
-   * Short, wide oval. Free edge reaches y ≈ 54. */
-  round: {
+  /* ── OVAL ────────────────────────────────────────────────────────────────
+   * Adapted from the reference SVG (oval nail-svgfind-com.svg).
+   * Straight parallel sides, smooth oval free-edge. */
+  oval: {
     finger: FINGER,
     nail:
-      "M 38 102 C 38 76 46 56 60 52 C 74 56 82 76 82 102 " +
-      "Q 60 93 38 102 Z",
+      "M 38 123 L 38 52 " +                     // left side — straight
+      "C 38 28 48 14 60 12 " +                  // round to oval tip
+      "C 72 14 82 28 82 52 " +                  // right curve to tip
+      "L 82 123 " +                             // right side — straight
+      "Q 60 112 38 123 Z",                      // cuticle arch
     highlight:
-      "M 42 97 C 42 76 47 60 54 55 C 46 65 40 80 40 97 Z",
+      "M 42 118 L 42 56 C 42 36 46 22 52 16 " +
+      "C 46 26 40 42 40 58 L 40 118 Z",
   },
 
   /* ── ALMOND ─────────────────────────────────────────────────────────────
-   * Tapers to a soft oval point. Free edge at y ≈ 20. */
+   * Sides taper gradually to a soft rounded point. */
   almond: {
     finger: FINGER,
     nail:
-      "M 39 102 C 39 70 46 38 60 18 C 74 38 81 70 81 102 " +
-      "Q 60 93 39 102 Z",
+      "M 39 123 " +
+      "C 39 95 42 62 52 38 " +
+      "C 55 24 65 24 68 38 " +
+      "C 78 62 81 95 81 123 " +
+      "Q 60 112 39 123 Z",
     highlight:
-      "M 43 96 C 43 70 47 44 54 26 C 46 48 40 72 40 96 Z",
+      "M 43 118 C 43 92 46 64 53 42 " +
+      "C 47 58 41 86 41 116 Z",
   },
 
   /* ── BALLERINA / COFFIN ─────────────────────────────────────────────────
-   * Sides taper inward; flat top at y = 26. */
+   * Sides taper inward then continue straight to a flat top. */
   ballerina: {
     finger: FINGER,
     nail:
-      "M 38 102 C 38 82 42 62 46 44 L 46 26 L 74 26 L 74 44 " +
-      "C 78 62 82 82 82 102 Q 60 93 38 102 Z",
+      "M 38 123 " +
+      "C 38 103 42 82 46 62 " +
+      "L 46 34 L 74 34 " +
+      "L 74 62 " +
+      "C 78 82 82 103 82 123 " +
+      "Q 60 112 38 123 Z",
     highlight:
-      "M 42 96 C 42 80 44 62 46 46 L 46 28 L 50 28 L 50 46 " +
-      "C 44 64 40 80 40 96 Z",
+      "M 42 118 C 42 102 44 84 46 64 L 46 36 L 50 36 " +
+      "L 50 64 C 44 84 40 102 40 118 Z",
   },
 
   /* ── SQUARE ─────────────────────────────────────────────────────────────
-   * Straight sides, flat top, slightly rounded top corners. */
+   * Straight sides, flat top, slightly rounded corners. */
   square: {
     finger: FINGER,
     nail:
-      "M 38 102 L 38 30 Q 38 24 44 24 L 76 24 Q 82 24 82 30 " +
-      "L 82 102 Q 60 93 38 102 Z",
+      "M 38 123 L 38 34 Q 38 28 44 28 " +
+      "L 76 28 Q 82 28 82 34 " +
+      "L 82 123 Q 60 112 38 123 Z",
     highlight:
-      "M 42 96 L 42 30 Q 42 26 46 26 L 52 26 L 52 96 Z",
+      "M 42 118 L 42 36 Q 42 30 46 30 L 52 30 L 52 118 Z",
   },
 
   /* ── STILETTO ────────────────────────────────────────────────────────────
-   * Curves sharply to a fine point at y = 10. */
+   * Curves sharply from wide base to a very fine point. */
   stiletto: {
     finger: FINGER,
     nail:
-      "M 40 102 C 40 72 50 38 60 10 C 70 38 80 72 80 102 " +
-      "Q 60 93 40 102 Z",
+      "M 40 123 " +
+      "C 40 94 50 58 60 12 " +
+      "C 70 58 80 94 80 123 " +
+      "Q 60 112 40 123 Z",
     highlight:
-      "M 44 96 C 44 72 50 44 56 22 C 48 46 42 72 42 96 Z",
+      "M 44 118 C 44 92 50 62 56 26 " +
+      "C 49 50 42 84 42 116 Z",
   },
 };
 
@@ -116,7 +135,7 @@ const NUDE_IDS = new Set(["sheer-nude", "warm-nude", "baby-pink", "white"]);
 
 /* ── Component ──────────────────────────────────────────────────────────── */
 export function NailCustomizer() {
-  const [activeShape, setActiveShape] = useState<ShapeKey>("almond");
+  const [activeShape, setActiveShape] = useState<ShapeKey>("oval");
   const [activeColor, setActiveColor] = useState<Color>(COLORS[4]);  // hot-pink
   const [visible,     setVisible]     = useState(true);
 
@@ -163,38 +182,36 @@ export function NailCustomizer() {
               className="flex-shrink-0"
             >
               <svg
-                viewBox="0 0 120 260"
-                className="w-[90px] lg:w-[108px] h-auto"
+                viewBox="0 0 120 270"
+                className="w-[88px] lg:w-[104px] h-auto"
                 aria-label={`${SHAPE_LABELS[activeShape]} nail, colour ${activeColor.label}`}
               >
                 <defs>
-                  {/* ── Skin gradients ── */}
-
-                  {/* Lateral cylindrical shading: dark edges, soft centre highlight */}
+                  {/* Lateral cylindrical shading — darker at edges, lighter in centre */}
                   <linearGradient id="nc-skin-lat" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%"   stopColor="#8B4A22" stopOpacity="0.52"/>
+                    <stop offset="0%"   stopColor="#8B4A22" stopOpacity="0.55"/>
                     <stop offset="10%"  stopColor="#8B4A22" stopOpacity="0.18"/>
-                    <stop offset="30%"  stopColor="#ffffff" stopOpacity="0.10"/>
-                    <stop offset="46%"  stopColor="#ffffff" stopOpacity="0.22"/>
+                    <stop offset="32%"  stopColor="#ffffff" stopOpacity="0.10"/>
+                    <stop offset="46%"  stopColor="#ffffff" stopOpacity="0.24"/>
                     <stop offset="62%"  stopColor="#ffffff" stopOpacity="0.06"/>
                     <stop offset="90%"  stopColor="#8B4A22" stopOpacity="0.18"/>
-                    <stop offset="100%" stopColor="#8B4A22" stopOpacity="0.52"/>
+                    <stop offset="100%" stopColor="#8B4A22" stopOpacity="0.55"/>
                   </linearGradient>
 
-                  {/* Vertical warm shadow at fingertip base */}
+                  {/* Warm vertical shadow toward fingertip base */}
                   <linearGradient id="nc-skin-vert" x1="0%" y1="0%" x2="0%" y2="100%">
                     <stop offset="0%"   stopColor="#000000" stopOpacity="0.00"/>
-                    <stop offset="70%"  stopColor="#000000" stopOpacity="0.00"/>
-                    <stop offset="100%" stopColor="#7A3010" stopOpacity="0.28"/>
+                    <stop offset="65%"  stopColor="#000000" stopOpacity="0.00"/>
+                    <stop offset="100%" stopColor="#7A3010" stopOpacity="0.30"/>
                   </linearGradient>
 
-                  {/* ── Nail depth — darkens nail edges ── */}
+                  {/* Nail depth — darkens edges of nail plate */}
                   <radialGradient id="nc-nail-depth" cx="50%" cy="50%" r="55%">
                     <stop offset="40%"  stopColor="black" stopOpacity="0.00"/>
-                    <stop offset="100%" stopColor="black" stopOpacity="0.22"/>
+                    <stop offset="100%" stopColor="black" stopOpacity="0.24"/>
                   </radialGradient>
 
-                  {/* ── Gold shimmer ── */}
+                  {/* Gold shimmer */}
                   <linearGradient id="nc-gold" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%"   stopColor="#8B5E00"/>
                     <stop offset="35%"  stopColor="#D4AF37"/>
@@ -205,7 +222,7 @@ export function NailCustomizer() {
                       values="0 0.5 0.5;360 0.5 0.5" dur="2.8s" repeatCount="indefinite"/>
                   </linearGradient>
 
-                  {/* ── Silver shimmer ── */}
+                  {/* Silver shimmer */}
                   <linearGradient id="nc-silver" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%"   stopColor="#606070"/>
                     <stop offset="35%"  stopColor="#B8B8C8"/>
@@ -216,53 +233,47 @@ export function NailCustomizer() {
                       values="0 0.5 0.5;360 0.5 0.5" dur="2.2s" repeatCount="indefinite"/>
                   </linearGradient>
 
-                  {/* ── Clip path — confines overlays to nail plate ── */}
+                  {/* Clip paths */}
                   <clipPath id="nc-nail-clip">
                     <path d={shape.nail}/>
                   </clipPath>
-
-                  {/* ── Clip path — confines overlays to finger body ── */}
                   <clipPath id="nc-finger-clip">
                     <path d={shape.finger}/>
                   </clipPath>
                 </defs>
 
-                {/* ════════════════════════════════════════════════════════
-                    FINGER BODY
-                    ════════════════════════════════════════════════════════ */}
+                {/* ════ FINGER BODY ════════════════════════════════════════ */}
 
-                {/* Base skin fill */}
+                {/* Base skin */}
                 <path d={shape.finger} fill="#f5d5c0"/>
 
-                {/* Lateral cylindrical shading — clipped to finger */}
+                {/* Cylindrical lateral shading */}
                 <path d={shape.finger} fill="url(#nc-skin-lat)"
                       clipPath="url(#nc-finger-clip)"/>
 
-                {/* Bottom warm shadow */}
+                {/* Warm vertical shadow at base */}
                 <path d={shape.finger} fill="url(#nc-skin-vert)"
                       clipPath="url(#nc-finger-clip)"/>
 
-                {/* Knuckle crease lines (lower third of finger) */}
-                <path d="M 42 168 Q 60 163 78 168"
+                {/* Knuckle creases in the lower third */}
+                <path d="M 42 194 Q 60 189 78 194"
                   fill="none" stroke="#B07050" strokeWidth="1.0"
-                  strokeLinecap="round" opacity="0.38"/>
-                <path d="M 43 178 Q 60 173 77 178"
+                  strokeLinecap="round" opacity="0.36"/>
+                <path d="M 43 204 Q 60 199 77 204"
                   fill="none" stroke="#B07050" strokeWidth="0.7"
                   strokeLinecap="round" opacity="0.22"/>
 
-                {/* Lateral nail folds — thin skin strips each side of nail plate */}
-                <path d="M 36 102 L 36 124 Q 40 122 40 102 Z"
+                {/* Lateral nail folds — thin skin strips beside the nail plate */}
+                <path d="M 36 124 L 36 146 Q 40 144 40 124 Z"
                   fill="#f5d5c0" opacity="0.90"/>
-                <path d="M 84 102 L 84 124 Q 80 122 80 102 Z"
+                <path d="M 84 124 L 84 146 Q 80 144 80 124 Z"
                   fill="#f5d5c0" opacity="0.90"/>
 
-                {/* ════════════════════════════════════════════════════════
-                    NAIL PLATE (fades during shape transitions)
-                    ════════════════════════════════════════════════════════ */}
+                {/* ════ NAIL PLATE (fades on shape change) ════════════════ */}
 
-                {/* Soft drop shadow under nail plate */}
-                <ellipse cx="60" cy="101" rx="23" ry="5.5"
-                  fill="#5A1808" opacity="0.20"/>
+                {/* Drop shadow under nail plate */}
+                <ellipse cx="60" cy="122" rx="23" ry="5"
+                  fill="#5A1808" opacity="0.18"/>
 
                 <g style={{ opacity: visible ? 1 : 0, transition: "opacity 0.20s ease" }}>
 
@@ -270,43 +281,40 @@ export function NailCustomizer() {
                   <path d={shape.nail} fill={nailFill}
                     stroke="rgba(0,0,0,0.08)" strokeWidth="0.5"/>
 
-                  {/* Nail-bed oval — the dark lunula hollow.
-                      More visible on nude / translucent tones. */}
-                  <ellipse cx="60" cy="96" rx="17" ry="7"
+                  {/* Nail-bed oval — dark hollow, most visible on nude tones */}
+                  <ellipse cx="60" cy="116" rx="17" ry="7"
                     fill="#0D0204"
-                    opacity={isNude ? 0.62 : 0.16}
+                    opacity={isNude ? 0.60 : 0.14}
                     clipPath="url(#nc-nail-clip)"/>
 
-                  {/* Depth vignette — darker toward nail edges */}
+                  {/* Depth vignette — darker edges */}
                   <path d={shape.nail} fill="url(#nc-nail-depth)"
                     clipPath="url(#nc-nail-clip)"/>
 
-                  {/* Gloss highlight — soft white shine stripe */}
+                  {/* Gloss highlight stripe */}
                   <path d={shape.highlight}
-                    fill="white" opacity="0.52"
+                    fill="white" opacity="0.50"
                     clipPath="url(#nc-nail-clip)"/>
 
                 </g>
 
-                {/* ════════════════════════════════════════════════════════
-                    CUTICLE FOLD  (always on top of the nail)
-                    ════════════════════════════════════════════════════════ */}
+                {/* ════ CUTICLE FOLD (always above the nail) ══════════════ */}
 
                 {/* Lunula — faint white half-moon */}
-                <ellipse cx="60" cy="99" rx="16" ry="6"
-                  fill="white" opacity="0.16"/>
+                <ellipse cx="60" cy="120" rx="15" ry="5.5"
+                  fill="white" opacity="0.15"/>
 
                 {/* Skin crescent over nail base */}
-                <path d="M 36 103 Q 60 91 84 103 Q 60 115 36 103 Z"
+                <path d="M 36 124 Q 60 112 84 124 Q 60 136 36 124 Z"
                   fill="#f5d5c0" opacity="0.94"/>
 
-                {/* Cuticle lateral shading */}
-                <path d="M 36 103 Q 60 91 84 103 Q 60 115 36 103 Z"
-                  fill="url(#nc-skin-lat)" opacity="0.50"/>
+                {/* Cuticle shading */}
+                <path d="M 36 124 Q 60 112 84 124 Q 60 136 36 124 Z"
+                  fill="url(#nc-skin-lat)" opacity="0.48"/>
 
                 {/* Cuticle shadow line */}
-                <path d="M 40 103 Q 60 93 80 103"
-                  fill="none" stroke="#8A3A14" strokeWidth="0.6" opacity="0.28"/>
+                <path d="M 40 124 Q 60 114 80 124"
+                  fill="none" stroke="#8A3A14" strokeWidth="0.6" opacity="0.26"/>
 
               </svg>
             </div>
