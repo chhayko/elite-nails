@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 
 const FRAME_COUNT = 145;
 
@@ -10,6 +11,7 @@ function getFrameSrc(index: number) {
 }
 
 export function ScrollVideo() {
+  const t = useTranslations("hero");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const heroTextRef = useRef<HTMLDivElement>(null);
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
@@ -94,14 +96,14 @@ export function ScrollVideo() {
         className="fixed inset-0 z-10 flex flex-col items-center justify-center text-center pointer-events-none"
       >
         <p className="mb-4 text-sm font-light uppercase tracking-[0.4em] text-white/80 font-sans">
-          Sint-Martens-Lierde, Belgium
+          {t("location")}
         </p>
         <h1 className="font-serif text-6xl font-light tracking-wide text-white md:text-8xl lg:text-9xl">
-          Elite Nails
+          {t("title")}
         </h1>
         <div className="mt-6 h-px w-24 bg-white/40" />
         <p className="mt-6 text-base font-light tracking-[0.2em] text-white/70 font-sans uppercase">
-          Clean & Safe — Russian Manicure
+          {t("tagline")}
         </p>
       </div>
 
@@ -111,7 +113,7 @@ export function ScrollVideo() {
         className="fixed bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 pointer-events-none"
       >
         <p className="text-xs uppercase tracking-[0.3em] text-white/50 font-sans">
-          Scroll
+          {t("scroll")}
         </p>
         <div className="h-10 w-px bg-white/40 animate-pulse" />
       </div>

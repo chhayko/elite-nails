@@ -1,6 +1,11 @@
+"use client";
+
 import { LocationMap } from "@/components/ui/location-map";
+import { useTranslations } from "next-intl";
 
 export function Footer() {
+  const t = useTranslations("footer");
+
   return (
     <footer className="relative pt-16 pb-12 px-6 bg-charcoal/20 backdrop-blur-md">
       <div className="mx-auto max-w-6xl">
@@ -10,7 +15,7 @@ export function Footer() {
           <div className="text-center md:text-left">
             <h3 className="font-serif text-2xl text-white">Elite Nails</h3>
             <p className="mt-1 text-sm font-light text-white/50 font-sans">
-              Sint-Martens-Lierde, Belgium
+              {t("location")}
             </p>
             <div className="mt-6 flex items-center justify-center md:justify-start gap-8">
               <a
@@ -19,7 +24,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-sm font-medium uppercase tracking-[0.15em] text-mauve-light transition-opacity hover:opacity-70 font-sans"
               >
-                Instagram
+                {t("instagram")}
               </a>
             </div>
           </div>
@@ -36,8 +41,7 @@ export function Footer() {
         </div>
 
         <p className="mt-12 text-center text-xs text-white/30 font-sans">
-          &copy; {new Date().getFullYear()} Elite Nails Lierde. All rights
-          reserved.
+          &copy; {new Date().getFullYear()} {t("copyright")}
         </p>
       </div>
     </footer>

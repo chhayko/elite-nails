@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "gallery": "Gallery",
+    "testimonials": "Testimonials",
+    "book": "Book"
+  },
+  "hero": {
+    "location": "Sint-Martens-Lierde, Belgium",
+    "title": "Elite Nails",
+    "tagline": "Clean & Safe — Russian Manicure",
+    "scroll": "Scroll"
+  },
+  "about": {
+    "eyebrow": "Welcome",
+    "title": "Where Precision",
+    "titleItalic": "Meets Beauty",
+    "titleSr": "Nail Salon Sint-Martens-Lierde",
+    "body": "At Elite Nails, we believe in the art of detail. Our cozy studio in Sint-Martens-Lierde specializes in Russian manicure technique — delivering flawless, clean results with the highest standards of safety and hygiene. Every visit is crafted to make you feel pampered and beautiful."
+  },
+  "services": {
+    "eyebrow": "What We Offer",
+    "title": "Our Services",
+    "items": {
+      "russianManicure": "Russian Manicure",
+      "russianManicureRole": "PRECISION CUTICLE CARE",
+      "biab": "BIAB",
+      "biabRole": "BUILDER IN A BOTTLE",
+      "gelNails": "Gel Nails",
+      "gelNailsRole": "LONG-LASTING COLOR",
+      "pedicure": "Pedicure",
+      "pedicureRole": "COMPLETE FOOT CARE",
+      "lashLamination": "Lash Lamination",
+      "lashLaminationRole": "LIFT & DEFINE",
+      "browLamination": "Brow Lamination",
+      "browLaminationRole": "SHAPE & FULLNESS"
+    }
+  },
+  "gallery": {
+    "eyebrow": "Our Work",
+    "title": "Gallery",
+    "instagram": "See more on Instagram"
+  },
+  "testimonials": {
+    "eyebrow": "What Our Clients Say",
+    "title": "Testimonials",
+    "googleReview": "Leave us a Google review"
+  },
+  "contact": {
+    "eyebrow": "Get in Touch",
+    "heading": "Any questions about our services?",
+    "bookCall": "Book a call",
+    "whatsapp": "WhatsApp",
+    "email": "Email us",
+    "modalTitle": "Book a call",
+    "modalService": "Service",
+    "modalServicePlaceholder": "Select a service",
+    "modalName": "Your name",
+    "modalNamePlaceholder": "Jane Doe",
+    "modalEmail": "Email address",
+    "modalEmailPlaceholder": "jane@example.com",
+    "modalMessage": "Message",
+    "modalMessagePlaceholder": "Tell us what you'd like to know…",
+    "modalSubmit": "Send message",
+    "modalSuccess": "Thank you! We'll be in touch soon.",
+    "modalError": "Something went wrong. Please try again."
+  },
+  "booking": {
+    "eyebrow": "Ready for your appointment?",
+    "title": "Book Your",
+    "titleItalic": "Perfect Nails",
+    "body": "Send us a DM on Instagram to book your appointment. We'll get back to you as soon as possible with available slots.",
+    "cta": "Book via Instagram",
+    "ctaSub": "Send us a DM"
+  },
+  "footer": {
+    "location": "Sint-Martens-Lierde, Belgium",
+    "instagram": "Instagram",
+    "copyright": "Elite Nails Lierde. All rights reserved."
+  }
+}

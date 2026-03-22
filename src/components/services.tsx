@@ -2,21 +2,24 @@
 
 import { BlurFade } from "@/components/ui/blur-fade";
 import { ServicesAccordion } from "@/components/ui/services-accordion";
+import { useTranslations } from "next-intl";
 
 export function Services() {
+  const t = useTranslations("services");
+
   return (
     <section id="services" className="relative py-32 px-6 bg-charcoal/20 backdrop-blur-md">
       <div className="mx-auto max-w-7xl">
         <div className="text-center">
           <BlurFade delay={0.1} inView>
             <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-mauve-light font-sans">
-              What We Offer
+              {t("eyebrow")}
             </p>
           </BlurFade>
 
           <BlurFade delay={0.2} inView>
             <h2 className="font-serif text-4xl font-light text-white md:text-5xl">
-              Our Services
+              {t("title")}
             </h2>
           </BlurFade>
 

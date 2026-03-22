@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "home": "Главная",
+    "about": "О нас",
+    "services": "Услуги",
+    "gallery": "Галерея",
+    "testimonials": "Отзывы",
+    "book": "Записаться"
+  },
+  "hero": {
+    "location": "Синт-Мартенс-Лирде, Бельгия",
+    "title": "Elite Nails",
+    "tagline": "Чисто и Безопасно — Русский Маникюр",
+    "scroll": "Прокрутить"
+  },
+  "about": {
+    "eyebrow": "Добро пожаловать",
+    "title": "Где Точность",
+    "titleItalic": "Встречает Красоту",
+    "titleSr": "Маникюрный салон Синт-Мартенс-Лирде",
+    "body": "В Elite Nails мы верим в искусство деталей. Наш уютный салон в Синт-Мартенс-Лирде специализируется на технике русского маникюра — обеспечивая безупречные, чистые результаты с высочайшими стандартами безопасности и гигиены. Каждый визит создан для того, чтобы вы чувствовали себя избалованной и красивой."
+  },
+  "services": {
+    "eyebrow": "Что Мы Предлагаем",
+    "title": "Наши Услуги",
+    "items": {
+      "russianManicure": "Русский Маникюр",
+      "russianManicureRole": "ТОЧНЫЙ УХОД ЗА КУТИКУЛОЙ",
+      "biab": "BIAB",
+      "biabRole": "BUILDER IN A BOTTLE",
+      "gelNails": "Гель-Ногти",
+      "gelNailsRole": "СТОЙКИЙ ЦВЕТ",
+      "pedicure": "Педикюр",
+      "pedicureRole": "ПОЛНЫЙ УХОД ЗА НОГАМИ",
+      "lashLamination": "Ламинирование Ресниц",
+      "lashLaminationRole": "ПОДЪЁМ И ФОРМА",
+      "browLamination": "Ламинирование Бровей",
+      "browLaminationRole": "ФОРМА И ОБЪЁМ"
+    }
+  },
+  "gallery": {
+    "eyebrow": "Наши Работы",
+    "title": "Галерея",
+    "instagram": "Больше в Instagram"
+  },
+  "testimonials": {
+    "eyebrow": "Что Говорят Наши Клиенты",
+    "title": "Отзывы",
+    "googleReview": "Оставьте нам отзыв в Google"
+  },
+  "contact": {
+    "eyebrow": "Свяжитесь с Нами",
+    "heading": "Есть вопросы об услугах?",
+    "bookCall": "Записаться на звонок",
+    "whatsapp": "WhatsApp",
+    "email": "Написать нам",
+    "modalTitle": "Записаться на звонок",
+    "modalService": "Услуга",
+    "modalServicePlaceholder": "Выберите услугу",
+    "modalName": "Ваше имя",
+    "modalNamePlaceholder": "Имя Фамилия",
+    "modalEmail": "Адрес электронной почты",
+    "modalEmailPlaceholder": "имя@пример.com",
+    "modalMessage": "Сообщение",
+    "modalMessagePlaceholder": "Расскажите, что вы хотите узнать…",
+    "modalSubmit": "Отправить сообщение",
+    "modalSuccess": "Спасибо! Мы скоро свяжемся с вами.",
+    "modalError": "Что-то пошло не так. Пожалуйста, попробуйте снова."
+  },
+  "booking": {
+    "eyebrow": "Готовы к записи?",
+    "title": "Запишитесь на",
+    "titleItalic": "Идеальный Маникюр",
+    "body": "Отправьте нам сообщение в Instagram для записи на приём. Мы ответим вам как можно скорее с доступными слотами.",
+    "cta": "Записаться через Instagram",
+    "ctaSub": "Напишите нам"
+  },
+  "footer": {
+    "location": "Синт-Мартенс-Лирде, Бельгия",
+    "instagram": "Instagram",
+    "copyright": "Elite Nails Lierde. Все права защищены."
+  }
+}

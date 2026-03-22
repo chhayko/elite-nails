@@ -2,21 +2,24 @@
 
 import { BlurFade } from "@/components/ui/blur-fade";
 import StickyScrollGallery from "@/components/ui/sticky-scroll";
+import { useTranslations } from "next-intl";
 
 export function Gallery() {
+  const t = useTranslations("gallery");
+
   return (
     <section id="gallery" className="relative py-24 bg-charcoal/20 backdrop-blur-md">
       <div className="mx-auto max-w-6xl px-6">
         <div className="text-center mb-16">
           <BlurFade delay={0.1} inView>
             <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-mauve-light font-sans">
-              Our Work
+              {t("eyebrow")}
             </p>
           </BlurFade>
 
           <BlurFade delay={0.2} inView>
             <h2 className="font-serif text-4xl font-light text-white md:text-5xl">
-              Gallery
+              {t("title")}
             </h2>
           </BlurFade>
 
@@ -36,7 +39,7 @@ export function Gallery() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.2em] text-mauve-light transition-opacity hover:opacity-70 font-sans"
           >
-            See more on Instagram
+            {t("instagram")}
             <span className="text-lg">→</span>
           </a>
         </div>

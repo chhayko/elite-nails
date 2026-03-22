@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "services": "Services",
+    "gallery": "Galerie",
+    "testimonials": "Avis",
+    "book": "Réserver"
+  },
+  "hero": {
+    "location": "Sint-Martens-Lierde, Belgique",
+    "title": "Elite Nails",
+    "tagline": "Propre & Sûr — Manucure Russe",
+    "scroll": "Défiler"
+  },
+  "about": {
+    "eyebrow": "Bienvenue",
+    "title": "Où la Précision",
+    "titleItalic": "Rencontre la Beauté",
+    "titleSr": "Salon de manucure Sint-Martens-Lierde",
+    "body": "Chez Elite Nails, nous croyons en l'art du détail. Notre studio chaleureux à Sint-Martens-Lierde est spécialisé dans la technique de manucure russe — offrant des résultats impeccables et propres avec les normes les plus élevées de sécurité et d'hygiène. Chaque visite est conçue pour vous faire sentir choyée et belle."
+  },
+  "services": {
+    "eyebrow": "Ce Que Nous Offrons",
+    "title": "Nos Services",
+    "items": {
+      "russianManicure": "Manucure Russe",
+      "russianManicureRole": "SOIN PRÉCIS DES CUTICULES",
+      "biab": "BIAB",
+      "biabRole": "BUILDER IN A BOTTLE",
+      "gelNails": "Ongles en Gel",
+      "gelNailsRole": "COULEUR LONGUE DURÉE",
+      "pedicure": "Pédicure",
+      "pedicureRole": "SOIN COMPLET DES PIEDS",
+      "lashLamination": "Lamination des Cils",
+      "lashLaminationRole": "LIFT & DÉFINITION",
+      "browLamination": "Lamination des Sourcils",
+      "browLaminationRole": "FORME & VOLUME"
+    }
+  },
+  "gallery": {
+    "eyebrow": "Notre Travail",
+    "title": "Galerie",
+    "instagram": "Voir plus sur Instagram"
+  },
+  "testimonials": {
+    "eyebrow": "Ce Que Disent Nos Clients",
+    "title": "Témoignages",
+    "googleReview": "Laissez-nous un avis Google"
+  },
+  "contact": {
+    "eyebrow": "Contactez-Nous",
+    "heading": "Des questions sur nos services ?",
+    "bookCall": "Réserver un appel",
+    "whatsapp": "WhatsApp",
+    "email": "Nous écrire",
+    "modalTitle": "Réserver un appel",
+    "modalService": "Service",
+    "modalServicePlaceholder": "Choisir un service",
+    "modalName": "Votre nom",
+    "modalNamePlaceholder": "Jane Doe",
+    "modalEmail": "Adresse e-mail",
+    "modalEmailPlaceholder": "jane@exemple.com",
+    "modalMessage": "Message",
+    "modalMessagePlaceholder": "Dites-nous ce que vous souhaitez savoir…",
+    "modalSubmit": "Envoyer le message",
+    "modalSuccess": "Merci ! Nous vous contacterons bientôt.",
+    "modalError": "Une erreur s'est produite. Veuillez réessayer."
+  },
+  "booking": {
+    "eyebrow": "Prête pour votre rendez-vous ?",
+    "title": "Réservez Vos",
+    "titleItalic": "Ongles Parfaits",
+    "body": "Envoyez-nous un DM sur Instagram pour réserver votre rendez-vous. Nous vous répondrons dès que possible avec les créneaux disponibles.",
+    "cta": "Réserver via Instagram",
+    "ctaSub": "Envoyez-nous un DM"
+  },
+  "footer": {
+    "location": "Sint-Martens-Lierde, Belgique",
+    "instagram": "Instagram",
+    "copyright": "Elite Nails Lierde. Tous droits réservés."
+  }
+}

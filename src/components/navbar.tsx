@@ -1,16 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-const links = [
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#gallery", label: "Gallery" },
-  { href: "#booking", label: "Book" },
-];
+import { useTranslations } from "next-intl";
+import { LanguageSwitcher } from "@/components/language-switcher";
 
 export function Navbar() {
+  const t = useTranslations("nav");
   const [scrolled, setScrolled] = useState(false);
+
+  const links = [
+    { href: "#about", label: t("about") },
+    { href: "#services", label: t("services") },
+    { href: "#gallery", label: t("gallery") },
+    { href: "#booking", label: t("book") },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.7);
@@ -29,9 +32,7 @@ export function Navbar() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a
           href="#"
-          className={`font-serif text-xl tracking-wide transition-colors duration-500 ${
-            scrolled ? "text-white" : "text-white"
-          }`}
+          className="font-serif text-xl tracking-wide text-white transition-colors duration-500"
         >
           Elite Nails
         </a>
@@ -41,25 +42,26 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className={`text-xs font-medium uppercase tracking-[0.2em] transition-colors duration-500 font-sans hover:opacity-70 ${
-                scrolled ? "text-white/90" : "text-white/90"
-              }`}
+              className="text-xs font-medium uppercase tracking-[0.2em] transition-colors duration-500 font-sans hover:opacity-70 text-white/90"
             >
               {link.label}
             </a>
           ))}
         </div>
 
-        <a
-          href="https://www.instagram.com/elite_nails_lierde/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`text-xs font-medium uppercase tracking-[0.15em] font-sans transition-colors duration-500 ${
-            scrolled ? "text-mauve-light" : "text-white/80"
-          }`}
-        >
-          @elite_nails_lierde
-        </a>
+        <div className="flex items-center gap-4">
+          <LanguageSwitcher />
+          <a
+            href="https://www.instagram.com/elite_nails_lierde/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`hidden md:block text-xs font-medium uppercase tracking-[0.15em] font-sans transition-colors duration-500 ${
+              scrolled ? "text-mauve-light" : "text-white/80"
+            }`}
+          >
+            @elite_nails_lierde
+          </a>
+        </div>
       </div>
     </nav>
   );

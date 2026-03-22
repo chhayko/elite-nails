@@ -2,8 +2,11 @@
 
 import { BlurFade } from "@/components/ui/blur-fade";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 function BookingButtonAnimated() {
+  const t = useTranslations("booking");
+
   const draw = {
     hidden: { pathLength: 0, opacity: 0 },
     visible: {
@@ -34,7 +37,7 @@ function BookingButtonAnimated() {
             viewport={{ once: true }}
             className="w-full h-full"
           >
-            <title>Book via Instagram DM</title>
+            <title>{t("cta")}</title>
             <motion.path
               d="M 950 90 C 1250 300, 1050 480, 600 520 C 250 520, 150 480, 150 300 C 150 120, 350 80, 600 80 C 850 80, 950 180, 950 180"
               fill="none"
@@ -55,7 +58,7 @@ function BookingButtonAnimated() {
             viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 0.8 }}
           >
-            Book via Instagram
+            {t("cta")}
           </motion.h3>
           <motion.p
             className="text-sm text-white/50 font-sans font-light mt-2"
@@ -64,7 +67,7 @@ function BookingButtonAnimated() {
             viewport={{ once: true }}
             transition={{ delay: 1, duration: 0.8 }}
           >
-            Send us a DM
+            {t("ctaSub")}
           </motion.p>
         </div>
       </div>
@@ -73,6 +76,8 @@ function BookingButtonAnimated() {
 }
 
 export function Booking() {
+  const t = useTranslations("booking");
+
   return (
     <section
       id="booking"
@@ -81,23 +86,22 @@ export function Booking() {
       <div className="relative mx-auto max-w-2xl text-center">
         <BlurFade delay={0.1} inView>
           <p className="text-xs font-medium uppercase tracking-[0.4em] text-mauve-light font-sans">
-            Ready for your appointment?
+            {t("eyebrow")}
           </p>
         </BlurFade>
 
         <BlurFade delay={0.2} inView>
           <h2 className="mt-6 font-serif text-4xl font-light text-white md:text-5xl lg:text-6xl">
-            Book Your
+            {t("title")}
           </h2>
           <h2 className="font-serif text-4xl font-light italic text-mauve-light md:text-5xl lg:text-6xl">
-            Perfect Nails
+            {t("titleItalic")}
           </h2>
         </BlurFade>
 
         <BlurFade delay={0.3} inView>
           <p className="mt-8 text-base font-light leading-relaxed text-white/60 font-sans">
-            Send us a DM on Instagram to book your appointment. We&apos;ll get
-            back to you as soon as possible with available slots.
+            {t("body")}
           </p>
         </BlurFade>
 
