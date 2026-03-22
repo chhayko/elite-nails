@@ -1,8 +1,8 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { useRouter, usePathname } from "next/navigation";
-import { useState } from "react";
+import { useRouter, usePathname } from "@/i18n/navigation";
+import { useState, useTransition } from "react";
 
 const locales = [
   { code: "en", label: "EN", flag: "🇬🇧" },
@@ -16,23 +16,23 @@ export function LanguageSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
   const current = locales.find((l) => l.code === locale) ?? locales[0];
 
   const switchLocale = (newLocale: string) => {
     setOpen(false);
-    // Replace current locale segment in path
-    const segments = pathname.split("/");
-    // segments[1] is the locale segment
-    segments[1] = newLocale;
-    router.push(segments.join("/") || "/");
+    startTransition(() => {
+      router.replace(pathname, { locale: newLocale });
+    });
   };
 
   return (
     <div className="relative">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.15em] text-white/70 hover:text-white transition-colors font-sans"
+        disabled={isPending}
+        className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.15em] text-white/70 hover:text-white transition-colors font-sans disabled:opacity-50"
         aria-label="Switch language"
       >
         <span>{current.flag}</span>
