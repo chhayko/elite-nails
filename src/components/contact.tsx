@@ -61,9 +61,15 @@ function BookingModal({
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  // Sync preselected service when modal opens
+  // Sync preselected service & reset form when modal opens
   useEffect(() => {
-    if (isOpen) setService(preselectedService);
+    if (isOpen) {
+      setService(preselectedService);
+      setStatus("idle");
+      setName("");
+      setEmail("");
+      setMessage("");
+    }
   }, [isOpen, preselectedService]);
 
   // Trap focus & close on Escape
