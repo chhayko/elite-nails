@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const GOOGLE_REVIEW_URL =
@@ -161,28 +161,60 @@ function Avatar({
   );
 }
 
+type Testimonial = (typeof testimonials)[0];
+
+const MAX_TOTAL = 15;
+
+const GoogleIcon = ({ size = 18 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" className="shrink-0">
+    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
+    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+  </svg>
+);
+
 export function TestimonialsMinimal() {
   const [active, setActive] = useState(0);
+  const [merged, setMerged] = useState<Testimonial[]>(testimonials);
+  const [googleRating, setGoogleRating] = useState<{ rating: number; total: number } | null>(null);
+
+  useEffect(() => {
+    fetch("/api/reviews")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.reviews?.length) {
+          // Google reviews first, then fill remaining slots with static ones
+          const staticOnes = testimonials.filter((t) => !t.google);
+          const combined = [...data.reviews, ...staticOnes].slice(0, MAX_TOTAL);
+          setMerged(combined);
+        }
+        if (data.rating) {
+          setGoogleRating({ rating: data.rating, total: data.total });
+        }
+      })
+      .catch(() => {
+        // Silently fall back to static testimonials
+      });
+  }, []);
+
+  const rating = googleRating?.rating ?? 5.0;
+  const total = googleRating?.total ?? 2;
 
   return (
     <div className="w-full max-w-xl mx-auto px-6 py-16">
 
       {/* Google rating badge */}
       <div className="flex items-center gap-2 mb-10 justify-center">
-        <svg width="18" height="18" viewBox="0 0 24 24" className="shrink-0">
-          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
-          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-        </svg>
+        <GoogleIcon size={18} />
         <span className="text-white/60 text-xs font-sans tracking-wide">
-          5.0 · 2 Google reviews
+          {rating.toFixed(1)} · {total} Google {total === 1 ? "review" : "reviews"}
         </span>
       </div>
 
       {/* Quote */}
       <div className="relative min-h-[120px] mb-12">
-        {testimonials.map((t, i) => (
+        {merged.map((t, i) => (
           <p
             key={i}
             className={`
@@ -202,7 +234,7 @@ export function TestimonialsMinimal() {
       {/* Author Row */}
       <div className="flex items-center gap-6">
         <div className="flex -space-x-2">
-          {testimonials.map((t, i) => (
+          {merged.map((t, i) => (
             <Avatar key={i} t={t} active={active === i} onClick={() => setActive(i)} />
           ))}
         </div>
@@ -210,7 +242,7 @@ export function TestimonialsMinimal() {
         <div className="h-8 w-px bg-white/20" />
 
         <div className="relative flex-1 min-h-[44px]">
-          {testimonials.map((t, i) => (
+          {merged.map((t, i) => (
             <div
               key={i}
               className={`
@@ -237,12 +269,7 @@ export function TestimonialsMinimal() {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-white/40 hover:text-white/70 transition-colors font-sans"
         >
-          <svg width="12" height="12" viewBox="0 0 24 24">
-            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
-            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-          </svg>
+          <GoogleIcon size={12} />
           Leave us a Google review
         </a>
       </div>
