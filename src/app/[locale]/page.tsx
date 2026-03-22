@@ -8,10 +8,9 @@ import { Services } from "@/components/services";
 import { MarqueeSection } from "@/components/marquee-section";
 import { Gallery } from "@/components/gallery";
 import { NailCustomizer } from "@/components/nail-customizer";
-import { Testimonials } from "@/components/testimonials";
-import { Contact } from "@/components/contact";
 import { TreatmentQuiz } from "@/components/treatment-quiz";
-import { Booking } from "@/components/booking";
+import { Testimonials } from "@/components/testimonials";
+import { ContactBooking } from "@/components/contact-booking";
 import { Footer } from "@/components/footer";
 import { SectionDivider } from "@/components/section-divider";
 
@@ -34,12 +33,11 @@ export default function Home() {
           <SectionDivider text="Our Work   Nail Art   Lashes   Brows   Pedicure   BIAB" />
           <NailCustomizer />
           <SectionDivider text="Try It On   Choose Your Shape   Pick Your Colour   Elite Nails" />
-          <Testimonials />
-          <SectionDivider text="Questions?   Get in Touch   Contact Us   Elite Nails" />
-          <Contact />
-          <SectionDivider text="Book Now   Elite Nails Lierde   DM Us   Your Perfect Nails" />
           <TreatmentQuiz />
-          <Booking />
+          <SectionDivider text="Personalised Advice   Find Your Treatment   Elite Nails" />
+          <Testimonials />
+          <SectionDivider text="Questions?   Get in Touch   Book Now   Elite Nails Lierde" />
+          <ContactBooking />
           <SectionDivider text="Elite Nails   Sint-Martens-Lierde   Belgium   Clean & Safe" />
           <Footer />
         </div>

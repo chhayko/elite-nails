@@ -187,7 +187,7 @@ export function TreatmentQuiz() {
 
         {/* Card */}
         <BlurFade delay={0.2} inView>
-          <div className="relative rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm
+          <div className="relative rounded-2xl border border-white/15 bg-white/[0.06] backdrop-blur-2xl
                           px-8 py-10 md:px-12 md:py-12 min-h-[300px] overflow-hidden">
             <AnimatePresence mode="wait" custom={dir}>
 

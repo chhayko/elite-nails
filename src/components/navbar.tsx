@@ -12,11 +12,12 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const links = [
-    { href: "#about", label: t("about") },
-    { href: "#services", label: t("services") },
-    { href: "#gallery", label: t("gallery") },
-    { href: "#contact", label: t("contact") },
-    { href: "#booking", label: t("book") },
+    { href: "#about",           label: t("about") },
+    { href: "#services",        label: t("services") },
+    { href: "#gallery",         label: t("gallery") },
+    { href: "#nail-customizer", label: t("customizer") },
+    { href: "#quiz",            label: t("quiz") },
+    { href: "#contact",         label: t("book") },
   ];
 
   useEffect(() => {

@@ -6,7 +6,9 @@
     "gallery": "Gallery",
     "testimonials": "Testimonials",
     "contact": "Questions",
-    "book": "Book"
+    "book": "Book",
+    "customizer": "Customizer",
+    "quiz": "Quiz"
   },
   "hero": {
     "location": "Sint-Martens-Lierde, Belgium",
