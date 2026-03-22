@@ -27,9 +27,9 @@ export function Footer() {
           {/* Right — location card */}
           <div className="pb-8">
             <LocationMap
-              location="Sint-Martens-Lierde, Belgium"
+              location="Steenweg 234b, 9572 Sint-Martens-Lierde, België"
               coordinates="50.8167° N, 3.8333° E"
-              mapsUrl="https://maps.google.com/?q=Sint-Martens-Lierde,Belgium"
+              mapsUrl="https://maps.google.com/?q=Steenweg+234b,+9572+Sint-Martens-Lierde,+Belgium"
             />
           </div>
 

@@ -89,6 +89,8 @@ const jsonLd = {
   image: `${BASE_URL}/frames/frame-0001.jpg`,
   address: {
     "@type": "PostalAddress",
+    streetAddress: "Steenweg 234b",
+    postalCode: "9572",
     addressLocality: "Sint-Martens-Lierde",
     addressRegion: "Oost-Vlaanderen",
     addressCountry: "BE",
