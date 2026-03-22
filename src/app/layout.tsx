@@ -131,6 +131,20 @@ export default function RootLayout({
         className={`${cormorant.variable} ${inter.variable} font-sans antialiased`}
       >
         {children}
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-4HD9XQ9LV6"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-4HD9XQ9LV6');
+          `}
+        </Script>
+
         <Script
           id="json-ld"
           type="application/ld+json"
