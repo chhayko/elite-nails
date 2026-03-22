@@ -222,6 +222,8 @@ export default async function ServicePage({ params }: Props) {
   const service = services[slug];
   if (!service) notFound();
 
+  const BASE_URL = "https://www.elitenails.biz";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
