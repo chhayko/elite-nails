@@ -81,5 +81,16 @@
     "location": "Sint-Martens-Lierde, België",
     "instagram": "Instagram",
     "copyright": "Elite Nails Lierde. Alle rechten voorbehouden."
+  },
+  "servicePage": {
+    "backLink": "Alle diensten",
+    "durationLabel": "Duur",
+    "priceLabel": "Prijs",
+    "locationLabel": "Locatie",
+    "locationValue": "Lierde, Oost-Vlaanderen",
+    "processLabel": "Werkwijze",
+    "bookingHeading": "Klaar om te boeken?",
+    "bookingBody": "Stuur ons een DM op Instagram voor beschikbaarheid en afspraken.",
+    "bookingCta": "Boek via Instagram"
   }
 }

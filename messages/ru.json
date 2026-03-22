@@ -81,5 +81,16 @@
     "location": "Синт-Мартенс-Лирде, Бельгия",
     "instagram": "Instagram",
     "copyright": "Elite Nails Lierde. Все права защищены."
+  },
+  "servicePage": {
+    "backLink": "Все услуги",
+    "durationLabel": "Длительность",
+    "priceLabel": "Цена",
+    "locationLabel": "Местоположение",
+    "locationValue": "Лирде, Восточная Фландрия",
+    "processLabel": "Как это работает",
+    "bookingHeading": "Готовы записаться?",
+    "bookingBody": "Напишите нам в Instagram для записи и уточнения доступных слотов.",
+    "bookingCta": "Записаться через Instagram"
   }
 }

@@ -2,49 +2,50 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useLocale } from "next-intl";
 
-const services = [
+const servicesSlugs = [
   {
     id: 1,
     name: "Russian Manicure",
     role: "PRECISION CUTICLE CARE",
     imageUrl: "/services/russian-manicure.jpg",
-    href: "/diensten/russische-manicure",
+    slug: "russische-manicure",
   },
   {
     id: 2,
     name: "BIAB",
     role: "BUILDER IN A BOTTLE",
     imageUrl: "/services/biab.jpg",
-    href: "/diensten/biab",
+    slug: "biab",
   },
   {
     id: 3,
     name: "Gel Nails",
     role: "LONG-LASTING COLOR",
     imageUrl: "/services/gel-nails.jpg",
-    href: "/diensten/gelnagels",
+    slug: "gelnagels",
   },
   {
     id: 4,
     name: "Pedicure",
     role: "COMPLETE FOOT CARE",
     imageUrl: "/services/pedicure.jpg",
-    href: "/diensten/pedicure",
+    slug: "pedicure",
   },
   {
     id: 5,
     name: "Lash Lamination",
     role: "LIFT & DEFINE",
     imageUrl: "/services/lash-lamination.jpg",
-    href: "/diensten/wimper-wenkbrauw",
+    slug: "wimper-wenkbrauw",
   },
   {
     id: 6,
     name: "Brow Lamination",
     role: "SHAPE & FULLNESS",
     imageUrl: "/services/brow-lamination.jpg",
-    href: "/diensten/wimper-wenkbrauw",
+    slug: "wimper-wenkbrauw",
   },
 ];
 
@@ -52,14 +53,16 @@ function AccordionItem({
   item,
   isActive,
   onMouseEnter,
+  locale,
 }: {
-  item: (typeof services)[0];
+  item: (typeof servicesSlugs)[0];
   isActive: boolean;
   onMouseEnter: () => void;
+  locale: string;
 }) {
   return (
     <Link
-      href={item.href}
+      href={`/${locale}/diensten/${item.slug}`}
       className={`
         relative h-[480px] rounded-2xl overflow-hidden cursor-pointer
         transition-all duration-700 ease-in-out flex-shrink-0 block
@@ -95,15 +98,17 @@ function AccordionItem({
 
 export function ServicesAccordion() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const locale = useLocale();
 
   return (
     <div className="flex flex-row items-center justify-center gap-2 overflow-x-auto py-4 px-2">
-      {services.map((item, index) => (
+      {servicesSlugs.map((item, index) => (
         <AccordionItem
           key={item.id}
           item={item}
           isActive={index === activeIndex}
           onMouseEnter={() => setActiveIndex(index)}
+          locale={locale}
         />
       ))}
     </div>
