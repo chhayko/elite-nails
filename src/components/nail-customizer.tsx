@@ -34,71 +34,38 @@ const COLORS: ColorEntry[] = [
 ];
 
 /* ── Finger layout ──────────────────────────────────────────────────────── */
-// Shorter viewBox (270) crops the "tube" bottom so only 2 joints show.
-// bw = half-width at base (clipped, off-screen)
-// tw = half-width at fingertip (where nail meets skin)
-// nw = nail plate width  |  nh = nail plate height
+// tipY = y of fingertip apex (top of SVG)
+// bw   = half-width at base (clipped below viewBox)
+// tw   = half-width at tip
+// nw   = nail plate width (≈ tw*2 - lateral fold margin)
+// nh   = nail plate height (tall — nail dominates, like the reference)
 const FINGERS = [
-  { id: "index",  cx: 65,  tipY: 42,  bw: 32, tw: 23, nw: 40, nh: 72 },
-  { id: "middle", cx: 145, tipY: 12,  bw: 34, tw: 25, nw: 44, nh: 80 },
-  { id: "ring",   cx: 221, tipY: 33,  bw: 32, tw: 23, nw: 40, nh: 72 },
-  { id: "pinky",  cx: 288, tipY: 80,  bw: 25, tw: 17, nw: 30, nh: 56 },
+  { id: "index",  cx: 65,  tipY: 36,  bw: 30, tw: 22, nw: 38, nh: 92  },
+  { id: "middle", cx: 145, tipY: 6,   bw: 32, tw: 24, nw: 42, nh: 102 },
+  { id: "ring",   cx: 221, tipY: 27,  bw: 30, tw: 22, nw: 38, nh: 92  },
+  { id: "pinky",  cx: 288, tipY: 74,  bw: 24, tw: 16, nw: 28, nh: 70  },
 ] as const;
 
 /* ── Path helpers ───────────────────────────────────────────────────────── */
 
 /**
- * Organic finger outline with knuckle bumps.
- * cuticleY = tipY + nh (where the nail bed ends and bare skin begins).
- * The path widens slightly at DIP and PIP joint positions to mimic real
- * finger anatomy, then tapers smoothly from base to tip.
+ * Smooth tapered finger — wide at base, narrows toward tip via cubic bezier.
+ * No bumps in the silhouette (matches the clean reference illustration style).
  */
-function fingerPath(
-  cx: number,
-  tipY: number,
-  bw: number,
-  tw: number,
-  cuticleY: number
-): string {
-  const r    = tw * 0.92;           // fingertip rounding radius
-  const dip  = cuticleY + 40;       // DIP joint y
-  const pip  = cuticleY + 96;       // PIP joint y
-
-  // Half-widths: slightly wider AT the knuckle, narrower between joints
-  const dipHW  = tw + (bw - tw) * 0.36 + 1.8;  // DIP bump
-  const pipHW  = tw + (bw - tw) * 0.60 + 2.8;  // PIP bump (larger)
-  const midHW  = tw + (bw - tw) * 0.48;          // shaft between DIP–PIP
-
+function fingerPath(cx: number, tipY: number, bw: number, tw: number): string {
+  const r = tw * 0.95; // tip rounding radius
   return [
     `M${cx - bw},310`,
-
-    // ── Left edge up ──
-    // Base → PIP (smooth curve in)
-    `C${cx - bw},${pip + 28} ${cx - pipHW},${pip + 10} ${cx - pipHW},${pip}`,
-    // PIP → DIP (slight contraction then expand)
-    `C${cx - pipHW},${pip - 16} ${cx - midHW},${dip + 22} ${cx - midHW},${dip + 12}`,
-    // DIP knuckle shape
-    `C${cx - midHW},${dip + 4} ${cx - dipHW},${dip - 2} ${cx - dipHW},${dip}`,
-    // DIP → fingertip (taper smoothly)
-    `C${cx - dipHW},${dip - 16} ${cx - tw - 1},${tipY + r * 2.6} ${cx - tw},${tipY + r}`,
-
-    // ── Fingertip arc ──
+    `C${cx - bw},185 ${cx - tw - 1},${tipY + r * 2.6} ${cx - tw},${tipY + r}`,
     `Q${cx - tw},${tipY} ${cx},${tipY}`,
     `Q${cx + tw},${tipY} ${cx + tw},${tipY + r}`,
-
-    // ── Right edge down (mirror) ──
-    `C${cx + tw + 1},${tipY + r * 2.6} ${cx + dipHW},${dip - 16} ${cx + dipHW},${dip}`,
-    `C${cx + dipHW},${dip - 2} ${cx + midHW},${dip + 4} ${cx + midHW},${dip + 12}`,
-    `C${cx + midHW},${dip + 22} ${cx + pipHW},${pip - 16} ${cx + pipHW},${pip}`,
-    `C${cx + pipHW},${pip + 10} ${cx + bw},${pip + 28} ${cx + bw},310`,
-
+    `C${cx + tw + 1},${tipY + r * 2.6} ${cx + bw},185 ${cx + bw},310`,
     `Z`,
   ].join(" ");
 }
 
 /**
- * Nail plate path — local coords.
- * Origin (0,0) = cuticle centre.  Tip = y = −nh.
+ * Nail plate — local coords, origin at cuticle centre, tip at y = −nh.
  */
 function nailPath(shape: ShapeKey, nw: number, nh: number): string {
   const hw = nw / 2;
@@ -107,43 +74,34 @@ function nailPath(shape: ShapeKey, nw: number, nh: number): string {
       return `M${-hw},0 L${-hw},${-nh} L${hw},${-nh} L${hw},0 Z`;
 
     case "rounded": {
-      const r = Math.min(hw * 0.95, nh * 0.55);
+      const r = Math.min(hw * 0.95, nh * 0.52);
       return (
-        `M${-hw},0 ` +
-        `L${-hw},${-(nh - r)} ` +
+        `M${-hw},0 L${-hw},${-(nh - r)} ` +
         `Q${-hw},${-nh} 0,${-nh} ` +
-        `Q${hw},${-nh} ${hw},${-(nh - r)} ` +
-        `L${hw},0 Z`
+        `Q${hw},${-nh} ${hw},${-(nh - r)} L${hw},0 Z`
       );
     }
 
     case "almond":
       return (
         `M${-hw},0 ` +
-        `L${-hw * 0.88},${-nh * 0.48} ` +
-        `Q${-hw * 0.18},${-nh} 0,${-nh} ` +
-        `Q${hw * 0.18},${-nh} ${hw * 0.88},${-nh * 0.48} ` +
+        `L${-hw * 0.88},${-nh * 0.46} ` +
+        `Q${-hw * 0.16},${-nh} 0,${-nh} ` +
+        `Q${hw * 0.16},${-nh} ${hw * 0.88},${-nh * 0.46} ` +
         `L${hw},0 Z`
       );
 
     case "stiletto":
       return (
-        `M${-hw},0 ` +
-        `L${-hw},${-nh * 0.5} ` +
-        `L0,${-nh} ` +
-        `L${hw},${-nh * 0.5} ` +
-        `L${hw},0 Z`
+        `M${-hw},0 L${-hw},${-nh * 0.5} L0,${-nh} L${hw},${-nh * 0.5} L${hw},0 Z`
       );
 
     case "ballerina": {
       const tw = hw * 0.54;
       return (
-        `M${-hw},0 ` +
-        `L${-hw},${-nh * 0.44} ` +
-        `L${-tw},${-nh} ` +
-        `L${tw},${-nh} ` +
-        `L${hw},${-nh * 0.44} ` +
-        `L${hw},0 Z`
+        `M${-hw},0 L${-hw},${-nh * 0.44} ` +
+        `L${-tw},${-nh} L${tw},${-nh} ` +
+        `L${hw},${-nh * 0.44} L${hw},0 Z`
       );
     }
   }
@@ -157,10 +115,7 @@ function adjustHex(hex: string, amt: number): string {
       Math.min(
         255,
         parseInt(
-          hex.slice(
-            ch === "r" ? 1 : ch === "g" ? 3 : 5,
-            ch === "r" ? 3 : ch === "g" ? 5 : 7
-          ),
+          hex.slice(ch === "r" ? 1 : ch === "g" ? 3 : 5, ch === "r" ? 3 : ch === "g" ? 5 : 7),
           16
         ) + amt
       )
@@ -171,8 +126,8 @@ function adjustHex(hex: string, amt: number): string {
 /* ── Hand SVG ───────────────────────────────────────────────────────────── */
 function HandSVG({ shape, color }: { shape: ShapeKey; color: ColorEntry }) {
   const dark  = adjustHex(color.hex, -50);
-  const mid   = adjustHex(color.hex, -25);
-  const light = adjustHex(color.hex, 60);
+  const mid   = adjustHex(color.hex, -22);
+  const light = adjustHex(color.hex, 55);
 
   return (
     <svg
@@ -183,9 +138,9 @@ function HandSVG({ shape, color }: { shape: ShapeKey; color: ColorEntry }) {
     >
       <defs>
         {/*
-          Per-finger horizontal gradients using userSpaceOnUse so the
-          highlight stays centred on each finger's cx — this gives a
-          convincing 3-D cylindrical / lit-from-above appearance.
+          Per-finger horizontal skin gradients (userSpaceOnUse so the specular
+          highlight is centred on each finger's axis — the key to a 3-D look).
+          Light peach skin, matching the clean flat-vector reference style.
         */}
         {FINGERS.map(f => (
           <linearGradient
@@ -195,138 +150,115 @@ function HandSVG({ shape, color }: { shape: ShapeKey; color: ColorEntry }) {
             x1={f.cx - f.bw} y1="0"
             x2={f.cx + f.bw} y2="0"
           >
-            <stop offset="0%"   stopColor="#3A1206" />
-            <stop offset="12%"  stopColor="#7A3010" />
-            <stop offset="32%"  stopColor="#C47038" />
-            <stop offset="52%"  stopColor="#E89A60" />
-            <stop offset="68%"  stopColor="#D08048" />
-            <stop offset="86%"  stopColor="#8A4018" />
-            <stop offset="100%" stopColor="#3A1206" />
+            <stop offset="0%"   stopColor="#A06838" />
+            <stop offset="12%"  stopColor="#CAAA78" />
+            <stop offset="30%"  stopColor="#EDD0A8" />
+            <stop offset="50%"  stopColor="#FDE8CC" />
+            <stop offset="70%"  stopColor="#EDD0A8" />
+            <stop offset="88%"  stopColor="#CAAA78" />
+            <stop offset="100%" stopColor="#A06838" />
           </linearGradient>
         ))}
 
-        {/* Vertical atmospheric depth */}
+        {/* Subtle vertical depth (top brighter, base darker — ambient occlusion) */}
         <linearGradient id="skv" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%"   stopColor="rgba(255,210,160,0.09)" />
-          <stop offset="48%"  stopColor="rgba(0,0,0,0)"          />
-          <stop offset="100%" stopColor="rgba(0,0,0,0.26)"       />
+          <stop offset="0%"   stopColor="rgba(255,245,235,0.06)" />
+          <stop offset="40%"  stopColor="rgba(0,0,0,0)"          />
+          <stop offset="100%" stopColor="rgba(0,0,0,0.18)"       />
         </linearGradient>
 
         {/* Nail solid gradient */}
         <linearGradient id="ng" x1="0%" y1="100%" x2="0%" y2="0%">
-          <stop offset="0%"   stopColor={dark}       />
-          <stop offset="38%"  stopColor={color.hex}  />
-          <stop offset="100%" stopColor={light}      />
+          <stop offset="0%"   stopColor={dark}      />
+          <stop offset="35%"  stopColor={color.hex} />
+          <stop offset="100%" stopColor={light}     />
         </linearGradient>
 
         {/* Metallic diagonal gradient */}
         <linearGradient id="nm" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%"   stopColor={dark}       />
-          <stop offset="28%"  stopColor={light}      />
-          <stop offset="50%"  stopColor={color.hex}  />
-          <stop offset="72%"  stopColor={light}      />
-          <stop offset="100%" stopColor={dark}       />
+          <stop offset="0%"   stopColor={dark}      />
+          <stop offset="28%"  stopColor={light}     />
+          <stop offset="50%"  stopColor={color.hex} />
+          <stop offset="72%"  stopColor={light}     />
+          <stop offset="100%" stopColor={dark}      />
         </linearGradient>
 
-        {/* Finger drop shadow */}
+        {/* Soft drop shadow for fingers */}
         <filter id="fsh" x="-30%" y="-8%" width="160%" height="130%">
-          <feDropShadow dx="0" dy="7" stdDeviation="9"
-            floodColor="#000" floodOpacity="0.42" />
+          <feDropShadow dx="0" dy="6" stdDeviation="8"
+            floodColor="#000" floodOpacity="0.32" />
         </filter>
 
-        {/* Gloss blur for nails */}
+        {/* Blur for nail gloss ellipse */}
         <filter id="gb" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="2.2" />
-        </filter>
-
-        {/* Specular blur for skin highlight */}
-        <filter id="spec" x="-80%" y="-20%" width="260%" height="140%">
           <feGaussianBlur stdDeviation="2.0" />
         </filter>
 
-        {/* Nail glow */}
-        <filter id="nglow" x="-15%" y="-15%" width="130%" height="130%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
+        {/* Blur for skin specular line */}
+        <filter id="spec" x="-100%" y="-20%" width="300%" height="140%">
+          <feGaussianBlur stdDeviation="2.4" />
         </filter>
       </defs>
 
       {/* ── Finger bodies ── */}
       {FINGERS.map(f => {
+        const fp       = fingerPath(f.cx, f.tipY, f.bw, f.tw);
         const cuticleY = f.tipY + f.nh;
-        const fp = fingerPath(f.cx, f.tipY, f.bw, f.tw, cuticleY);
 
-        // Computed joint positions (must match fingerPath)
-        const dipY = cuticleY + 40;
-        const pipY = cuticleY + 96;
-
-        // Widths at each joint (replicate fingerPath logic for crease placement)
-        const dipHW = f.tw + (f.bw - f.tw) * 0.36 + 1.8;
-        const pipHW = f.tw + (f.bw - f.tw) * 0.60 + 2.8;
+        // Single knuckle crease, positioned just below the nail area
+        // Width at that depth interpolated along the taper
+        const creaseY = cuticleY + 56;
+        const creaseHW = f.tw + (f.bw - f.tw) * 0.50;
 
         return (
           <g key={`body-${f.id}`}>
-            {/* Drop-shadow + skin fill */}
+            {/* Base skin fill with drop shadow */}
             <g filter="url(#fsh)">
               <path d={fp} fill={`url(#sk-${f.id})`} />
             </g>
 
-            {/* Vertical atmospheric depth overlay */}
+            {/* Atmospheric depth overlay */}
             <path d={fp} fill="url(#skv)" />
 
-            {/* Specular: blurred bright stripe down the finger centre */}
+            {/* Specular: soft bright stripe down the central axis (3-D catch-light) */}
             <line
-              x1={f.cx} y1={f.tipY + 8}
-              x2={f.cx} y2={cuticleY + 65}
-              stroke="rgba(255,225,180,0.30)"
-              strokeWidth={f.tw * 0.46}
+              x1={f.cx} y1={f.tipY + 10}
+              x2={f.cx} y2={cuticleY + 42}
+              stroke="rgba(255,240,220,0.38)"
+              strokeWidth={f.tw * 0.40}
               strokeLinecap="round"
               filter="url(#spec)"
             />
 
-            {/* Fine skin-tone outline */}
+            {/* Warm skin-tone outline (soft, not black) */}
             <path d={fp} fill="none"
-              stroke="#200800" strokeWidth="1.0" strokeOpacity="0.18"
+              stroke="#8A4820" strokeWidth="1.2" strokeOpacity="0.22"
             />
 
-            {/* DIP knuckle crease — curved arc across the knuckle bump */}
+            {/* Single knuckle crease — one gentle arc, like the reference */}
             <path
-              d={`M${f.cx - dipHW * 0.74},${dipY} Q${f.cx},${dipY + 7} ${f.cx + dipHW * 0.74},${dipY}`}
-              fill="none" stroke="#5A2206"
-              strokeWidth="1.4" strokeOpacity="0.42" strokeLinecap="round"
+              d={`M${f.cx - creaseHW * 0.72},${creaseY} Q${f.cx},${creaseY + 7} ${f.cx + creaseHW * 0.72},${creaseY}`}
+              fill="none" stroke="#B07040"
+              strokeWidth="1.5" strokeOpacity="0.38" strokeLinecap="round"
             />
+            {/* Thin secondary shadow below the crease for depth */}
             <path
-              d={`M${f.cx - dipHW * 0.54},${dipY + 5} Q${f.cx},${dipY + 10} ${f.cx + dipHW * 0.54},${dipY + 5}`}
-              fill="none" stroke="#5A2206"
-              strokeWidth="0.7" strokeOpacity="0.22" strokeLinecap="round"
-            />
-
-            {/* PIP knuckle crease */}
-            <path
-              d={`M${f.cx - pipHW * 0.74},${pipY} Q${f.cx},${pipY + 9} ${f.cx + pipHW * 0.74},${pipY}`}
-              fill="none" stroke="#5A2206"
-              strokeWidth="1.8" strokeOpacity="0.46" strokeLinecap="round"
-            />
-            <path
-              d={`M${f.cx - pipHW * 0.54},${pipY + 7} Q${f.cx},${pipY + 13} ${f.cx + pipHW * 0.54},${pipY + 7}`}
-              fill="none" stroke="#5A2206"
-              strokeWidth="0.8" strokeOpacity="0.24" strokeLinecap="round"
+              d={`M${f.cx - creaseHW * 0.50},${creaseY + 5} Q${f.cx},${creaseY + 10} ${f.cx + creaseHW * 0.50},${creaseY + 5}`}
+              fill="none" stroke="#B07040"
+              strokeWidth="0.7" strokeOpacity="0.18" strokeLinecap="round"
             />
           </g>
         );
       })}
 
-      {/* ── Nail plates (fade on shape change) ── */}
+      {/* ── Nail plates — fade between shapes ── */}
       <AnimatePresence mode="wait">
         <motion.g
           key={shape}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.2, ease: "easeInOut" }}
+          transition={{ duration: 0.18, ease: "easeInOut" }}
         >
           {FINGERS.map(f => {
             const np       = nailPath(shape, f.nw, f.nh);
@@ -335,41 +267,53 @@ function HandSVG({ shape, color }: { shape: ShapeKey; color: ColorEntry }) {
 
             return (
               <g key={`nail-${f.id}`} transform={`translate(${f.cx},${cuticleY})`}>
-                {/* Main nail fill */}
+                {/* Nail fill */}
                 <path d={np} fill={`url(#${fillId})`} />
 
                 {/* Nail border */}
                 <path d={np} fill="none"
-                  stroke={dark} strokeWidth="0.9" strokeOpacity="0.50"
+                  stroke={dark} strokeWidth="0.8" strokeOpacity="0.50"
+                />
+
+                {/* Lateral nail fold shadow (skin strip each side of the nail) */}
+                <rect
+                  x={-f.nw / 2 - 3} y={-f.nh * 0.92}
+                  width="3" height={f.nh * 0.86}
+                  fill="rgba(140,80,30,0.10)" rx="1"
+                />
+                <rect
+                  x={f.nw / 2} y={-f.nh * 0.92}
+                  width="3" height={f.nh * 0.86}
+                  fill="rgba(140,80,30,0.10)" rx="1"
                 />
 
                 {/* Cuticle arc */}
                 <path
-                  d={`M${-f.nw / 2},0 Q0,${-10} ${f.nw / 2},0`}
+                  d={`M${-f.nw / 2},0 Q0,${-11} ${f.nw / 2},0`}
                   fill="none" stroke={mid}
-                  strokeWidth="1.4" strokeLinecap="round" strokeOpacity="0.55"
+                  strokeWidth="1.3" strokeLinecap="round" strokeOpacity="0.50"
                 />
 
-                {/* Lunula / half-moon */}
+                {/* Lunula */}
                 <ellipse
-                  cx={0} cy={-f.nh * 0.13}
-                  rx={f.nw * 0.28} ry={f.nh * 0.09}
-                  fill="white" opacity="0.14"
+                  cx={0} cy={-f.nh * 0.12}
+                  rx={f.nw * 0.26} ry={f.nh * 0.085}
+                  fill="white" opacity="0.16"
                 />
 
-                {/* Gloss — soft blurred highlight */}
+                {/* Gloss — blurred soft highlight */}
                 <ellipse
-                  cx={-f.nw * 0.15} cy={-f.nh * 0.70}
-                  rx={f.nw * 0.22}  ry={f.nh * 0.20}
-                  fill="white" opacity="0.30"
+                  cx={-f.nw * 0.14} cy={-f.nh * 0.68}
+                  rx={f.nw * 0.20}   ry={f.nh * 0.19}
+                  fill="white" opacity="0.32"
                   filter="url(#gb)"
                 />
 
                 {/* Gloss — sharp inner streak */}
                 <ellipse
-                  cx={-f.nw * 0.12} cy={-f.nh * 0.67}
-                  rx={f.nw * 0.07}  ry={f.nh * 0.24}
-                  fill="white" opacity="0.24"
+                  cx={-f.nw * 0.11} cy={-f.nh * 0.65}
+                  rx={f.nw * 0.065}  ry={f.nh * 0.22}
+                  fill="white" opacity="0.26"
                 />
               </g>
             );
@@ -396,7 +340,6 @@ export function NailCustomizer() {
 
       <div className="mx-auto max-w-5xl">
 
-        {/* Heading */}
         <BlurFade delay={0.1} inView>
           <p className="text-center text-xs font-medium uppercase tracking-[0.4em] text-mauve-light font-sans mb-4">
             Try It On
@@ -414,20 +357,19 @@ export function NailCustomizer() {
             <div
               className="relative flex-shrink-0"
               style={{
-                filter: "drop-shadow(0 24px 48px rgba(0,0,0,0.55))",
+                filter: "drop-shadow(0 22px 44px rgba(0,0,0,0.50))",
                 width: "clamp(220px, 40vw, 300px)",
               }}
             >
               <HandSVG shape={shape} color={color} />
 
-              {/* Metallic shimmer overlay */}
               {color.metallic && (
                 <div
                   className="absolute inset-0 pointer-events-none rounded"
                   style={{
                     background: color.id === "gold"
-                      ? "linear-gradient(120deg, transparent 20%, rgba(255,215,60,0.20) 50%, transparent 80%)"
-                      : "linear-gradient(120deg, transparent 20%, rgba(200,220,255,0.20) 50%, transparent 80%)",
+                      ? "linear-gradient(120deg, transparent 20%, rgba(255,215,60,0.18) 50%, transparent 80%)"
+                      : "linear-gradient(120deg, transparent 20%, rgba(200,220,255,0.18) 50%, transparent 80%)",
                     backgroundSize: "200% 100%",
                     animation: "nc-shimmer 2s linear infinite",
                     mixBlendMode: "screen",
@@ -440,7 +382,6 @@ export function NailCustomizer() {
           {/* ── Controls ───────────────────────────────────── */}
           <div className="flex-1 w-full max-w-xs space-y-10">
 
-            {/* Shape picker */}
             <BlurFade delay={0.3} inView>
               <p className="text-xs uppercase tracking-[0.35em] text-mauve-light font-sans mb-5">
                 Shape
@@ -465,7 +406,6 @@ export function NailCustomizer() {
               </div>
             </BlurFade>
 
-            {/* Colour picker */}
             <BlurFade delay={0.4} inView>
               <div className="flex items-baseline gap-3 mb-5">
                 <p className="text-xs uppercase tracking-[0.35em] text-mauve-light font-sans">
@@ -504,7 +444,6 @@ export function NailCustomizer() {
               </div>
             </BlurFade>
 
-            {/* CTA */}
             <BlurFade delay={0.5} inView>
               <div className="pt-6 border-t border-white/10">
                 <p className="text-white/50 text-sm font-serif font-light italic mb-3">
