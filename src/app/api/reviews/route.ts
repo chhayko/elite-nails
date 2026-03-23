@@ -18,7 +18,8 @@ export async function GET() {
     const searchRes = await fetch(
       `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${encodeURIComponent(
         PLACE_NAME + " " + PLACE_ADDRESS
-      )}&inputtype=textquery&fields=place_id&key=${apiKey}`
+      )}&inputtype=textquery&fields=place_id&key=${apiKey}`,
+      { next: { revalidate: 86400 } }
     );
     const searchData = await searchRes.json();
     const placeId = searchData?.candidates?.[0]?.place_id;
@@ -29,7 +30,8 @@ export async function GET() {
 
     // Step 2: Fetch place details including reviews
     const detailsRes = await fetch(
-      `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=reviews,rating,user_ratings_total&language=nl&key=${apiKey}`
+      `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=reviews,rating,user_ratings_total&language=nl&key=${apiKey}`,
+      { next: { revalidate: 86400 } }
     );
     const detailsData = await detailsRes.json();
     const result = detailsData?.result;
