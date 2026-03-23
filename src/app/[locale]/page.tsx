@@ -10,7 +10,6 @@ import { About }           from "@/components/about";
 import { Services }        from "@/components/services";
 import { MarqueeSection }  from "@/components/marquee-section";
 import { Gallery }         from "@/components/gallery";
-import { NailCustomizer }  from "@/components/nail-customizer";
 import { TreatmentQuiz }   from "@/components/treatment-quiz";
 import { Testimonials }    from "@/components/testimonials";
 import { ContactBooking }  from "@/components/contact-booking";
@@ -83,8 +82,6 @@ export default function Home() {
           <SectionDivider text="Precision   Beauty   Elegance   Care   Elite Nails" />
           <Gallery />
           <SectionDivider text="Our Work   Nail Art   Lashes   Brows   Pedicure   BIAB" />
-          <NailCustomizer />
-          <SectionDivider text="Try It On   Choose Your Shape   Pick Your Colour   Elite Nails" />
           <TreatmentQuiz />
           <SectionDivider text="Personalised Advice   Find Your Treatment   Elite Nails" />
           <Testimonials />
