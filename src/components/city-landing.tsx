@@ -38,6 +38,22 @@ export function CityLanding({ data }: Props) {
     },
   };
 
+  const faqJsonLd =
+    data.faq && data.faq.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: data.faq.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.answer,
+            },
+          })),
+        }
+      : null;
+
   return (
     <>
       <Script
@@ -45,6 +61,13 @@ export function CityLanding({ data }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {faqJsonLd && (
+        <Script
+          id={`json-ld-faq-${data.slug}`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
 
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 bg-charcoal/90 backdrop-blur-md border-b border-white/5">
@@ -132,6 +155,33 @@ export function CityLanding({ data }: Props) {
           </section>
         ))}
 
+        {/* FAQ */}
+        {data.faq && data.faq.length > 0 && (
+          <section className="px-6 md:px-16 py-16 border-t border-white/10 max-w-3xl">
+            <h2 className="font-serif text-2xl md:text-3xl font-light text-cream mb-10 leading-snug">
+              Veelgestelde vragen over nagels in {data.city}
+            </h2>
+            <dl className="space-y-0">
+              {data.faq.map((item, i) => (
+                <details
+                  key={i}
+                  className="group border-t border-white/10 py-5 last:border-b"
+                >
+                  <summary className="flex items-start justify-between gap-4 cursor-pointer list-none text-cream/90 text-sm font-light tracking-wide hover:text-cream transition-colors duration-200">
+                    <dt className="font-medium">{item.question}</dt>
+                    <span className="flex-shrink-0 mt-0.5 text-mauve/60 group-open:rotate-45 transition-transform duration-200 text-lg leading-none">
+                      +
+                    </span>
+                  </summary>
+                  <dd className="mt-4 text-cream/60 text-sm font-light leading-relaxed pr-8">
+                    {item.answer}
+                  </dd>
+                </details>
+              ))}
+            </dl>
+          </section>
+        )}
+
         {/* Directions & contact */}
         <section className="px-6 md:px-16 py-16 border-t border-white/10 max-w-3xl">
           <p className="text-mauve-light text-xs tracking-[0.35em] uppercase mb-6">
@@ -164,13 +214,13 @@ export function CityLanding({ data }: Props) {
 
       <footer className="bg-charcoal border-t border-white/10 px-6 md:px-16 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-cream/30 text-xs tracking-[0.2em] uppercase">
-          &#169; {new Date().getFullYear()} Elite Nails &#183; Sint-Martens-Lierde
+          © {new Date().getFullYear()} Elite Nails · Sint-Martens-Lierde
         </p>
         <Link
           href="/nl"
           className="text-cream/30 hover:text-cream/60 text-xs tracking-[0.2em] uppercase transition-colors duration-300"
         >
-          &#8592; Home
+          ← Home
         </Link>
       </footer>
     </>
