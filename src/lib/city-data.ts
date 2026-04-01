@@ -3,6 +3,11 @@ export type CitySection = {
   text: string;
 };
 
+export type CityFaq = {
+  question: string;
+  answer: string;
+};
+
 export type CityPage = {
   slug: string;
   city: string;
@@ -12,6 +17,7 @@ export type CityPage = {
   intro: string[];
   services: string[];
   sections: CitySection[];
+  faq?: CityFaq[];
   contactLine: string;
   directions: string;
 };
@@ -184,6 +190,41 @@ export const CITIES: Record<string, CityPage> = {
       {
         heading: "Een cozy studio met een persoonlijke aanpak",
         text: "Klanten uit de regio Zottegem omschrijven Elite Nails als een plek waar rust en kwaliteit samenkomen. U krijgt de volle aandacht, het materiaal is professioneel gecertificeerd, en het resultaat spreekt voor zich. 'Where Precision Meets Beauty' — we maken het elke keer waar.",
+      },
+      {
+        heading: "Gelnagels in Zottegem",
+        text: "Op zoek naar gelnagels in Zottegem? Bij Elite Nails combineren we esthetiek met technische precisie. Onze nagelstylistes werken met de Russian manicure-techniek: een droge werkwijze waarbij de nagelriem zorgvuldig wordt teruggewerkt zonder vocht, zodat de gel rechtstreeks op de nagelplaat hecht. Het resultaat is een perfecte overgang van huid naar gel, minder lifting en een langere houdbaarheid — gemiddeld drie tot vijf weken. We gebruiken uitsluitend professionele gelproducten die de natuurlijke nagel beschermen en tegelijk een duurzame glansafwerking geven. Of je nu kiest voor een neutrale nude, een krachtige kleur of nail art op maat — bij gelnagels zottegem denken onze klanten al snel aan Elite Nails, en dat is niet toevallig. Kwaliteit, hygiëne en aandacht voor detail staan bij ons centraal. Ben je nieuw of wil je weten welke behandeling het beste bij jouw nagels past? We adviseren je graag vrijblijvend tijdens je eerste bezoek.",
+      },
+      {
+        heading: "BIAB Nagels in Zottegem",
+        text: "BIAB nagels in Zottegem — Builder In A Bottle is de behandeling die nagelgezondheid centraal stelt. In tegenstelling tot traditionele acryl of harde gel, versterkt BIAB de eigen nagelplaat in plaats van haar te verzwaren. De gel polymeerlaag hecht flexibel op de natuurlijke nagel en geeft haar de kracht om te groeien zonder te breken. Voor klanten die jarenlang last hadden van broze, afbrekende nagels is BIAB dan ook een echte gamechanger. Bij Elite Nails combineren we biab zottegem met de Russian manicure-voorbehandeling voor maximale hechting en een strakke, verzorgde nagelriem. Elke set duurt twee tot drie weken langer dan een gewone gel en beschadigt de nagel niet bij het afzetten, mits professioneel gedaan. Onze klanten uit Zottegem en omstreken kiezen keer op keer voor biab omdat ze merken dat hun eigen nagels sterker worden na elke beurt.",
+      },
+    ],
+    faq: [
+      {
+        question: "Wat is het verschil tussen BIAB en gelnagels?",
+        answer:
+          "Gelnagels geven kleur en glans, maar versterken de eigen nagel niet structureel. BIAB (Builder In A Bottle) is een opbouwgel die de nagelplaat versterkt terwijl ze groeit. BIAB is ideaal als je broze nagels hebt of je eigen nagels wilt laten groeien; gewone gelnagels zijn perfect als je nagels al stevig zijn en je primair een mooie afwerking wilt.",
+      },
+      {
+        question: "Hoeveel kost een BIAB-manicure bij Elite Nails?",
+        answer:
+          "De prijs van een BIAB-manicure hangt af van de gekozen kleur, lengte en eventuele nail art. Bekijk onze actuele tarieven op de prijzenpagina of neem contact op via Instagram — we bezorgen je graag een duidelijk overzicht vóór je afspraak.",
+      },
+      {
+        question: "Hoe lang duurt een Russian manicure?",
+        answer:
+          "Een Russian manicure duurt gemiddeld 60 tot 90 minuten, afhankelijk van de staat van de nagelriemen en de gekozen behandeling. We nemen de tijd die nodig is: haastig werken rondom de nagelriem is de grootste oorzaak van irritatie en infectie, dus we doen het rustig en grondig.",
+      },
+      {
+        question: "Hoe lang houdt een set gelnagels?",
+        answer:
+          "Met de juiste voorbereiding en een goede thuisverzorging houdt een gelnagel bij Elite Nails drie tot vijf weken. Factoren zoals frequent handenwerk, contact met aceton of agressieve schoonmaakmiddelen kunnen de houdbaarheid verkorten. We geven je bij elke behandeling tips mee.",
+      },
+      {
+        question: "Is Elite Nails bereikbaar vanuit Zottegem?",
+        answer:
+          "Ja. Onze nagelstudio ligt in Sint-Martens-Lierde, op circa 15 minuten rijden van Zottegem via de N42. Er is gratis parkeerruimte vlak bij de studio. Veel klanten uit Zottegem, Brakel en omgeving rijden ons graag even voorbij voor een behandeling die de moeite waard is.",
       },
     ],
     contactLine:
