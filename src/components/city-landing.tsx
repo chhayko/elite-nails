@@ -36,6 +36,13 @@ export function CityLanding({ data }: Props) {
       "@type": "City",
       name: data.city,
     },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5.0",
+      reviewCount: "2",
+      bestRating: "5",
+      worstRating: "1",
+    },
   };
 
   const faqJsonLd =

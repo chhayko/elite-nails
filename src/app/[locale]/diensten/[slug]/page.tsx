@@ -433,6 +433,13 @@ export default async function ServicePage({ params }: Props) {
         postalCode: "9572",
         addressCountry: "BE",
       },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "5.0",
+        reviewCount: "2",
+        bestRating: "5",
+        worstRating: "1",
+      },
     },
     offers: {
       "@type": "Offer",

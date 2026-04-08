@@ -122,6 +122,13 @@ const jsonLd = {
   ],
   sameAs: ["https://www.instagram.com/elite_nails_lierde/"],
   priceRange: "€€",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5.0",
+    reviewCount: "2",
+    bestRating: "5",
+    worstRating: "1",
+  },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Nail & Beauty Services",
