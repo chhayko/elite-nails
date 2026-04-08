@@ -12,6 +12,9 @@ type ServiceEntry = {
   duration: string;
   price: string;
   steps: { title: string; desc: string }[];
+  body?: string[];
+  faq?: { q: string; a: string }[];
+  aftercare?: string[];
 };
 
 type LocaleData = Record<string, ServiceEntry>;
@@ -97,10 +100,39 @@ const serviceData: Record<string, LocaleData> = {
       duration: "75–90 min",
       price: "vanaf €35",
       steps: [
-        { title: "Voorbereiding", desc: "De nagels worden gereinigd en de vorm wordt bepaald." },
-        { title: "Droge behandeling", desc: "Zonder water worden nagelriemen en dode huid verwijderd." },
-        { title: "Vijlen & polijsten", desc: "Elektrische vijlen zorgen voor een perfecte oppervlakte." },
-        { title: "Afwerking", desc: "Kleur of versterking naar keuze voor een langdurig resultaat." },
+        { title: "Voorbereiding", desc: "De nagels worden gereinigd en de gewenste vorm bepaald. Eventueel aanwezige oude lak of gel wordt voorzichtig verwijderd." },
+        { title: "Droge behandeling", desc: "Zonder water worden nagelriemen en overtollige dode huid rondom de nagel zorgvuldig verwijderd met elektrische bits." },
+        { title: "Vijlen & polijsten", desc: "Het nageloppervlak wordt gevijld en gepolijst zodat lak of gel optimaal kan hechten op een droog, schoon oppervlak." },
+        { title: "Afwerking", desc: "Kleur, gel of versterkende behandeling naar keuze — afgewerkt voor een langdurig, strak resultaat." },
+      ],
+      body: [
+        "De Russische manicure — ook wel e-file manicure of droge manicure genoemd — onderscheidt zich van een klassieke natte manicure doordat er geen water wordt gebruikt. In plaats daarvan werkt de nagelstyliste met een elektrische vijl en gespecialiseerde bits om de nagelriem en het nageloppervlak droog voor te bereiden. Dit zorgt voor een schoon, onopgezwollen oppervlak waarop gel of lak optimaal hecht en veel langer blijft zitten.",
+        "Het grote voordeel: bij een natte manicure zwelt het nagelbed op door water, waardoor lak en gel sneller loslaten. Bij de droge techniek is dit niet het geval. Klanten bij Elite Nails ervaren gemiddeld 4 tot 6 weken resultaat zonder bladderende randen of loslkomende uiteinden — ook bij dagelijkse activiteiten zoals afwassen of sporten. De behandeling duurt iets langer dan een klassieke manicure, maar het verschil in houdbaarheid is significant.",
+        "De Russische manicure is bijzonder geschikt voor wie regelmatig gel of BIAB laat aanbrengen, snel last heeft van loslomende nagelriemen of simpelweg altijd verzorgde, nette nagels wil. Bij Elite Nails in Sint-Martens-Lierde is de droge techniek de standaard voorbereiding bij elke nagelbehandeling — niet als extra, maar als basiskwaliteit.",
+      ],
+      faq: [
+        {
+          q: "Doet de Russische manicure pijn?",
+          a: "Nee. Bij een correcte uitvoering is de behandeling volledig pijnloos. Je voelt mogelijk een licht warmtegevoel door de draaiende bit, maar er is geen druk of pijn. Onze nagelstyliste werkt met de juiste snelheid en bits voor elke stap van de behandeling.",
+        },
+        {
+          q: "Hoe lang duurt het resultaat na een Russische manicure?",
+          a: "Met gelnagels of BIAB erbij gaat het resultaat gemiddeld 4 tot 6 weken mee zonder loslaten of bladderen. Zelfs een gewone nagellak hecht significant langer dankzij de droge voorbereiding op een niet-opgezwollen nagelbed.",
+        },
+        {
+          q: "Is de Russische manicure geschikt voor gevoelige nagelriemen?",
+          a: "Ja. De droge techniek is in veel gevallen zachter dan traditionele natte manicures, waarbij water en producten de huid kunnen irriteren of uitdrogen. De elektrische bits die bij Elite Nails worden gebruikt zijn speciaal ontworpen voor nauwkeurig werk rondom de gevoelige nagelriemzone.",
+        },
+        {
+          q: "Hoe vaak moet ik terugkomen voor een Russische manicure?",
+          a: "Gemiddeld elke 4 tot 5 weken, afhankelijk van hoe snel je nagels groeien en welke afwerking je kiest. Met BIAB of gel kun je iets langer wachten dan met gewone lak.",
+        },
+      ],
+      aftercare: [
+        "Breng dagelijks cuticle oil aan op de nagelriemen — dit houdt de huid soepel en verlengt de levensduur van je gelbehandeling aanzienlijk.",
+        "Vermijd langdurig contact met water in de eerste 24 uur na de behandeling zodat de gel volledig kan uitharden en hechten.",
+        "Gebruik je nagels niet als gereedschap (blikjes openen, plakband lostrekken) — dit is de snelste manier om de lak- of gellaag te beschadigen.",
+        "Plan je volgende afspraak na 4–5 weken voor een refill of nieuwe behandeling, voor optimaal resultaat zonder zichtbare uitgroei.",
       ],
     },
     biab: {
@@ -111,10 +143,39 @@ const serviceData: Record<string, LocaleData> = {
       duration: "60–75 min",
       price: "€45",
       steps: [
-        { title: "Nagelvoorbereiding", desc: "Reiniging en lichte buffeuring van het nageloppervlak." },
-        { title: "Primer & base", desc: "Hechting wordt geoptimaliseerd met een professionele primer." },
-        { title: "BIAB aanbrengen", desc: "De builder gel wordt laag voor laag opgebouwd en uitgehard." },
-        { title: "Kleur & top coat", desc: "Kleur of naturel finish naar wens, afgesloten met een duurzame topcoat." },
+        { title: "Nagelvoorbereiding", desc: "Reiniging en lichte buffeuring van het nageloppervlak met de droge Russische manicuretechniek als basis." },
+        { title: "Primer & base", desc: "Hechting wordt geoptimaliseerd met een professionele primer, zodat de BIAB-laag maximaal hecht op de natuurlijke nagel." },
+        { title: "BIAB aanbrengen", desc: "De builder gel wordt laag voor laag met een penseel opgebouwd en na elke laag uitgehard onder de UV/LED-lamp." },
+        { title: "Kleur & top coat", desc: "Kleur of naturel finish naar wens, afgesloten met een duurzame topcoat voor bescherming en glans." },
+      ],
+      body: [
+        "BIAB staat voor Builder In A Bottle — een gel met een dikkere consistentie dan gewone gelpolish, maar zonder de hardheid van acryl. Het wordt laag voor laag op de natuurlijke nagel aangebracht en uitgehard onder een UV/LED-lamp. Het resultaat is een flexibele, sterke laag die de nagel ondersteunt en beschermt terwijl hij gewoon door kan groeien. Er worden geen kunstnagels gebruikt of extensies aangebracht.",
+        "Het verschil met gewone gelnagels zit in de dikte en sterkte van de laag. BIAB is zelfnivellerend en bouwt een dunne boog op over de nagel die brosse of dunne nagels structuur geeft. In tegenstelling tot acryl bevat BIAB geen monomer en geen irriterende geur. Het verwijderingsproces is zachter: de laag wordt vijl en geweekt zonder forceren, waardoor de onderliggende nagel intact blijft.",
+        "BIAB is ideaal voor klanten die broos nagels hebben die snel afbreken, die willen groeien zonder kunstnagels, of die overstappen van acryl en hun eigen nagels wil herstellen. Bij Elite Nails wordt BIAB altijd gecombineerd met de droge voorbehandeling van de Russische manicuretechniek, waardoor de hechting en houdbaarheid maximaal zijn.",
+      ],
+      faq: [
+        {
+          q: "Beschadigt BIAB mijn eigen nagels?",
+          a: "Nee. BIAB hecht op de natuurlijke nagel zonder hem te verzwakken. Bij een correcte verwijdering — vijlen en weken, niet forceren — blijven je nagels even gezond als vóór de behandeling. Veel klanten zien hun nagels juist sterker worden dankzij de beschermende laag.",
+        },
+        {
+          q: "Kan ik BIAB combineren met kleur?",
+          a: "Ja. BIAB kan worden afgewerkt met een naturel of helder topcoat voor een verzorgde, glanzende look, maar ook met elke gewenste kleur gelnagellak. De kleur wordt aangebracht bovenop de geharde BIAB-laag.",
+        },
+        {
+          q: "Hoe wordt BIAB verwijderd?",
+          a: "BIAB wordt voorzichtig gevijld om de bovenlaag te verwijderen, waarna de rest wordt geweekt in aceton. Het proces duurt 15 tot 20 minuten en is gentle voor de nagel — er wordt nooit geforceerd of getrokken.",
+        },
+        {
+          q: "Hoe verschilt BIAB van acrylnagels?",
+          a: "BIAB is een gelproduct zonder monomer, zonder irriterende geur en zonder het harde, brosse karakter van acryl. BIAB is flexibeler, vriendelijker voor de natuurlijke nagel en makkelijker te verwijderen. Het is geen verlenging — het werkt op de lengte van je eigen nagel.",
+        },
+      ],
+      aftercare: [
+        "Breng dagelijks nagelriemolie aan op de nagelriemen en rondom de BIAB-laag voor hydratatie en een langere levensduur van de behandeling.",
+        "Draag handschoenen bij gebruik van schoonmaakmiddelen, afwasmiddel of andere chemicaliën — deze tasten de topcoat en de BIAB-laag aan.",
+        "Trek nooit aan de BIAB-laag of probeer hem zelf te verwijderen — dit beschadigt de onderliggende nagel en kan leiden tot dunne, gevoelige nagels.",
+        "Plan een refill of nieuwe behandeling na 5–6 weken voor het beste resultaat. Bij snelle nagelgroei kun je na 4 weken al terugkomen.",
       ],
     },
     gelnagels: {
@@ -125,10 +186,39 @@ const serviceData: Record<string, LocaleData> = {
       duration: "60 min",
       price: "€45",
       steps: [
-        { title: "Reiniging & vorming", desc: "Nagels worden gereinigd en in de gewenste vorm gevijld." },
-        { title: "Cuticle care", desc: "Nagelriemen worden verzorgd voor een nette finish." },
-        { title: "Gel applicatie", desc: "Kleur wordt laag voor laag aangebracht en uitgehard onder UV/LED." },
-        { title: "Afwerking", desc: "Topcoat voor hoogglans en bescherming die weken meegaat." },
+        { title: "Reiniging & vorming", desc: "Nagels worden grondig gereinigd en in de gewenste vorm gevijld — rond, amandel, vierkant of spits." },
+        { title: "Droge nagelriemverzorging", desc: "Nagelriemen worden met de elektrische vijl verzorgd voor een perfecte basis en maximale hechting." },
+        { title: "Gel applicatie", desc: "Base coat, kleur en topcoat worden laag voor laag aangebracht en na elke stap uitgehard onder de UV/LED-lamp." },
+        { title: "Afwerking", desc: "Topcoat voor hoogglans en bescherming. Nagelriemolie als finishing touch voor een perfecte look." },
+      ],
+      body: [
+        "Gelnagels bij Elite Nails zijn niet hetzelfde als een standaard gelmanicure elders. Elke gelnagelsbehandeling begint met de droge voorbereiding van de Russische manicuretechniek: nagelriemen worden verzorgd met een elektrische vijl op een droog nagelbed. Daardoor hecht de gelpolish significant beter dan bij een natte voorbereiding, en blijft de kleur langer strak zitten zonder bladderen of loslaten aan de randen.",
+        "De gel zelf wordt laag voor laag aangebracht — base coat, kleur, eventueel een tweede kleurlaag, en een stevige topcoat. Elke laag wordt uitgehard onder een UV/LED-lamp voordat de volgende wordt aangebracht. Dit zorgt voor een harde, glanzende afwerking die niet uitloopt, krast of snel slijt. Het resultaat is egaal, glanzend en professioneel.",
+        "Bij Elite Nails heb je keuze uit een breed assortiment kleuren: van klassiek nude en roze tot diep bordeaux, zwart, ijsblauw en seizoenscollecties. Weet je niet zeker welke kleur je wilt? De nagelstyliste denkt graag met je mee. Gelnagels zijn ideaal voor wie lak snel afschilfert, feestdagen nadert of gewoon dagelijks verzorgde handen wil zonder bij te hoeven werken.",
+      ],
+      faq: [
+        {
+          q: "Hoe lang gaan gelnagels bij Elite Nails mee?",
+          a: "Gelnagels gaan bij Elite Nails gemiddeld 3 tot 4 weken mee zonder bladderen of loslaten aan de randen. Dit is mede dankzij de droge Russische manicurevoorbereiding, waardoor de gel op een optimaal oppervlak hecht.",
+        },
+        {
+          q: "Worden gelnagels altijd gecombineerd met een Russische manicure?",
+          a: "Ja. Bij Elite Nails is de droge nagelriembehandeling de standaardvoorbereiding bij elke gelnagelsbehandeling. Dit is geen extra dienst maar onderdeel van de basisbehandeling — het verschil in houdbaarheid is aanzienlijk.",
+        },
+        {
+          q: "Kan ik kiezen uit veel kleuren?",
+          a: "Absoluut. We hebben een ruim kleurenaanbod — van nude en lichtroze tot donkere en gedurfde tinten. Het assortiment wordt regelmatig aangevuld met seizoenscollecties. Twijfel je? Stuur ons een berichtje via Instagram voor inspiratie.",
+        },
+        {
+          q: "Hoe worden gelnagels verwijderd?",
+          a: "Gelnagels worden voorzichtig gevijld en daarna geweekt in aceton. Bij Elite Nails doen we dit zorgvuldig zodat de onderliggende nagel minimaal belast wordt. We raden af om gelnagels zelf thuis te verwijderen door te trekken of te forceren.",
+        },
+      ],
+      aftercare: [
+        "Gebruik dagelijks cuticle oil rondom de nagels — dit verlengt de levensduur van je gelnagels en houdt de nagelriemen soepel.",
+        "Draag handschoenen bij afwassen en huishoudelijk werk. Langdurig contact met water en zeep tast de topcoat aan en versnelt het loslaten.",
+        "Vermijd extreme hitte zoals sauna of langdurig heet bad in de eerste 48 uur — dit kan de gel verzachten voordat hij volledig is uitgehard.",
+        "Kom terug voor een refill of nieuwe behandeling na 3–4 weken, zodat je nagels er altijd netjes uitzien zonder zichtbare uitgroei.",
       ],
     },
     pedicure: {
@@ -139,9 +229,39 @@ const serviceData: Record<string, LocaleData> = {
       duration: "60–75 min",
       price: "vanaf €30",
       steps: [
-        { title: "Eelt & huidverzorging", desc: "Eelt en droge huid worden voorzichtig verwijderd." },
-        { title: "Nagelverzorging", desc: "Teenagels worden gevijld, nagelriemen verzorgd." },
-        { title: "Massage & afwerking", desc: "Hydraterende massage en optioneel gelpolish op de teenagels." },
+        { title: "Eelt & huidverzorging", desc: "Eelt en droge huid worden systematisch en voorzichtig verwijderd, met extra aandacht voor de hielen en ballen van de voeten." },
+        { title: "Nagelverzorging", desc: "Teenagels worden op de juiste lengte gevijld en in de gewenste vorm gebracht. Nagelriemen worden zorgvuldig verzorgd." },
+        { title: "Massage", desc: "Een hydraterende voetmassage met voedende crème — ontspannend en verzorgend tegelijk." },
+        { title: "Afwerking", desc: "Optioneel gelpolish op de teenagels voor een verzorgde, langdurige kleur die 3 tot 4 weken meegaat." },
+      ],
+      body: [
+        "Een professionele pedicure gaat verder dan wat je thuis kunt doen. Bij Elite Nails werken we met professioneel gereedschap om eelt grondig en veilig te verwijderen, teenagels correct te vijlen en nagelriemen te verzorgen zonder de huid te beschadigen. Thuis gebruik je misschien een puimsteen of eeltrasp — nuttig voor onderhoud, maar niet in staat om diepere eeltlagen of ingegroeide nagels aan te pakken.",
+        "De behandeling is ook preventief. Goed verzorgde voeten met correct gevijlde teenagels (recht, niet te kort) voorkomen ingroeiende nagels en drukplekken. De hydraterende massage aan het einde van de behandeling verbetert de doorbloeding en laat de huid soepeler worden. Regelmatige pedicure — elke 6 tot 8 weken — houdt je voeten het hele jaar door in goede conditie.",
+        "Bij Elite Nails kan de pedicure optioneel worden afgewerkt met gelpolish op de teenagels. De gel hecht dankzij een droge voorbereiding goed op de teenagel en gaat 3 tot 4 weken mee zonder af te schilferen. Ideaal voor wie het zomerseizoen ingaat, een vakantie plant of gewoon altijd verzorgde voeten wil — zichtbaar of niet.",
+      ],
+      faq: [
+        {
+          q: "Wat is het verschil tussen een professionele en thuispedicure?",
+          a: "Bij Elite Nails werken we met professionele instrumenten die eelt grondig verwijderen, nagels correct vijlen en nagelriemen verzorgen zonder de huid te beschadigen. Thuismethoden zoals puimsteen zijn goed voor onderhoud, maar niet geschikt voor diepere eeltlagen, ingegroeide nagels of nauwkeurige nagelriemverzorging.",
+        },
+        {
+          q: "Kan ik gelpolish laten aanbrengen op mijn teenagels?",
+          a: "Ja. De pedicure kan worden afgewerkt met gelpolish voor een langdurig resultaat — gemiddeld 3 tot 4 weken zonder afschilferen. De teenagels worden droog voorbereid voor optimale hechting. Vertel het bij het boeken als je kleur wilt, zodat we voldoende tijd inplannen.",
+        },
+        {
+          q: "Is pedicure ook geschikt voor mannen?",
+          a: "Zeker. Pedicure is geen vrouwenzaak — goed verzorgde voeten zijn voor iedereen belangrijk, zeker voor wie veel staat, sport of last heeft van eelt en droge hielen. De behandeling bij Elite Nails is functioneel en zonder poespas.",
+        },
+        {
+          q: "Hoe vaak moet ik terugkomen voor een pedicure?",
+          a: "Gemiddeld elke 6 tot 8 weken. Met gelpolish op de teenagels kom je na 4 tot 6 weken terug, afhankelijk van de nagelgroei. Wie veel last heeft van eelt of droge hielen, kan baat hebben bij een frequentere behandeling.",
+        },
+      ],
+      aftercare: [
+        "Breng dagelijks een voetcrème aan, met extra aandacht voor de hielen — dit vertraagt eeltvorming en houdt de huid zacht.",
+        "Draag ademende schoenen en katoenen sokken om vochtige omgeving te vermijden, die schimmelvorming in de hand werkt.",
+        "Vijl je teenagels thuis recht af — niet te kort en niet afgerond in de hoeken, om ingroeiende nagels te voorkomen.",
+        "Plan een nieuwe behandeling elke 6 tot 8 weken voor optimaal onderhoud. Bij droge hielen of snelle eeltvorming kun je vaker langskomen.",
       ],
     },
     "wimper-wenkbrauw": {
@@ -152,10 +272,39 @@ const serviceData: Record<string, LocaleData> = {
       duration: "45–60 min",
       price: "€50",
       steps: [
-        { title: "Consultatie", desc: "Gewenste vorm en lift worden besproken." },
-        { title: "Reiniging", desc: "Wimpers en wenkbrauwen worden grondig gereinigd." },
-        { title: "Lifting & lamination", desc: "Professionele producten tillen, krullen en fixeren." },
-        { title: "Kleuren & finishing", desc: "Optionele tinten voor extra diepte en definitie." },
+        { title: "Consultatie", desc: "De gewenste vorm, lift en intensiteit worden besproken. De juiste siliconen pad of staven worden gekozen op basis van de lengte en dikte van je wimpers." },
+        { title: "Reiniging", desc: "Wimpers en wenkbrauwen worden grondig gereinigd en ontvet zodat de producten optimaal kunnen hechten." },
+        { title: "Lifting & lamination", desc: "Professionele liftingproducten worden aangebracht en inwerken op de wimpers of wenkbrauwhaartjes voor een blijvend geheven en gestructureerde vorm." },
+        { title: "Kleuren & finishing", desc: "Optionele tinting van wimpers of wenkbrauwen voor extra diepte en definitie. Gevoed met een hydraterende serum na afloop." },
+      ],
+      body: [
+        "Wimperlifting is een behandeling waarbij je eigen wimpers worden getild en gekruld met behulp van een siliconen pad en professionele liftingproducten. Er worden geen kunstwimpers aangehecht — de behandeling werkt volledig met wat je al hebt. Het resultaat is een open, uitgerust oogopslag die 6 tot 8 weken aanhoudt, afhankelijk van de groeicyclus van je wimpers. Combineer met een tinting voor maximale diepte en een mascara-effect zonder mascara.",
+        "Wenkbrauwlamination is de tegenhanger voor de brow: de wenkbrauwhaartjes worden in de gewenste richting gefixeerd voor een volle, gestructureerde shape. Of je nu ijle wenkbrauwen hebt die je wil optisch voller maken, of drukke wenkbrauwen die alle kanten op staan — lamination brengt orde en volume tegelijkertijd. Het effect houdt 6 tot 8 weken aan en is dagelijks onderhoudsloos.",
+        "Beide behandelingen kunnen worden gecombineerd in één sessie voor een volledige brow-en-wimperbehandeling. Bij Elite Nails is de combinatie populair omdat het resultaat — diepere ogen, vollere wenkbrauwen, geen dagelijkse make-up nodig — direct zichtbaar is en weken aanhoudt zonder tussentijds bijwerken. Ideaal voor wie minder tijd wil besteden aan dagelijkse make-up maar er altijd verzorgd wil uitzien.",
+      ],
+      faq: [
+        {
+          q: "Wat is het verschil tussen wimperlifting en wimperextensions?",
+          a: "Wimperlifting werkt met je eigen wimpers — er wordt niets aangehecht of gelijmd. Extensions zijn kunstwimpers die per wimper worden aangebracht en elke 2 tot 3 weken moeten worden bijgevuld. Lifting is onderhoudsarmer, zachter voor je eigen wimpers en heeft geen invloed op de natuulijke wimpergroei.",
+        },
+        {
+          q: "Hoe lang duurt het effect van wimperlifting?",
+          a: "Gemiddeld 6 tot 8 weken, afhankelijk van je wimpergroeicyclus. Na die periode groeien de wimpers in hun natuurlijke richting terug. Een volgende behandeling wordt aangeraden na 6 tot 8 weken voor een constant resultaat.",
+        },
+        {
+          q: "Is wenkbrauwlamination hetzelfde als microblading?",
+          a: "Nee. Wenkbrauwlamination is een tijdelijke behandeling die je bestaande wenkbrauwhaartjes fixeert in een gewenste vorm — geen verf, geen naalden, geen tatoeage. Microblading is een semi-permanente techniek waarbij pigment in de huid wordt aangebracht. Lamination is pijnloos, niet-invasief en tijdelijk.",
+        },
+        {
+          q: "Kan ik mascara gebruiken na wimperlifting?",
+          a: "Ja, maar wacht minstens 48 uur na de behandeling. In die eerste 48 uur moet je ook water, stoom en saunabezoek vermijden zodat de liftingvorm kan fixeren. Daarna kun je mascara normaal gebruiken — het versterkt alleen het resultaat.",
+        },
+      ],
+      aftercare: [
+        "Vermijd water, stoom en saunabezoek de eerste 48 uur na de behandeling — dit is cruciaal voor een langdurig resultaat.",
+        "Gebruik geen oliebasis make-upremover op de wimpers of wenkbrauwen, want olie lost de liftingproducten op en verkort de houdbaarheid.",
+        "Slaap indien mogelijk op de rug in de eerste paar nachten om de gecreëerde vorm te bewaren en pletten te voorkomen.",
+        "Boek een herbehandeling na 6 tot 8 weken voor een constant resultaat. Je kunt de planning combineren met een andere behandeling bij Elite Nails.",
       ],
     },
   },
@@ -453,12 +602,30 @@ export default async function ServicePage({ params }: Props) {
     },
   };
 
+  const faqJsonLd = service.faq
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: service.faq.map((item) => ({
+          "@type": "Question",
+          name: item.q,
+          acceptedAnswer: { "@type": "Answer", text: item.a },
+        })),
+      }
+    : null;
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
 
       {/* Floating prev / next service arrows */}
       {prevSlug && (
@@ -593,6 +760,61 @@ export default async function ServicePage({ params }: Props) {
             ))}
           </div>
         </section>
+
+        {/* Extended body copy */}
+        {service.body && service.body.length > 0 && (
+          <section className="px-6 md:px-16 py-16 border-t border-white/10 max-w-4xl">
+            <div className="space-y-6">
+              {service.body.map((paragraph, i) => (
+                <p key={i} className="text-cream/70 text-base leading-relaxed font-light">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* FAQ section */}
+        {service.faq && service.faq.length > 0 && (
+          <section className="px-6 md:px-16 py-16 border-t border-white/10">
+            <p className="text-mauve-light text-xs tracking-[0.35em] uppercase mb-12">
+              Veelgestelde vragen
+            </p>
+            <div className="max-w-3xl space-y-10">
+              {service.faq.map((item, i) => (
+                <div key={i}>
+                  <h3 className="text-cream text-base font-serif font-light mb-3 leading-snug">
+                    {item.q}
+                  </h3>
+                  <p className="text-cream/60 text-sm leading-relaxed font-light">
+                    {item.a}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Aftercare section */}
+        {service.aftercare && service.aftercare.length > 0 && (
+          <section className="px-6 md:px-16 py-16 border-t border-white/10">
+            <p className="text-mauve-light text-xs tracking-[0.35em] uppercase mb-12">
+              Nabehandeling & tips
+            </p>
+            <div className="max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
+              {service.aftercare.map((tip, i) => (
+                <div key={i} className="flex gap-4">
+                  <span className="font-serif text-3xl font-light text-white/10 leading-none select-none flex-shrink-0 w-8">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="text-cream/60 text-sm leading-relaxed font-light">
+                    {tip}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="px-6 md:px-16 py-20 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center gap-8">
           <div className="flex-1">
