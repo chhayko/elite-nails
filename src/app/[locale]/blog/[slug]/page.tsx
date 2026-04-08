@@ -210,12 +210,30 @@ export default async function BlogPost({ params }: Props) {
     mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/nl/blog/${slug}` },
   };
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: post.sections.slice(0, -1).map((s) => ({
+      '@type': 'Question',
+      name: s.heading,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: s.body.join(' '),
+      },
+    })),
+  };
+
   return (
     <>
       <Script
         id={`json-ld-blog-${slug}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Script
+        id={`json-ld-faq-${slug}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       {/* Nav */}
