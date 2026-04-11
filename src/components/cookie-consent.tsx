@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useLocale } from "next-intl";
 
 const STORAGE_KEY = "en_cookie_consent";
 
@@ -26,9 +25,8 @@ function updateGtagConsent(granted: boolean) {
   }
 }
 
-export function CookieConsent() {
+export function CookieConsent({ locale }: { locale: string }) {
   const [visible, setVisible] = useState(false);
-  const locale = useLocale();
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY) as ConsentValue | null;

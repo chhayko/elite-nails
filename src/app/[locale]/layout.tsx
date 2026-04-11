@@ -224,7 +224,7 @@ export default async function LocaleLayout({
           {children}
         </NextIntlClientProvider>
         <CustomCursor />
-        <CookieConsent />
+        <CookieConsent locale={locale} />
 
         {/* Google Analytics */}
         <Script
