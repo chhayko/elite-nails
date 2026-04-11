@@ -82,7 +82,9 @@
   "footer": {
     "location": "Синт-Мартенс-Лирде, Бельгия",
     "instagram": "Instagram",
-    "copyright": "Elite Nails Lierde. Все права защищены."
+    "copyright": "Elite Nails Lierde. Все права защищены.",
+    "privacy": "Политика конфиденциальности",
+    "cookiePreferences": "Настройки cookies"
   },
   "servicePage": {
     "backLink": "Все услуги",

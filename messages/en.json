@@ -82,7 +82,9 @@
   "footer": {
     "location": "Sint-Martens-Lierde, Belgium",
     "instagram": "Instagram",
-    "copyright": "Elite Nails Lierde. All rights reserved."
+    "copyright": "Elite Nails Lierde. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "cookiePreferences": "Cookie preferences"
   },
   "servicePage": {
     "backLink": "All services",

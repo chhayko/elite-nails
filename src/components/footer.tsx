@@ -1,10 +1,13 @@
 "use client";
 
+import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 import { LocationMap } from "@/components/ui/location-map";
-import { useTranslations } from "next-intl";
+import { CookiePreferencesButton } from "@/components/cookie-consent";
 
 export function Footer() {
   const t = useTranslations("footer");
+  const locale = useLocale();
 
   return (
     <footer className="relative pt-16 pb-12 px-6 bg-charcoal/20 backdrop-blur-md">
@@ -40,9 +43,21 @@ export function Footer() {
 
         </div>
 
-        <p className="mt-12 text-center text-xs text-white/30 font-sans">
-          &copy; {new Date().getFullYear()} {t("copyright")}
-        </p>
+        <div className="mt-12 flex flex-col items-center gap-3">
+          <div className="flex items-center gap-6">
+            <Link
+              href={`/${locale}/privacybeleid`}
+              className="text-xs text-white/30 hover:text-white/60 transition-colors font-sans"
+            >
+              {t("privacy")}
+            </Link>
+            <span className="text-white/20 text-xs">·</span>
+            <CookiePreferencesButton label={t("cookiePreferences")} />
+          </div>
+          <p className="text-xs text-white/30 font-sans">
+            &copy; {new Date().getFullYear()} {t("copyright")}
+          </p>
+        </div>
       </div>
     </footer>
   );

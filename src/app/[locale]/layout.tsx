@@ -4,6 +4,7 @@ import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { CustomCursor } from "@/components/custom-cursor";
+import { CookieConsent } from "@/components/cookie-consent";
 import "../globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -192,6 +193,29 @@ export default async function LocaleLayout({
         <meta name="geo.placename" content="Sint-Martens-Lierde" />
         <meta name="geo.position" content="50.8108566;3.796871" />
         <meta name="ICBM" content="50.8108566, 3.796871" />
+
+        {/*
+          Google Consent Mode v2 — defaults set to DENIED before GA4 loads.
+          GA4 (afterInteractive) will not collect any data until the user
+          explicitly accepts cookies via the CookieConsent banner, at which
+          point the banner calls gtag('consent', 'update', ...) with 'granted'.
+          'wait_for_update' gives the banner 2 s to fire the update before
+          GA4 proceeds in consent-pending mode (still no PII sent).
+        */}
+        <Script id="consent-mode-defaults" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              'analytics_storage': 'denied',
+              'ad_storage': 'denied',
+              'functionality_storage': 'denied',
+              'personalization_storage': 'denied',
+              'security_storage': 'granted',
+              'wait_for_update': 2000
+            });
+          `}
+        </Script>
       </head>
       <body
         className={`${cormorant.variable} ${inter.variable} font-sans antialiased cursor-none`}
@@ -200,6 +224,7 @@ export default async function LocaleLayout({
           {children}
         </NextIntlClientProvider>
         <CustomCursor />
+        <CookieConsent />
 
         {/* Google Analytics */}
         <Script
