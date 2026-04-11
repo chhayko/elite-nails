@@ -61,7 +61,7 @@ export function CookieConsent({ locale }: { locale: string }) {
       aria-modal="false"
       aria-label="Cookie toestemming"
       aria-live="polite"
-      className="fixed bottom-0 left-0 right-0 z-[9999] p-4 md:p-6"
+      className="fixed bottom-0 left-0 right-0 z-[9000] p-4 md:p-6"
     >
       <div className="mx-auto max-w-xl rounded-lg border border-white/10 bg-charcoal/95 backdrop-blur-md px-5 py-5 shadow-2xl">
         <p className="font-serif text-lg text-white mb-1">Cookies</p>
