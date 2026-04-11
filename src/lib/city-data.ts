@@ -166,10 +166,10 @@ export const CITIES: Record<string, CityPage> = {
   zottegem: {
     slug: "zottegem",
     city: "Zottegem",
-    metaTitle: "Nagelstudio Zottegem | Russian Manicure | Elite Nails Lierde",
+    metaTitle: "Nagels Zottegem | Nagelstudio & Gelnagels | Elite Nails Lierde",
     metaDescription:
-      "Nagelstudio dicht bij Zottegem? Elite Nails in Sint-Martens-Lierde, op 15 min. Russische manicure, BIAB, gelnagels & lash laminatie. Boek nu!",
-    h1: "Nagelstudio bij Zottegem — Elite Nails Sint-Martens-Lierde",
+      "Nagels in Zottegem? Elite Nails in Sint-Martens-Lierde, op 15 min. Russische manicure, BIAB, gelnagels & lash laminatie. Boek nu!",
+    h1: "Nagels bij Zottegem — Nagelstudio Elite Nails Sint-Martens-Lierde",
     intro: [
       "Woon je in Zottegem of een nabijgelegen gemeente en ben je op zoek naar een nagelstudio gespecialiseerd in de Russische manicure? Elite Nails in Sint-Martens-Lierde ligt op slechts 15 minuten rijden van Zottegem en verwelkomt klanten uit Zottegem, Sint-Lievens-Houtem, Herzele, Grotenberge en de ruimere regio.",
       "Elite Nails is een klein, persoonlijk studio waar elke klant de volle aandacht krijgt. We werken zonder haast, met oog voor detail — of het nu gaat om een simpele nagelverzorging of een volledige behandeling met BIAB en lash laminatie.",
