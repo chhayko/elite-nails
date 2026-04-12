@@ -223,12 +223,20 @@ export function CityLanding({ data }: Props) {
         <p className="text-cream/30 text-xs tracking-[0.2em] uppercase">
           © {new Date().getFullYear()} Elite Nails · Sint-Martens-Lierde
         </p>
-        <Link
-          href="/nl"
-          className="text-cream/30 hover:text-cream/60 text-xs tracking-[0.2em] uppercase transition-colors duration-300"
-        >
-          ← Home
-        </Link>
+        <div className="flex items-center gap-6">
+          <Link
+            href="/nl/blog"
+            className="text-cream/30 hover:text-cream/60 text-xs tracking-[0.2em] uppercase transition-colors duration-300"
+          >
+            Blog
+          </Link>
+          <Link
+            href="/nl"
+            className="text-cream/30 hover:text-cream/60 text-xs tracking-[0.2em] uppercase transition-colors duration-300"
+          >
+            ← Home
+          </Link>
+        </div>
       </footer>
     </>
   );
