@@ -89,6 +89,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
+  const serviceLocalRoutes = [
+    {
+      url: BASE_URL + "/nl/lash-laminatie-zottegem",
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    },
+  ];
+
   const blogRoutes = blogSlugs.map((slug) => ({
     url: BASE_URL + "/nl/blog/" + slug,
     lastModified: new Date(),
@@ -112,6 +121,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...localeRoutes,
     ...serviceRoutes,
     ...cityRoutes,
+    ...serviceLocalRoutes,
     ...blogRoutes,
   ];
 }
