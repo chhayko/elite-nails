@@ -22,7 +22,7 @@ const homeMeta: Record<string, { title: string; description: string }> = {
   nl: {
     title: "Nagelstudio Lierde | Russian Manicure & BIAB | Elite Nails",
     description:
-      "Elite Nails in Sint-Martens-Lierde — gespecialiseerd in Russian manicure, BIAB en gelnagels. Op 10 min van Geraardsbergen & Brakel. Boek nu!",
+      "Elite Nails in Sint-Martens-Lierde, gespecialiseerd in Russian manicure, BIAB en gelnagels. Op 10 min van Geraardsbergen en Zottegem. Boek nu!",
   },
   en: {
     title: "Nail Salon Lierde | Russian Manicure & BIAB | Elite Nails",
