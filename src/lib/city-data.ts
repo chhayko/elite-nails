@@ -50,13 +50,48 @@ export const CITIES: Record<string, CityPage> = {
         text: "De Russische manicure is een droge manicuretechniek die geen water gebruikt. Hierdoor hecht de nagellak of gel beter, duurt het resultaat langer, en is de behandeling hygiënischer dan de traditionele manicure. We werken met gecertificeerde uitrusting en letten op elk detail — van de cuticula tot de afwerking van elke nagel.",
       },
       {
-        heading: "BIAB: de oplossing voor zwakke nagels",
-        text: "Worstelt u met nagels die breken of snel afschilferen? BIAB (Builder In A Bottle) is de ideale behandeling. Deze versterkende gel wordt aangebracht op de natuurlijke nagel en zorgt voor extra stevigheid zonder kunststof toe te voegen. Populair bij klanten uit heel de regio — van Geraardsbergen tot Ninove.",
+        heading: "BIAB: de oplossing voor brosse nagels",
+        text: "Heb je last van nagels die breken of snel afschilferen? BIAB (Builder In A Bottle) is de ideale behandeling. Deze versterkende gel wordt aangebracht op de natuurlijke nagel en zorgt voor extra stevigheid zonder kunststof toe te voegen. Populair bij klanten uit Geraardsbergen, Idegem, Moerbeke en de ruimere regio.",
+      },
+      {
+        heading: "Gelnagels in Geraardsbergen",
+        text: "Op zoek naar gelnagels in Geraardsbergen? Elite Nails in Sint-Martens-Lierde ligt op amper 10 minuten rijden van het centrum — een vlotte rit via de N42. Bij ons combineren we gelnagels met de Russische manicure-techniek: een droge werkwijze waarbij de nagelriem precies wordt teruggewerkt zonder vocht, zodat de gel direct op de nagelplaat hecht. Dat zorgt voor minder lifting, een strakker resultaat en een houdbaarheid van drie tot vijf weken. We werken uitsluitend met professionele gelproducten en bieden een breed kleurenpalet — van klassieke nudes tot felle accenten en nail art op maat. Klanten die op zoek zijn naar gelnagels geraardsbergen weten steeds vaker de weg naar Elite Nails te vinden. Kwaliteit en hygiëne staan bij ons op de eerste plaats. Bij twijfel over welke behandeling het best past, adviseren we je graag vrijblijvend.",
+      },
+      {
+        heading: "BIAB Nagels in Geraardsbergen",
+        text: "BIAB geraardsbergen — Builder In A Bottle is de behandeling voor wie niet alleen mooie maar ook gezonde nagels wil. BIAB is een versterkende opbouwgel die flexibel hecht op de eigen nagelplaat en haar de kracht geeft om te groeien zonder te breken. Anders dan acryl of harde gel beschadigt BIAB de nagel niet — integendeel, elke behandeling maakt de nagels sterker. Bij Elite Nails combineren we BIAB met de Russische manicure-voorbehandeling voor maximale hechting en een verzorgde nagelriem. Klanten die rijden vanuit Geraardsbergen zijn er in 10 minuten — en ze komen keer op keer terug. Want eens je het verschil hebt gevoeld, nagels die écht sterker worden bij elke beurt, is er geen weg terug. Biab geraardsbergen is voor velen inmiddels de vanzelfsprekende keuze. Onze nagelstyliste begeleidt je graag bij je eerste BIAB-ervaring.",
+      },
+    ],
+    faq: [
+      {
+        question: "Is Elite Nails gemakkelijk bereikbaar vanuit Geraardsbergen?",
+        answer:
+          "Absoluut. Ons studio in Sint-Martens-Lierde ligt op slechts 10 minuten rijden van Geraardsbergen via de N42. Er is gratis parkeerruimte vlak bij de studio. Veel klanten uit Geraardsbergen, Idegem en Moerbeke rijden ons graag even voorbij — voor een behandeling die de moeite meer dan waard is.",
+      },
+      {
+        question: "Wat is het verschil tussen BIAB en gelnagels?",
+        answer:
+          "Gelnagels geven kleur en glans, maar versterken de eigen nagel niet structureel. BIAB (Builder In A Bottle) is een opbouwgel die de nagelplaat actief versterkt terwijl je hem draagt. BIAB is ideaal als je brosse nagels hebt of je eigen nagels wilt laten groeien. Gewone gelnagels zijn perfect als je nagels al stevig zijn en je primair een mooie, langdurige kleur wilt.",
+      },
+      {
+        question: "Hoe lang duurt een behandeling bij Elite Nails?",
+        answer:
+          "Een Russische manicure duurt gemiddeld 60 tot 90 minuten, afhankelijk van de toestand van de nagelriemen en de gekozen behandeling. We nemen de tijd die nodig is — haastig werken rondom de nagelriem is de voornaamste oorzaak van irritatie, dus we doen het rustig en grondig.",
+      },
+      {
+        question: "Hoe lang houdt BIAB of een gelnagel?",
+        answer:
+          "Met de juiste voorbereiding en een goede thuisverzorging houdt BIAB bij Elite Nails drie tot vijf weken. Gewone gelnagels houden gemiddeld twee tot drie weken. Factoren zoals frequent handenwerk of contact met agressieve schoonmaakmiddelen kunnen de houdbaarheid beïnvloeden. We geven je bij elke behandeling concrete tips mee.",
+      },
+      {
+        question: "Hoeveel kost een BIAB-manicure bij Elite Nails?",
+        answer:
+          "De prijs hangt af van de gekozen kleur, lengte en eventuele nail art. Neem contact op via Instagram voor een duidelijk overzicht van de actuele tarieven — we bezorgen je graag alle info vóór je eerste afspraak.",
       },
     ],
     contactLine:
       "Steenweg 234b, 9572 Sint-Martens-Lierde | info@elitenails.biz | @elite_nails_lierde",
-    directions: "Via de N42 richting Lierde bent u er in een tiental minuten.",
+    directions: "Via de N42 richting Lierde ben je er in een tiental minuten.",
   },
 
   ninove: {
