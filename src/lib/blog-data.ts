@@ -279,10 +279,10 @@ export const POSTS: Record<string, BlogPost> = {
         ],
       },
       {
-        heading: "BIAB en gelnagels bij Elite Nails in Lierde",
+        heading: "BIAB bij Elite Nails in Lierde",
         body: [
-          "Bij Elite Nails in Sint-Martens-Lierde bieden we zowel BIAB als gelnagels aan — altijd gecombineerd met de Russische manicure techniek voor een perfecte nagelvoorbereiding, maximale hechting en het langste mogelijke resultaat.",
-          "Klanten uit Geraardsbergen, Brakel, Zottegem en de wijde regio vinden hun weg naar ons kleine, discrete en gezellige studio. Weet je nog niet welke behandeling het best past bij jouw nagels? Stuur ons een berichtje via Instagram — we helpen je graag bij de keuze, helemaal vrijblijvend.",
+          "Bij Elite Nails in Sint-Martens-Lierde zijn we gespecialiseerd in BIAB — altijd gecombineerd met de Russische manicure techniek voor een perfecte nagelvoorbereiding, maximale hechting en het langste mogelijke resultaat. BIAB is onze expertise, en dat merk je.",
+          "Klanten uit Geraardsbergen, Brakel, Zottegem en de wijde regio vinden hun weg naar ons kleine, discrete en gezellige studio. Wil je weten of BIAB de juiste behandeling is voor jouw nagels? Stuur ons een berichtje via Instagram — we helpen je graag, helemaal vrijblijvend.",
         ],
       },
     ],
