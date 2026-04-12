@@ -4,7 +4,11 @@ export type BlogPost = {
   metaDescription: string;
   h1: string;
   intro: string;
-  sections: { heading: string; body: string[] }[];
+  sections: {
+    heading: string;
+    body: string[];
+    table?: { headers: string[]; rows: string[][] };
+  }[];
   publishDate: string;
   relatedLinks?: { text: string; href: string }[];
 };
@@ -208,6 +212,77 @@ export const POSTS: Record<string, BlogPost> = {
         body: [
           "Ben je op zoek naar een russische manicure in de buurt van Zottegem? Elite Nails is gevestigd in Sint-Martens-Lierde, op slechts 15 minuten rijden via de N42. Klanten uit Zottegem, Herzele, Brakel, Geraardsbergen en de hele regio vinden hun weg naar ons kleine, gezellige en discrete studio.",
           "Onze nagelstyliste is gespecialiseerd in de russische manicure techniek en werkt uitsluitend met gecertificeerd professioneel materiaal. Afspraken worden gemaakt via Instagram — we begeleiden je graag bij de keuze van de juiste behandeling voor jouw nagels en wensen.",
+        ],
+      },
+    ],
+  },
+
+  "biab-vs-gelnagels": {
+    slug: "biab-vs-gelnagels",
+    metaTitle: "BIAB vs Gelnagels: Wat is het Verschil? | Elite Nails",
+    metaDescription:
+      "BIAB of gelnagels — wat is het verschil en wat past bij jouw nagels? Ontdek de voordelen van BIAB nagels en maak de juiste keuze.",
+    h1: "BIAB vs Gelnagels: Wat is het verschil en wat past bij jou?",
+    intro:
+      "Je hebt er vast al van gehoord: BIAB nagels. Maar wat is nu precies het verschil met gewone gelnagels? En welke behandeling past het best bij jou? In dit artikel leggen we het stap voor stap uit — zodat je volgende salonbezoek een bewuste keuze wordt.",
+    publishDate: "2026-04-12",
+    relatedLinks: [
+      {
+        text: "Nagelstudio in de buurt van Zottegem — Elite Nails",
+        href: "/nl/nagelstudio-zottegem",
+      },
+      {
+        text: "Wat is een Russische Manicure? Alles wat je moet weten",
+        href: "/nl/blog/wat-is-een-russische-manicure",
+      },
+    ],
+    sections: [
+      {
+        heading: "Wat zijn BIAB nagels?",
+        body: [
+          "BIAB staat voor Builder In A Bottle — een versterkende builder gel die rechtstreeks op de natuurlijke nagel aangebracht wordt. In tegenstelling tot gewone gelpolish is BIAB dikker, structureler en versterkend van aard. Het wordt met een penseel aangebracht en uitgehard onder een UV/LED-lamp.",
+          "Het grote voordeel van biab nagels? Ze versterken de eigen nagelplaat terwijl je ze draagt. De nagels groeien onder de BIAB-laag en worden bij elke behandeling sterker. Voor wie last heeft van brosse, dunne of snel afbrekende nagels is BIAB dan ook dé aangewezen behandeling.",
+          "BIAB is bovendien licht flexibel, waardoor het meebeweegt met de nagel in plaats van af te breken bij stoten of druk. En hoewel het primair een versterkende behandeling is, is het verkrijgbaar in tientallen kleuren — of te gebruiken als transparante base onder kleurgelpolish.",
+        ],
+      },
+      {
+        heading: "Wat zijn gelnagels?",
+        body: [
+          "Gelnagels — ook wel gelpolish of UV gel — is een kleurlaag die aangebracht wordt op de natuurlijke nagel en uitgehard wordt onder een UV/LED-lamp. De laag is dunner dan BIAB en biedt voornamelijk kleur en glans, zonder de nagel structureel te versterken.",
+          "Gelnagels zijn ideaal voor wie al gezonde, stevige nagels heeft en gewoon een mooie, langdurige kleur wil. De behandeling duurt iets korter dan BIAB en het kleurenpalet is doorgaans breder — van nude tot felle accenten en uitgebreide nail art.",
+          "Kort samengevat: gelnagels zijn er voor de look, BIAB is er voor de look én de nagelgezondheid.",
+        ],
+      },
+      {
+        heading: "De belangrijkste verschillen tussen BIAB en gelnagels",
+        body: [
+          "De keuze bij biab vs gelnagels hangt af van wat je wil bereiken: versterking, kleur, of allebei. Hier zijn de vijf belangrijkste criteria op een rij:",
+        ],
+        table: {
+          headers: ["", "BIAB", "Gelnagels"],
+          rows: [
+            ["Duurzaamheid", "3–5 weken", "2–3 weken"],
+            ["Nagelgezondheid", "Versterkt de nagel actief", "Geen versterkend effect"],
+            ["Kosten", "Vanaf €45", "Vanaf €35"],
+            ["Uiterlijk", "Naturel tot gekleurd", "Breed kleurenpalet"],
+            ["Onderhoudsfrequentie", "Elke 4–5 weken", "Elke 2–3 weken"],
+          ],
+        },
+      },
+      {
+        heading: "Wanneer kies je voor BIAB?",
+        body: [
+          "Kies voor biab nagels als je last hebt van brosse, dunne of snel afbrekende nagels die moeilijk groeien. De builder gel beschermt de nagelplaat en geeft haar de ruimte om sterker te worden. Na enkele behandelingen merken de meeste klanten al een duidelijk verschil.",
+          "BIAB is ook de slimme keuze als je minder frequent naar de salon wil. Dankzij de betere hechting en hogere dikte houdt het resultaat langer dan gewone gelpolish — minder bijhoudafspraken, meer rust.",
+          "Kies voor gelnagels als je al stevige nagels hebt, wil experimenteren met kleuren of nail art, of als je budget iets lager ligt.",
+          "Goed nieuws: je hoeft niet te kiezen. Veel klanten bij Elite Nails combineren het beste van beide werelden — builder in a bottle als versterkende basis, met kleurgelpolish eroverheen. Zo profiteer je van de duurzaamheid en nagelgezondheid van BIAB én de onbeperkte kleurmogelijkheden van gelnagels.",
+        ],
+      },
+      {
+        heading: "BIAB en gelnagels bij Elite Nails in Lierde",
+        body: [
+          "Bij Elite Nails in Sint-Martens-Lierde bieden we zowel BIAB als gelnagels aan — altijd gecombineerd met de Russische manicure techniek voor een perfecte nagelvoorbereiding, maximale hechting en het langste mogelijke resultaat.",
+          "Klanten uit Geraardsbergen, Brakel, Zottegem en de wijde regio vinden hun weg naar ons kleine, discrete en gezellige studio. Weet je nog niet welke behandeling het best past bij jouw nagels? Stuur ons een berichtje via Instagram — we helpen je graag bij de keuze, helemaal vrijblijvend.",
         ],
       },
     ],

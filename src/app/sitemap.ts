@@ -62,6 +62,7 @@ const blogSlugs = [
   "russische-manicure-uitgelegd",
   "biab-nagels-alles-wat-je-moet-weten",
   "wat-is-een-russische-manicure",
+  "biab-vs-gelnagels",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

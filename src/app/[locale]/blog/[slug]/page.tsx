@@ -145,6 +145,42 @@ export default async function BlogPost({ params }: Props) {
                   {paragraph}
                 </p>
               ))}
+              {section.table && (
+                <div className="mt-6 overflow-x-auto">
+                  <table className="w-full text-sm font-light border-collapse">
+                    <thead>
+                      <tr>
+                        {section.table.headers.map((h, k) => (
+                          <th
+                            key={k}
+                            className="text-left text-cream/50 text-xs tracking-[0.2em] uppercase py-3 pr-6 border-b border-white/10 font-sans font-normal"
+                          >
+                            {h}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {section.table.rows.map((row, k) => (
+                        <tr key={k} className="border-b border-white/5 last:border-0">
+                          {row.map((cell, l) => (
+                            <td
+                              key={l}
+                              className={`py-3 pr-6 align-top leading-relaxed ${
+                                l === 0
+                                  ? "text-cream/60 font-sans text-xs tracking-wide uppercase"
+                                  : "text-cream/80"
+                              }`}
+                            >
+                              {cell}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
             </section>
           ))}
         </article>
