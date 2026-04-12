@@ -168,11 +168,11 @@ export const CITIES: Record<string, CityPage> = {
     city: "Ronse",
     metaTitle: "Nagelstudio Ronse | Russian Manicure & BIAB | Elite Nails",
     metaDescription:
-      "Nagelstudio bij Ronse? Elite Nails in Sint-Martens-Lierde, op 20 min. Russische manicure, BIAB, gelnagels, lash & brow laminatie. Boek nu!",
+      "Nagelstudio bij Ronse? Elite Nails in Sint-Martens-Lierde op 20 min. Russische manicure, BIAB en gelnagels. Boek via Instagram!",
     h1: "Nagelstudio in de buurt van Ronse — Elite Nails Sint-Martens-Lierde",
     intro: [
-      "Elite Nails in Sint-Martens-Lierde is een gespecialiseerde nagelstudio op circa 20 minuten van Ronse, en dé bestemming voor wie op zoek is naar een Russische manicure in de regio. Onze klanten komen uit Ronse, Kluisbergen, Maarkedal, Horebeke en omliggende gemeenten voor de precisie, hygiëne en persoonlijke aanpak die ons studio kenmerken.",
-      "Bij Elite Nails draait alles om precisie en verzorging. We nemen de tijd voor elke klant en werken met gecertificeerd professioneel materiaal. U merkt het verschil al bij de eerste behandeling.",
+      "Ben je woonachtig in Ronse of een omliggende gemeente en op zoek naar een nagelstudio die kwaliteit en precisie vooropstelt? Elite Nails in Sint-Martens-Lierde ligt op circa 20 minuten rijden van Ronse — een vlotte rit via de N36 of N60. Klanten uit Ronse, Kluisbergen, Maarkedal en Horebeke vinden hun weg naar ons gezellige, discrete studio.",
+      "Bij Elite Nails draait alles om precisie en persoonlijke aandacht. We nemen de tijd voor elke klant en werken met gecertificeerd professioneel materiaal. Je merkt het verschil al bij de eerste behandeling.",
     ],
     services: [
       "Russische manicure",
@@ -184,18 +184,43 @@ export const CITIES: Record<string, CityPage> = {
     ],
     sections: [
       {
-        heading: "De Russische manicure in de regio Ronse",
-        text: "De Russische manicure is een droge manicuretechniek die intens werkt op de nagel en cuticula. Het gebruik van geen water betekent een betere hechting van gel of lak, een schoner resultaat, en een behandeling die langer meegaat. Het is dé manicure voor wie kwaliteit boven alles stelt — en steeds vaker de keuze van klanten uit de regio Ronse-Kluisbergen.",
+        heading: "Nagelstudio in de buurt van Ronse",
+        text: "Vanuit Ronse rij je via de N36 of N60 richting Geraardsbergen, en van daaruit volg je de N42 richting Lierde. De rit duurt gemiddeld 20 minuten en er is gratis parkeerruimte vlak bij ons studio. Geen drukte, geen gedrang — gewoon even de regio uitrijden en aankomen in een rustige, persoonlijke omgeving waar jij centraal staat.",
       },
       {
-        heading: "BIAB voor klanten uit Ronse: sterk en naturel",
-        text: "BIAB (Builder In A Bottle) is een versterkende behandeling waarbij een speciale gel op de natuurlijke nagel wordt aangebracht. Ideaal voor wie brosse nagels heeft of beschermde nagels wil zonder het kunstmatige uiterlijk van acryl. BIAB is combineerbaar met kleurgelpolish voor een complete look.",
+        heading: "Gelnagels in Ronse",
+        text: "Op zoek naar gelnagels in Ronse? Maak de 20 minuten naar Elite Nails in Sint-Martens-Lierde en ontdek wat het verschil maakt. Bij ons worden gelnagels altijd gecombineerd met de Russische manicure-techniek: een droge werkwijze waarbij de nagelriem precies wordt teruggewerkt, zodat de gel rechtstreeks op de nagelplaat hecht. Het resultaat is minder lifting, een strakker uiterlijk en een houdbaarheid van drie tot vijf weken — aanzienlijk langer dan bij een traditionele manicure. We bieden een breed kleurenpalet: van subtiele nudes tot expressieve kleuren en nail art op maat. Klanten die op zoek zijn naar gelnagels ronse kiezen steeds vaker voor de rit naar Lierde, omdat het niveau van afwerking elders moeilijk te evenaren is. Gelnagels ronse — voor wie kwaliteit en duurzaamheid waardeert.",
+      },
+      {
+        heading: "BIAB Nagels in Ronse",
+        text: "Biab ronse — voor wie niet alleen mooie maar ook sterkere nagels wil. BIAB (Builder In A Bottle) is een versterkende opbouwgel die flexibel hecht op de eigen nagelplaat. In tegenstelling tot acryl beschadigt BIAB de nagel niet — het versterkt haar van behandeling tot behandeling. Perfect als je last hebt van brosse, dunne of snel afbrekende nagels. Bij Elite Nails combineren we BIAB met de Russische manicure-voorbehandeling voor maximale hechting en een verzorgde nagelriem. Klanten die rijden vanuit Ronse bevestigen het keer op keer: eens je merkt hoe je nagels sterker worden na elke beurt, ben je verkocht. De rit van 20 minuten is het meer dan waard. Biab ronse is voor onze klanten uit de regio inmiddels de vanzelfsprekende keuze.",
+      },
+      {
+        heading: "Russian Manicure in de regio Ronse",
+        text: "De Russische manicure is onze absolute specialiteit bij Elite Nails. Deze droge manicuretechniek werkt zonder water, waardoor de gel beter hecht, de cuticula nauwkeuriger behandeld wordt en het resultaat merkbaar langer meegaat. Voor klanten uit Ronse is de 20 minuten rijden naar Sint-Martens-Lierde een bewuste keuze — voor een niveau van vakmanschap en russische manicure-expertise dat in de regio moeilijk te vinden is.",
+      },
+    ],
+    faq: [
+      {
+        question: "Hoe ver is Elite Nails van Ronse?",
+        answer:
+          "Elite Nails ligt in Sint-Martens-Lierde, op circa 20 minuten rijden van Ronse via de N36 of N60 richting Geraardsbergen en dan de N42 richting Lierde. Er is gratis parkeerruimte vlak bij het studio.",
+      },
+      {
+        question: "Kan ik online boeken bij Elite Nails?",
+        answer:
+          "Afspraken maak je via Instagram — stuur ons een DM via @elite_nails_lierde of een e-mail naar info@elitenails.biz. We bevestigen je afspraak zo snel mogelijk en begeleiden je bij de keuze van de juiste behandeling.",
+      },
+      {
+        question: "Welke diensten zijn beschikbaar bij Elite Nails?",
+        answer:
+          "Elite Nails biedt Russische manicure, BIAB (Builder In A Bottle), gelnagels, pedicure, wimpers lamineren en wenkbrauwen lamineren. Onze specialiteit is de Russische manicure — een droge techniek voor een preciezer en duurzamer resultaat.",
       },
     ],
     contactLine:
       "Steenweg 234b, 9572 Sint-Martens-Lierde | info@elitenails.biz | @elite_nails_lierde",
     directions:
-      "Via de N36 of N60 richting Lierde bent u er in circa 20 minuten.",
+      "Via de N36 of N60 richting Geraardsbergen, dan de N42 richting Lierde — circa 20 minuten.",
   },
 
   zottegem: {
@@ -764,13 +789,13 @@ export const CITIES: Record<string, CityPage> = {
   denderleeuw: {
     slug: "denderleeuw",
     city: "Denderleeuw",
-    metaTitle: "Nagelstudio Denderleeuw | Russian Manicure | Elite Nails",
+    metaTitle: "Nagelstudio Denderleeuw | Russian Manicure & BIAB | Elite Nails",
     metaDescription:
-      "Nagelstudio bij Denderleeuw? Elite Nails in Sint-Martens-Lierde, op 25 min. Russische manicure, BIAB, gelnagels & wimpers lamineren. Boek nu!",
-    h1: "Nagelstudio bij Denderleeuw — Elite Nails Lierde",
+      "Nagelstudio dicht bij Denderleeuw? Elite Nails in Sint-Martens-Lierde, op 25 min. Russische manicure, BIAB & gelnagels door een specialist. Boek via Instagram!",
+    h1: "Nagelstudio in de buurt van Denderleeuw — Elite Nails Lierde",
     intro: [
-      "Ben je woonachtig in Denderleeuw, Iddergem of Welle en ben je op zoek naar een nagelstudio gespecialiseerd in de Russische manicure? Elite Nails in Sint-Martens-Lierde is op circa 25 minuten bereikbaar en is dé bestemming voor wie kwaliteit, precisie en hygiëne centraal stelt. Klanten uit de Denderstreek kiezen bewust voor ons studio.",
-      "Bij Elite Nails nemen we de tijd voor elke klant. Geen haast, geen compromissen — alleen de beste behandeling voor jouw nagels. Of je nu kiest voor de Russische manicure, BIAB of wimpers lamineren, je bent bij ons in goede handen.",
+      "Ben je woonachtig in Denderleeuw, Iddergem of Welle en zoek je een nagelstudio die écht gespecialiseerd is in de Russische manicure en BIAB? Elite Nails in Sint-Martens-Lierde is op circa 25 minuten bereikbaar via de N42 of N8. Ons studio staat voor precisiewerk, hygiëne en een persoonlijke aanpak waarbij jij centraal staat.",
+      "Klanten uit de Denderstreek en de omliggende gemeenten kiezen bewust voor Elite Nails — niet alleen vanwege de bereikbaarheid, maar omdat de kwaliteit van elke behandeling voor zich spreekt. Geen haast, geen compromissen. Alleen het beste resultaat voor jouw nagels.",
     ],
     services: [
       "Russische manicure",
@@ -782,18 +807,43 @@ export const CITIES: Record<string, CityPage> = {
     ],
     sections: [
       {
-        heading: "Russische manicure vanuit Denderleeuw: 25 minuten rijden",
-        text: "De Russische manicure is een droge nagelbehandelingstechniek die zorgt voor een langdurig, precies resultaat. Zonder water hecht gel of lak beter op de nagel, wordt de cuticula nauwkeuriger behandeld, en is het hygiënisch effect merkbaar superieur. Klanten uit Denderleeuw rijden graag de 25 minuten naar Elite Nails voor dit niveau van vakmanschap.",
+        heading: "Nagelstudio in de buurt van Denderleeuw",
+        text: "Elite Nails bevindt zich in Sint-Martens-Lierde, op circa 25 minuten rijden van Denderleeuw via de N42 of N8. Ons studio is kleinschalig en werkt op afspraak, zodat we voor elke klant de nodige tijd en aandacht kunnen vrijmaken. Of je nu uit Denderleeuw, Iddergem, Welle of Liedekerke komt — je bent welkom en je wordt behandeld met de zorg die je verdient.",
       },
       {
-        heading: "BIAB en wimpers lamineren voor klanten uit de Denderstreek",
-        text: "BIAB is de populairste versterkers behandeling voor de natuurlijke nagel — een dunne builder gel geeft extra stevigheid zonder het gewone uiterlijk aan te tasten. Wimpers lamineren geeft je wimpers een gebogen, volle look die weken meegaat. Beide behandelingen zijn beschikbaar bij Elite Nails, op circa 25 minuten van Denderleeuw.",
+        heading: "Gelnagels in Denderleeuw — kwaliteit op 25 minuten",
+        text: "Op zoek naar gelnagels in de buurt van Denderleeuw? Bij Elite Nails krijg je gelnagels die perfect aansluiten op jouw natuurlijke nagel. We werken met professionele gel en nauwkeurige technieken voor een resultaat dat weken mooi blijft. Klanten uit Denderleeuw rijden de 25 minuten bewust voor onze gelnagels — omdat de kwaliteit het verschil maakt.",
+      },
+      {
+        heading: "BIAB Nagels in Denderleeuw — versterk je natuurlijke nagels",
+        text: "BIAB (Builder In A Bottle) is de populairste behandeling voor wie de natuurlijke nagel wil versterken zonder kunstnagels. Een dunne laag builder gel geeft extra stevigheid, beschermt de nagel en ziet er verzorgd uit. Bij Elite Nails zijn we gespecialiseerd in BIAB en passen we de techniek zorgvuldig toe voor een duurzaam resultaat. Klanten uit Denderleeuw en omgeving ontdekken steeds vaker de voordelen van BIAB boven traditionele gelnagels.",
+      },
+      {
+        heading: "Russische Manicure in de regio Denderleeuw",
+        text: "De Russische manicure is dé specialiteit van Elite Nails. Deze droge manicuretechniek — zonder water — zorgt voor een extreem nette cuticula, betere hechting van gel of lak, en een hygiënisch superieur resultaat. Voor klanten uit de Denderstreek is Elite Nails de dichtstbijzijnde studio die deze techniek op professioneel niveau uitvoert. 25 minuten rijden voor een manicure die 4 tot 6 weken meegaat — het is de moeite meer dan waard.",
+      },
+    ],
+    faq: [
+      {
+        question: "Hoe ver is Elite Nails van Denderleeuw?",
+        answer:
+          "Elite Nails bevindt zich in Sint-Martens-Lierde, op circa 25 minuten rijden van Denderleeuw via de N42 of N8 richting Geraardsbergen. Er is voldoende parkeergelegenheid ter plaatse.",
+      },
+      {
+        question: "Kan ik online een afspraak maken vanuit Denderleeuw?",
+        answer:
+          "Afspraken maak je via Instagram DM (@elite_nails_lierde). We helpen je snel aan een geschikte dag en tijd, ook voor klanten die wat verder rijden zoals vanuit Denderleeuw.",
+      },
+      {
+        question: "Welke behandelingen zijn beschikbaar bij Elite Nails?",
+        answer:
+          "We bieden Russische manicure, BIAB, gelnagels, pedicure, wimpers lamineren en wenkbrauwen lamineren. Onze specialiteit is de Russische manicure en BIAB — technieken waarbij precisie en hygiëne vooropstaan.",
       },
     ],
     contactLine:
       "Steenweg 234b, 9572 Sint-Martens-Lierde | info@elitenails.biz | @elite_nails_lierde",
     directions:
-      "Via de N8 of N42 richting Geraardsbergen en verder naar Sint-Martens-Lierde — circa 25 minuten.",
+      "Via de N42 of N8 richting Geraardsbergen en verder naar Sint-Martens-Lierde — circa 25 minuten vanuit Denderleeuw.",
   },
 
   roosdaal: {
