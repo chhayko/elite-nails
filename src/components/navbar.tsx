@@ -58,6 +58,12 @@ export function Navbar() {
                 {link.label}
               </a>
             ))}
+            <a
+              href="/nl/blog"
+              className="text-xs font-medium uppercase tracking-[0.2em] transition-colors duration-500 font-sans hover:opacity-70 text-white/90"
+            >
+              Blog
+            </a>
           </div>
 
           <div className="flex items-center gap-4">
@@ -104,6 +110,13 @@ export function Navbar() {
                 {link.label}
               </a>
             ))}
+            <a
+              href="/nl/blog"
+              onClick={() => setMobileOpen(false)}
+              className="text-sm font-medium uppercase tracking-[0.2em] text-white/80 hover:text-white transition-colors font-sans"
+            >
+              Blog
+            </a>
             <a
               href="https://www.instagram.com/elite_nails_lierde/"
               target="_blank"
