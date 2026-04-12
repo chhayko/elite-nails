@@ -52,7 +52,16 @@ export async function generateMetadata({
   return {
     title: { absolute: meta.title },
     description: meta.description,
-    alternates: { canonical },
+    alternates: {
+      canonical,
+      languages: {
+        nl: `${BASE_URL}/nl`,
+        en: `${BASE_URL}/en`,
+        fr: `${BASE_URL}/fr`,
+        ru: `${BASE_URL}/ru`,
+        "x-default": `${BASE_URL}/nl`,
+      },
+    },
     openGraph: {
       title: meta.title,
       description: meta.description,

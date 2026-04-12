@@ -528,7 +528,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: nlOverride ? { absolute: nlOverride.title } : service.name,
     description: metaDescription,
-    alternates: { canonical },
+    alternates: {
+      canonical,
+      languages: {
+        nl: `${BASE_URL}/nl/diensten/${slug}`,
+        en: `${BASE_URL}/en/diensten/${slug}`,
+        fr: `${BASE_URL}/fr/diensten/${slug}`,
+        ru: `${BASE_URL}/ru/diensten/${slug}`,
+        "x-default": `${BASE_URL}/nl/diensten/${slug}`,
+      },
+    },
     openGraph: {
       title: metaTitle,
       description: metaDescription,
