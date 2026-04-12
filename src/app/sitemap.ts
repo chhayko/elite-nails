@@ -61,6 +61,7 @@ const citySlugs = [
 const blogSlugs = [
   "russische-manicure-uitgelegd",
   "biab-nagels-alles-wat-je-moet-weten",
+  "wat-is-een-russische-manicure",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

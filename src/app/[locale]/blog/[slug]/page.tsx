@@ -13,6 +13,7 @@ type BlogPost = {
   intro: string;
   sections: { heading: string; body: string[] }[];
   publishDate: string;
+  relatedLinks?: { text: string; href: string }[];
 };
 
 const POSTS: Record<string, BlogPost> = {
@@ -146,6 +147,75 @@ const POSTS: Record<string, BlogPost> = {
         body: [
           "Bij Elite Nails combineren we de BIAB-behandeling vaak met de Russische manicure — voor een perfect voorbereide nagelplaat én een langdurig resultaat. Ons studio is bereikbaar vanuit Geraardsbergen (10 min), Brakel (10 min), Ninove (15 min), Zottegem (15 min) en Ronse (20 min).",
           "Boek je BIAB-behandeling via Instagram @elite_nails_lierde of stuur ons een e-mail via info@elitenails.biz.",
+        ],
+      },
+    ],
+  },
+};
+
+  "wat-is-een-russische-manicure": {
+    slug: "wat-is-een-russische-manicure",
+    metaTitle: "Russische Manicure: Voordelen & Nadelen | Elite Nails",
+    metaDescription:
+      "Wat is een russische manicure, wat zijn de voordelen en nadelen, en hoe verschilt het van een gewone manicure? Alles wat je moet weten.",
+    h1: "Wat is een Russische Manicure? Alles wat je moet weten",
+    intro:
+      "De russische manicure is de voorbije jaren uitgegroeid tot een van de meest gevraagde nagelbehandelingen in België. Maar wat is het precies, wat zijn de voordelen en nadelen, en voor wie is het eigenlijk geschikt? In dit artikel leggen we alles eerlijk en helder uit — zodat jij een weloverwogen keuze kunt maken.",
+    publishDate: "2026-04-12",
+    relatedLinks: [
+      {
+        text: "Nagelstudio in de buurt van Zottegem — Elite Nails",
+        href: "/nl/nagelstudio-zottegem",
+      },
+      {
+        text: "Bekijk onze diensten: Russische Manicure, BIAB & meer",
+        href: "/nl/diensten/russische-manicure",
+      },
+    ],
+    sections: [
+      {
+        heading: "Wat maakt een Russische manicure anders?",
+        body: [
+          "De russische manicure — ook wel 'droge manicure' of 'e-file manicure' — verschilt op één fundamenteel punt van een klassieke manicure: er wordt geen water gebruikt.",
+          "Bij een gewone manicure worden de nagels geweekt in warm water om de cuticula te verzachten. Dat klinkt onschuldig, maar water laat de nagelplaat opzwellen. Als er daarna gel of lak aangebracht wordt, krimpt de nagel bij het drogen weer terug — en dat is precies waarop gel of lak begint los te laten.",
+          "De russische manicure werkt volledig droog. Met kleine elektrische vijlen — e-file bits — worden de cuticula en dode huid met extreme precisie verwijderd, zonder de levende huid te raken. Het nageloppervlak wordt daarna gladgepolijst voor een optimale hechting. Het verschil met een gewone manicure is direct zichtbaar: de nagelriemzone is strakker, de gel houdt aanzienlijk langer, en het resultaat ziet er professioneler uit.",
+          "Een behandeling begint met het reinigen en vormgeven van de nagels. Daarna werkt de nagelstyliste met een speciale cuticula-bit de nagelriem voorzichtig terug en verwijdert ze de dode huidcellen rondom de nagel. Het geheel wordt afgewerkt met een polijstbit die het nageloppervlak vlak en glad maakt — klaar voor een perfecte hechting van gel of BIAB.",
+        ],
+      },
+      {
+        heading: "De voordelen van een Russische manicure",
+        body: [
+          "Er is een reden waarom steeds meer nagelstudio's overstappen naar de droge techniek. De russische manicure voordelen zijn concreet en meetbaar.",
+          "Langer houdbaar resultaat: dankzij de droge voorbereiding hecht gel of BIAB gemiddeld 3 tot 5 weken zonder loslaten of afbladderen — aanzienlijk langer dan bij een natte manicure.",
+          "Hygiënischer: er is geen waterbassin, een bekende bron van bacteriën en schimmelinfecties. Alle e-file bits worden na elke klant gesteriliseerd.",
+          "Nauwkeuriger: elektrische vijlen laten een niveau van precisie toe dat met handinstrumenten simpelweg niet haalbaar is. De cuticula-lijn is strakker, elk detail nauwkeuriger afgewerkt.",
+          "Minder beschadigend: mits uitgevoerd door een ervaren nagelstyliste beschadigt de techniek de nagels niet. De nagelplaat wordt niet verzwakt door langdurig weken.",
+          "Vergeet ook niet dat de langere houdbaarheid op termijn kostenefficiënter is. Minder behandelingen per jaar betekent minder uitgaven — ook al lijkt de prijs per behandeling iets hoger dan bij een snelle gel-service.",
+          "Wat zijn dan de russische manicure nadelen? Die zijn eerlijk gezegd beperkt. De behandeling duurt iets langer — gemiddeld 75 tot 90 minuten — en vereist een ervaren hand. Bij een onervaren styliste bestaat het risico op overmatig verwijderen van levende huid. Kies daarom altijd voor een gecertificeerde professional.",
+        ],
+      },
+      {
+        heading: "Is een Russische manicure geschikt voor jou?",
+        body: [
+          "De russische manicure is geschikt voor vrijwel iedereen, maar bijzonder populair bij mensen met snel afbladderend gel, problematische cuticula of een drukke agenda die liever om de vier à vijf weken een afspraak inplant dan om de twee.",
+          "Heb je erg gevoelige nagelriemen? Dat is geen probleem, maar bespreek het vooraf. Een goede nagelstyliste past druk en snelheid aan op jouw huid. Bij je eerste behandeling is een kort gesprek vooraf altijd de moeite waard.",
+          "Voor mensen die waarde hechten aan hygiëne — geen waterbassin, gesteriliseerd materiaal, geen gedeeld gereedschap — biedt de russische manicure ook op dat vlak een duidelijk voordeel.",
+          "BIAB is trouwens een populaire combinatie met de russische techniek: de droge voorbereiding zorgt voor maximale hechting, en de builder gel beschermt en versterkt de nagel tegelijk. Voor wie brosse of dunne nagels heeft, is deze combinatie bijzonder aan te raden.",
+        ],
+      },
+      {
+        heading: "Wat kost een Russische manicure?",
+        body: [
+          "De prijs van een russische manicure hangt af van de afwerking die je kiest. De droge cuticula-behandeling wordt altijd gecombineerd met gel, BIAB of gelnagels.",
+          "Bij Elite Nails hanteren we de volgende richtprijzen: russische manicure met gelpolish vanaf €35, met BIAB of gelnagels vanaf €45. Prijzen kunnen variëren op basis van nagellengte, nail art of extra's.",
+          "Een correcte russische manicure vraagt meer tijd en vaardigheid dan een snelle gel-behandeling. Een opvallend lage prijs gaat vrijwel altijd gepaard met minder precisie of inferieur materiaal. Jouw nagels zijn de investering waard.",
+        ],
+      },
+      {
+        heading: "Russische manicure in de buurt van Zottegem",
+        body: [
+          "Ben je op zoek naar een russische manicure in de buurt van Zottegem? Elite Nails is gevestigd in Sint-Martens-Lierde, op slechts 15 minuten rijden via de N42. Klanten uit Zottegem, Herzele, Brakel, Geraardsbergen en de hele regio vinden hun weg naar ons kleine, gezellige en discrete studio.",
+          "Onze nagelstyliste is gespecialiseerd in de russische manicure techniek en werkt uitsluitend met gecertificeerd professioneel materiaal. Afspraken worden gemaakt via Instagram — we begeleiden je graag bij de keuze van de juiste behandeling voor jouw nagels en wensen.",
         ],
       },
     ],
@@ -294,6 +364,25 @@ export default async function BlogPost({ params }: Props) {
             </section>
           ))}
         </article>
+
+        {/* Internal links */}
+        {post.relatedLinks && post.relatedLinks.length > 0 && (
+          <section className="px-6 md:px-16 py-12 border-t border-white/10 max-w-3xl">
+            <p className="text-mauve-light text-xs tracking-[0.35em] uppercase mb-6">Lees ook</p>
+            <ul className="space-y-3">
+              {post.relatedLinks.map((link, i) => (
+                <li key={i}>
+                  <Link
+                    href={link.href}
+                    className="text-cream/80 hover:text-cream text-sm font-light underline underline-offset-4 decoration-white/20 hover:decoration-white/60 transition-colors duration-200"
+                  >
+                    {link.text}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {/* CTA */}
         <section className="px-6 md:px-16 py-20 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center gap-8 max-w-3xl">
