@@ -7,7 +7,8 @@ const serviceSlugs = [
   "biab",
   "gelnagels",
   "pedicure",
-  "wimper-wenkbrauw",
+  "wimpers-lamineren",
+  "wenkbrauw-laminatie",
 ];
 const citySlugs = [
   // ~3–5 km

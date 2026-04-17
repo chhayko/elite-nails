@@ -38,14 +38,14 @@ const servicesSlugs = [
     nameKey: "lashLamination" as const,
     roleKey: "lashLaminationRole" as const,
     imageUrl: "/services/lash-lamination.jpg",
-    slug: "wimper-wenkbrauw",
+    slug: "wimpers-lamineren",
   },
   {
     id: 6,
     nameKey: "browLamination" as const,
     roleKey: "browLaminationRole" as const,
     imageUrl: "/services/brow-lamination.jpg",
-    slug: "wimper-wenkbrauw",
+    slug: "wenkbrauw-laminatie",
   },
 ];
 

@@ -76,18 +76,32 @@ const serviceData: Record<string, LocaleData> = {
         { title: "Massage & finishing", desc: "Hydrating massage and optional gel polish on toenails." },
       ],
     },
-    "wimper-wenkbrauw": {
-      name: "Lash & Brow",
-      subtitle: "LIFT, DEFINE & SHAPE",
+    "wimpers-lamineren": {
+      name: "Lash Lamination",
+      subtitle: "LASH LIFT & LAMINATION",
       description:
-        "Our lash and brow treatments give your gaze definition and depth. Lash lamination lifts and curls your natural lashes for an open-eyed look lasting weeks. Brow lamination smooths and sets brow hairs into a full, groomed shape. Both treatments use your own natural hair — no extensions needed.",
+        "Lash lamination lifts and curls your natural lashes for an open-eyed look lasting 6–8 weeks. No extensions, no glue — just your own lashes, beautifully enhanced. Add optional tinting for a mascara effect without mascara.",
       duration: "45–60 min",
       price: "€50",
       steps: [
-        { title: "Consultation", desc: "Desired shape and lift are discussed." },
-        { title: "Cleansing", desc: "Lashes and brows are thoroughly cleaned." },
-        { title: "Lifting & lamination", desc: "Professional products lift, curl and set." },
-        { title: "Tinting & finishing", desc: "Optional tint for extra depth and definition." },
+        { title: "Consultation", desc: "Desired lift and curl are discussed. The right silicone pad is selected for your lash length." },
+        { title: "Cleansing", desc: "Lashes are thoroughly cleaned and degreased for optimal product adhesion." },
+        { title: "Lifting & lamination", desc: "Professional lifting products lift, curl and set your lashes in the desired shape." },
+        { title: "Tinting & finishing", desc: "Optional lash tint for extra depth and a mascara effect. A nourishing serum finishes the treatment." },
+      ],
+    },
+    "wenkbrauw-laminatie": {
+      name: "Brow Lamination",
+      subtitle: "BROW LAMINATION",
+      description:
+        "Brow lamination sets and shapes your brow hairs into a full, structured look lasting 6–8 weeks. No microblading, no permanent ink — just your own brows, perfectly defined.",
+      duration: "30–45 min",
+      price: "€50",
+      steps: [
+        { title: "Consultation", desc: "Desired brow shape and direction are discussed." },
+        { title: "Cleansing", desc: "Brows are thoroughly cleaned for optimal product adhesion." },
+        { title: "Lamination", desc: "Brow hairs are set in the desired direction with professional lamination products." },
+        { title: "Tinting & finishing", desc: "Optional tint for extra definition. A nourishing serum finishes the treatment." },
       ],
     },
   },
@@ -264,47 +278,86 @@ const serviceData: Record<string, LocaleData> = {
         "Plan een nieuwe behandeling elke 6 tot 8 weken voor optimaal onderhoud. Bij droge hielen of snelle eeltvorming kun je vaker langskomen.",
       ],
     },
-    "wimper-wenkbrauw": {
-      name: "Wimper & Wenkbrauw",
-      subtitle: "LIFT, DEFINE & SHAPE",
+    "wimpers-lamineren": {
+      name: "Wimpers Lamineren",
+      subtitle: "LASH LIFT & LAMINATION",
       description:
-        "Onze wimper- en wenkbrauwbehandelingen geven je blik definitie en diepte. Wimperlifting tilt en krult je eigen wimpers voor een oogopslag die weken meegaat. Wenkbrauwlamination sust en fixeert de wenkbrauwhaartjes in een volle, verzorgde vorm. Beide behandelingen zijn zonder extensions — volledig met je eigen haar.",
+        "Wimpers lamineren bij Elite Nails geeft je een open, uitgerust oogopslag die 6 tot 8 weken aanhoudt. Je eigen wimpers worden getild, gekruld en gefixeerd — zonder extensions of lijm. Optioneel met wimpertinting voor een mascara-effect zonder mascara.",
       duration: "45–60 min",
       price: "€50",
       steps: [
-        { title: "Consultatie", desc: "De gewenste vorm, lift en intensiteit worden besproken. De juiste siliconen pad of staven worden gekozen op basis van de lengte en dikte van je wimpers." },
-        { title: "Reiniging", desc: "Wimpers en wenkbrauwen worden grondig gereinigd en ontvet zodat de producten optimaal kunnen hechten." },
-        { title: "Lifting & lamination", desc: "Professionele liftingproducten worden aangebracht en inwerken op de wimpers of wenkbrauwhaartjes voor een blijvend geheven en gestructureerde vorm." },
-        { title: "Kleuren & finishing", desc: "Optionele tinting van wimpers of wenkbrauwen voor extra diepte en definitie. Gevoed met een hydraterende serum na afloop." },
+        { title: "Consultatie", desc: "De gewenste lift en vorm worden besproken. De juiste siliconen pad wordt gekozen op basis van de lengte en dikte van je wimpers." },
+        { title: "Reiniging", desc: "Wimpers worden grondig gereinigd en ontvet zodat de liftingproducten optimaal kunnen hechten." },
+        { title: "Lifting & lamination", desc: "Professionele liftingproducten worden aangebracht om de wimpers te tillen, krullen en fixeren in de gewenste vorm." },
+        { title: "Kleuren & finishing", desc: "Optionele wimpertinting voor extra diepte en een mascara-effect. Gevoed met een hydraterende serum voor optimale wimperconditie." },
       ],
       body: [
-        "Wimperlifting is een behandeling waarbij je eigen wimpers worden getild en gekruld met behulp van een siliconen pad en professionele liftingproducten. Er worden geen kunstwimpers aangehecht — de behandeling werkt volledig met wat je al hebt. Het resultaat is een open, uitgerust oogopslag die 6 tot 8 weken aanhoudt, afhankelijk van de groeicyclus van je wimpers. Combineer met een tinting voor maximale diepte en een mascara-effect zonder mascara.",
-        "Wenkbrauwlamination is de tegenhanger voor de brow: de wenkbrauwhaartjes worden in de gewenste richting gefixeerd voor een volle, gestructureerde shape. Of je nu ijle wenkbrauwen hebt die je wil optisch voller maken, of drukke wenkbrauwen die alle kanten op staan — lamination brengt orde en volume tegelijkertijd. Het effect houdt 6 tot 8 weken aan en is dagelijks onderhoudsloos.",
-        "Beide behandelingen kunnen worden gecombineerd in één sessie voor een volledige brow-en-wimperbehandeling. Bij Elite Nails is de combinatie populair omdat het resultaat — diepere ogen, vollere wenkbrauwen, geen dagelijkse make-up nodig — direct zichtbaar is en weken aanhoudt zonder tussentijds bijwerken. Ideaal voor wie minder tijd wil besteden aan dagelijkse make-up maar er altijd verzorgd wil uitzien.",
+        "Wimpers lamineren is een behandeling waarbij je eigen wimpers worden getild en gekruld met behulp van een siliconen pad en professionele liftingproducten. Er worden geen kunstwimpers aangehecht — de behandeling werkt volledig met wat je al hebt. Het resultaat is een open, uitgerust oogopslag die 6 tot 8 weken aanhoudt, afhankelijk van de groeicyclus van je wimpers.",
+        "Het grote voordeel van wimperlifting tegenover extensions: geen wekelijks onderhoud, geen lijm op de wimperwortel, geen stress over water of sport. Je wimpers blijven volledig jouw eigen wimpers — alleen zichtbaar mooier. Combineer met een wimpertinting voor maximale diepte en een mascara-effect zonder mascara.",
+        "Bij Elite Nails werken we met professionele liftingproducten die de wimper niet beschadigen. Na de behandeling krijg je concrete aftercare-tips mee zodat het resultaat zo lang mogelijk aanhoudt. Wil je ook je wenkbrauwen aanpakken? Dat kan in dezelfde sessie via onze wenkbrauw laminatie.",
       ],
       faq: [
         {
           q: "Wat is het verschil tussen wimperlifting en wimperextensions?",
-          a: "Wimperlifting werkt met je eigen wimpers — er wordt niets aangehecht of gelijmd. Extensions zijn kunstwimpers die per wimper worden aangebracht en elke 2 tot 3 weken moeten worden bijgevuld. Lifting is onderhoudsarmer, zachter voor je eigen wimpers en heeft geen invloed op de natuulijke wimpergroei.",
+          a: "Wimperlifting werkt met je eigen wimpers — er wordt niets aangehecht of gelijmd. Extensions zijn kunstwimpers die per wimper worden aangebracht en elke 2 tot 3 weken moeten worden bijgevuld. Lifting is onderhoudsarmer, zachter voor je eigen wimpers en heeft geen invloed op de natuurlijke wimpergroei.",
         },
         {
-          q: "Hoe lang duurt het effect van wimperlifting?",
+          q: "Hoe lang duurt het effect van wimpers lamineren?",
           a: "Gemiddeld 6 tot 8 weken, afhankelijk van je wimpergroeicyclus. Na die periode groeien de wimpers in hun natuurlijke richting terug. Een volgende behandeling wordt aangeraden na 6 tot 8 weken voor een constant resultaat.",
         },
         {
-          q: "Is wenkbrauwlamination hetzelfde als microblading?",
-          a: "Nee. Wenkbrauwlamination is een tijdelijke behandeling die je bestaande wenkbrauwhaartjes fixeert in een gewenste vorm — geen verf, geen naalden, geen tatoeage. Microblading is een semi-permanente techniek waarbij pigment in de huid wordt aangebracht. Lamination is pijnloos, niet-invasief en tijdelijk.",
+          q: "Kan ik mascara gebruiken na wimpers lamineren?",
+          a: "Ja, maar wacht minstens 48 uur na de behandeling. In die eerste 48 uur vermijd je ook water, stoom en saunabezoek zodat de liftingvorm kan fixeren. Daarna kun je mascara normaal gebruiken — het versterkt alleen het resultaat.",
         },
         {
-          q: "Kan ik mascara gebruiken na wimperlifting?",
-          a: "Ja, maar wacht minstens 48 uur na de behandeling. In die eerste 48 uur moet je ook water, stoom en saunabezoek vermijden zodat de liftingvorm kan fixeren. Daarna kun je mascara normaal gebruiken — het versterkt alleen het resultaat.",
+          q: "Is wimpers lamineren geschikt voor korte wimpers?",
+          a: "Wimperlifting werkt het best bij wimpers van minstens 8–10 mm. Bij kortere wimpers is het effect minder uitgesproken. We bespreken dit op voorhand en kiezen de juiste siliconen pad voor jouw wimperlengte.",
         },
       ],
       aftercare: [
-        "Vermijd water, stoom en saunabezoek de eerste 48 uur na de behandeling — dit is cruciaal voor een langdurig resultaat.",
-        "Gebruik geen oliebasis make-upremover op de wimpers of wenkbrauwen, want olie lost de liftingproducten op en verkort de houdbaarheid.",
-        "Slaap indien mogelijk op de rug in de eerste paar nachten om de gecreëerde vorm te bewaren en pletten te voorkomen.",
-        "Boek een herbehandeling na 6 tot 8 weken voor een constant resultaat. Je kunt de planning combineren met een andere behandeling bij Elite Nails.",
+        "Vermijd water, stoom en saunabezoek de eerste 48 uur — dit is cruciaal voor een langdurig resultaat.",
+        "Gebruik geen oliebasis make-upremover op de wimpers, want olie lost de liftingproducten op en verkort de houdbaarheid.",
+        "Slaap indien mogelijk op de rug de eerste nacht om de gecreëerde liftingvorm te bewaren.",
+        "Boek een herbehandeling na 6 tot 8 weken voor een constant resultaat.",
+      ],
+    },
+    "wenkbrauw-laminatie": {
+      name: "Wenkbrauw Laminatie",
+      subtitle: "BROW LAMINATION",
+      description:
+        "Wenkbrauw laminatie fixeert en structureert je wenkbrauwhaartjes voor een volle, gestructureerde brow die 6 tot 8 weken aanhoudt. Geen microblading, geen permanente verf — volledig met je eigen wenkbrauwen, perfect gedefinieerd.",
+      duration: "30–45 min",
+      price: "€50",
+      steps: [
+        { title: "Consultatie", desc: "De gewenste vorm, richting en intensiteit worden besproken." },
+        { title: "Reiniging", desc: "Wenkbrauwen worden grondig gereinigd en ontvet voor optimale hechting van de lamineringproducten." },
+        { title: "Lamination", desc: "De wenkbrauwhaartjes worden in de gewenste richting gefixeerd met professionele lamineringproducten." },
+        { title: "Kleuren & finishing", desc: "Optionele wenkbrauw tinting voor extra diepte en definitie. Gevoed met een hydraterende serum na afloop." },
+      ],
+      body: [
+        "Wenkbrauw laminatie is een behandeling waarbij de wenkbrauwhaartjes in de gewenste richting worden gefixeerd voor een volle, gestructureerde brow. Of je nu ijle wenkbrauwen hebt die je optisch voller wil maken, of drukke wenkbrauwen die alle kanten op staan — lamination brengt orde en volume tegelijkertijd.",
+        "Het effect houdt 6 tot 8 weken aan en is dagelijks onderhoudsloos. Geen microblading, geen naalden, geen permanente verf. De behandeling is niet-invasief, pijnloos en tijdelijk — zonder risico voor je huid of wenkbrauwhaartjes.",
+        "Bij Elite Nails combineren we wenkbrauw laminatie optioneel met een tinting voor maximale diepte en definitie. Na de behandeling krijg je concrete aftercare-tips mee zodat het resultaat zo lang mogelijk aanhoudt.",
+      ],
+      faq: [
+        {
+          q: "Is wenkbrauw laminatie hetzelfde als microblading?",
+          a: "Nee. Wenkbrauw laminatie is een tijdelijke behandeling die je bestaande wenkbrauwhaartjes fixeert in een gewenste vorm — geen verf, geen naalden, geen tatoeage. Microblading is een semi-permanente techniek waarbij pigment in de huid wordt aangebracht. Laminatie is pijnloos, niet-invasief en tijdelijk.",
+        },
+        {
+          q: "Hoe lang houdt wenkbrauw laminatie?",
+          a: "Gemiddeld 6 tot 8 weken, afhankelijk van de haargroeicyclus en aftercare. Vermijd de eerste 48 uur water en oliebasis producten rondom de wenkbrauwen voor een maximaal resultaat.",
+        },
+        {
+          q: "Is wenkbrauw laminatie geschikt voor ijle wenkbrauwen?",
+          a: "Ja, maar het effect is het meest uitgesproken bij wenkbrauwen met voldoende haardichtheid. Met ijlere wenkbrauwen herpositioneert laminatie de aanwezige haartjes voor een vollere indruk. Een optionele tinting versterkt het effect aanzienlijk.",
+        },
+      ],
+      aftercare: [
+        "Vermijd water, stoom en saunabezoek de eerste 48 uur — essentieel voor een langdurig resultaat.",
+        "Gebruik geen oliebasis make-upremover op de wenkbrauwen — olie lost de lamineringproducten op en verkort de houdbaarheid.",
+        "Borstel de wenkbrauwen dagelijks in de gewenste richting met een wenkbrauwborsteltje voor een constant verzorgd resultaat.",
+        "Plan een herbehandeling na 6 tot 8 weken voor een constant resultaat.",
       ],
     },
   },
@@ -364,18 +417,32 @@ const serviceData: Record<string, LocaleData> = {
         { title: "Massage & finition", desc: "Massage hydratant et gel-polish en option sur les ongles d'orteil." },
       ],
     },
-    "wimper-wenkbrauw": {
-      name: "Cils & Sourcils",
-      subtitle: "LIFT, DEFINE & SHAPE",
+    "wimpers-lamineren": {
+      name: "Lamination des Cils",
+      subtitle: "LASH LIFT & LAMINATION",
       description:
-        "Nos soins cils et sourcils donnent du caractère à votre regard. Le lifting des cils relève et boucle vos cils naturels pour un regard ouvert qui dure des semaines. La lamination des sourcils lisse et fixe les poils pour une forme pleine et soignée. Les deux traitements utilisent vos propres cils — sans extensions.",
+        "La lamination des cils relève et boucle vos cils naturels pour un regard ouvert qui dure 6 à 8 semaines. Sans extensions, sans colle — uniquement vos propres cils, sublimés. Teinte optionnelle pour un effet mascara sans mascara.",
       duration: "45–60 min",
       price: "€50",
       steps: [
-        { title: "Consultation", desc: "La forme et le lift souhaités sont discutés." },
-        { title: "Nettoyage", desc: "Les cils et sourcils sont soigneusement nettoyés." },
-        { title: "Lifting & lamination", desc: "Des produits professionnels lèvent, bouclent et fixent." },
-        { title: "Teinture & finition", desc: "Teinte optionnelle pour plus de profondeur et de définition." },
+        { title: "Consultation", desc: "Le lift et la forme souhaités sont discutés. Le bon coussin en silicone est choisi selon la longueur de vos cils." },
+        { title: "Nettoyage", desc: "Les cils sont soigneusement nettoyés pour une adhérence optimale des produits." },
+        { title: "Lifting & lamination", desc: "Des produits professionnels lèvent, bouclent et fixent vos cils dans la forme souhaitée." },
+        { title: "Teinture & finition", desc: "Teinte optionnelle pour plus de profondeur. Soin nourrissant pour des cils en bonne santé." },
+      ],
+    },
+    "wenkbrauw-laminatie": {
+      name: "Lamination des Sourcils",
+      subtitle: "BROW LAMINATION",
+      description:
+        "La lamination des sourcils fixe et structure vos poils dans une forme pleine et soignée qui dure 6 à 8 semaines. Sans microblading, sans encre permanente — uniquement vos propres sourcils, parfaitement définis.",
+      duration: "30–45 min",
+      price: "€50",
+      steps: [
+        { title: "Consultation", desc: "La forme et la direction souhaitées sont discutées." },
+        { title: "Nettoyage", desc: "Les sourcils sont soigneusement nettoyés pour une adhérence optimale." },
+        { title: "Lamination", desc: "Les poils sont fixés dans la direction souhaitée avec des produits professionnels." },
+        { title: "Teinture & finition", desc: "Teinte optionnelle pour plus de définition. Soin nourrissant en finition." },
       ],
     },
   },
@@ -435,18 +502,32 @@ const serviceData: Record<string, LocaleData> = {
         { title: "Массаж и завершение", desc: "Увлажняющий массаж и гель-лак по желанию." },
       ],
     },
-    "wimper-wenkbrauw": {
-      name: "Ресницы и Брови",
-      subtitle: "LIFT, DEFINE & SHAPE",
+    "wimpers-lamineren": {
+      name: "Ламинирование Ресниц",
+      subtitle: "LASH LIFT & LAMINATION",
       description:
-        "Наши процедуры для ресниц и бровей придают взгляду выразительность и глубину. Ламинирование ресниц поднимает и завивает натуральные ресницы — эффект открытого взгляда сохраняется неделями. Ламинирование бровей фиксирует волоски в аккуратной пышной форме. Обе процедуры выполняются с вашими собственными волосками — без наращивания.",
+        "Ламинирование ресниц поднимает и завивает ваши натуральные ресницы для открытого, отдохнувшего взгляда на 6–8 недель. Без наращивания, без клея — только ваши ресницы, только лучше. Окрашивание по желанию для эффекта туши без туши.",
       duration: "45–60 мин",
       price: "€50",
       steps: [
-        { title: "Консультация", desc: "Обсуждается желаемая форма и степень подъёма." },
-        { title: "Очищение", desc: "Ресницы и брови тщательно очищаются." },
-        { title: "Ламинирование", desc: "Профессиональные продукты поднимают, завивают и фиксируют." },
-        { title: "Окрашивание и финиш", desc: "Окрашивание по желанию для глубины и выразительности." },
+        { title: "Консультация", desc: "Обсуждается желаемый подъём и форма. Подбирается силиконовый валик по длине ресниц." },
+        { title: "Очищение", desc: "Ресницы тщательно очищаются для оптимального сцепления продуктов." },
+        { title: "Ламинирование", desc: "Профессиональные продукты поднимают, завивают и фиксируют ресницы в желаемой форме." },
+        { title: "Окрашивание и финиш", desc: "Опциональное окрашивание для глубины и эффекта туши. Питательная сыворотка в завершение." },
+      ],
+    },
+    "wenkbrauw-laminatie": {
+      name: "Ламинирование Бровей",
+      subtitle: "BROW LAMINATION",
+      description:
+        "Ламинирование бровей фиксирует волоски в аккуратной, пышной форме на 6–8 недель. Без микроблейдинга, без перманентного пигмента — только ваши брови, идеально оформленные.",
+      duration: "30–45 мин",
+      price: "€50",
+      steps: [
+        { title: "Консультация", desc: "Обсуждается желаемая форма и направление волосков." },
+        { title: "Очищение", desc: "Брови тщательно очищаются для оптимального сцепления продуктов." },
+        { title: "Ламинирование", desc: "Волоски фиксируются в нужном направлении профессиональными ламинирующими продуктами." },
+        { title: "Окрашивание и финиш", desc: "Опциональное окрашивание для выразительности. Питательная сыворотка в завершение." },
       ],
     },
   },
@@ -457,7 +538,8 @@ const imageMap: Record<string, string> = {
   biab: "/services/biab.jpg",
   gelnagels: "/services/gel-nails.jpg",
   pedicure: "/services/pedicure.jpg",
-  "wimper-wenkbrauw": "/services/lash-lamination.jpg",
+  "wimpers-lamineren": "/services/lash-lamination.jpg",
+  "wenkbrauw-laminatie": "/services/brow-lamination.jpg",
 };
 
 // SEO-optimised titles & descriptions for NL service pages (from brand guidelines)
@@ -482,15 +564,20 @@ const nlSeoMeta: Record<string, { title: string; description: string }> = {
     description:
       "Professionele pedicure bij Elite Nails in Sint-Martens-Lierde. Verzorgde, mooie voeten in een cozy studio. Op 10 min van Geraardsbergen. Boek nu!",
   },
-  "wimper-wenkbrauw": {
+  "wimpers-lamineren": {
     title: "Wimpers Lamineren Lierde | Lash Lift | Elite Nails",
     description:
-      "Wimpers lamineren bij Elite Nails in Sint-Martens-Lierde. Volle, gebogen wimpers zonder dagelijkse mascara. Professioneel & langdurig resultaat.",
+      "Wimpers lamineren bij Elite Nails in Sint-Martens-Lierde. Volle, gebogen wimpers zonder dagelijkse mascara. €50 — professioneel & 6–8 weken resultaat.",
+  },
+  "wenkbrauw-laminatie": {
+    title: "Wenkbrauw Laminatie Lierde | Brow Lamination | Elite Nails",
+    description:
+      "Wenkbrauw laminatie bij Elite Nails in Sint-Martens-Lierde. Volle, gestructureerde wenkbrauwen die 6 tot 8 weken meegaan. €50 — boek via Instagram.",
   },
 };
 
 const locales = ["en", "nl", "fr", "ru"];
-const slugs = ["russische-manicure", "biab", "gelnagels", "pedicure", "wimper-wenkbrauw"];
+const slugs = ["russische-manicure", "biab", "gelnagels", "pedicure", "wimpers-lamineren", "wenkbrauw-laminatie"];
 
 // Navigation labels per locale (matches serviceData names)
 function getServiceName(locale: string, slug: string): string {
