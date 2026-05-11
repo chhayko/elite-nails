@@ -8,17 +8,17 @@ export function Services() {
   const t = useTranslations("services");
 
   return (
-    <section id="services" className="relative py-32 px-6 bg-charcoal/20 backdrop-blur-md">
+    <section id="services" className="relative py-20 sm:py-32 px-5 sm:px-6 bg-charcoal/20 backdrop-blur-md">
       <div className="mx-auto max-w-7xl">
         <div className="text-center">
           <BlurFade delay={0.1} inView>
-            <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-mauve-light font-sans">
+            <p className="mb-3 sm:mb-4 text-[11px] sm:text-xs font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-mauve-light font-sans">
               {t("eyebrow")}
             </p>
           </BlurFade>
 
           <BlurFade delay={0.2} inView>
-            <h2 className="font-serif text-4xl font-light text-white md:text-5xl">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-white leading-tight">
               {t("title")}
             </h2>
           </BlurFade>

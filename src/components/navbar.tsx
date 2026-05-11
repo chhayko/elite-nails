@@ -39,10 +39,10 @@ export function Navbar() {
             : "bg-transparent"
         }`}
       >
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 py-4 gap-3">
           <a
             href="#"
-            className="font-serif text-xl tracking-wide text-white transition-colors duration-500"
+            className="font-serif text-lg sm:text-xl tracking-wide text-white transition-colors duration-500 shrink-0"
           >
             Elite Nails
           </a>
@@ -66,7 +66,7 @@ export function Navbar() {
             </a>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4 shrink-0">
             <LanguageSwitcher />
             <a
               href="https://www.instagram.com/elite_nails_lierde/"

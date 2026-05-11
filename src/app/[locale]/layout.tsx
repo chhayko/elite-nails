@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
@@ -20,6 +20,14 @@ const inter = Inter({
 });
 
 const BASE_URL = "https://www.elitenails.biz";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+  themeColor: "#1A1A1E",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -212,7 +220,7 @@ export default async function LocaleLayout({
         </Script>
       </head>
       <body
-        className={`${cormorant.variable} ${inter.variable} font-sans antialiased cursor-none`}
+        className={`${cormorant.variable} ${inter.variable} font-sans antialiased overflow-x-hidden`}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}

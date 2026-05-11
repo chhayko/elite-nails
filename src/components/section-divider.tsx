@@ -10,11 +10,11 @@ export function SectionDivider({
   text = "Elite Nails   Lierde   Beauty   Nails   Care   Elegance",
 }: SectionDividerProps) {
   return (
-    <div className="py-4 overflow-hidden">
+    <div className="py-4 overflow-hidden w-full">
       <VelocityScroll
         text={text}
         default_velocity={1}
-        className="font-serif text-lg md:text-2xl font-light text-white/10 tracking-tight"
+        className="font-serif text-base sm:text-lg md:text-2xl font-light text-white/10 tracking-tight"
       />
     </div>
   );

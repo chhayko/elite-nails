@@ -25,9 +25,27 @@ const images = {
 };
 
 const StickyScrollGallery = forwardRef<HTMLElement>((props, ref) => {
+  // Flatten for mobile single-column layout
+  const all = [...images.left, ...images.center, ...images.right];
+
   return (
     <section ref={ref} className="w-full">
-      <div className="grid grid-cols-12 gap-2 px-2">
+      {/* Mobile: simple single-column stack — no sticky, no horizontal pressure */}
+      <div className="grid grid-cols-1 gap-3 px-4 md:hidden">
+        {all.map((img, i) => (
+          <figure key={`m-${i}`} className="w-full">
+            <img
+              src={img.src}
+              alt={img.alt}
+              loading="lazy"
+              className="w-full h-72 sm:h-80 object-cover rounded-lg"
+            />
+          </figure>
+        ))}
+      </div>
+
+      {/* Desktop: original 3-column sticky layout */}
+      <div className="hidden md:grid grid-cols-12 gap-2 px-2">
         {/* Left column — scrolls */}
         <div className="grid gap-2 col-span-4">
           {images.left.map((img, i) => (

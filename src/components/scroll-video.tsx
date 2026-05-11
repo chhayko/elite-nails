@@ -93,16 +93,16 @@ export function ScrollVideo() {
       {/* Hero text overlay */}
       <div
         ref={heroTextRef}
-        className="fixed inset-0 z-10 flex flex-col items-center justify-center text-center pointer-events-none"
+        className="fixed inset-0 z-10 flex flex-col items-center justify-center text-center pointer-events-none px-6"
       >
-        <p className="mb-4 text-sm font-light uppercase tracking-[0.4em] text-white/80 font-sans">
+        <p className="mb-3 text-[11px] sm:text-sm font-light uppercase tracking-[0.3em] sm:tracking-[0.4em] text-white/80 font-sans">
           {t("location")}
         </p>
-        <h1 className="font-serif text-4xl font-light tracking-wide text-white md:text-6xl lg:text-7xl text-balance px-4 max-w-4xl">
+        <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-light tracking-wide text-white text-balance max-w-4xl leading-tight">
           {t("title")}
         </h1>
-        <div className="mt-6 h-px w-24 bg-white/40" />
-        <p className="mt-6 text-base font-light tracking-[0.2em] text-white/70 font-sans uppercase">
+        <div className="mt-5 sm:mt-6 h-px w-20 sm:w-24 bg-white/40" />
+        <p className="mt-5 sm:mt-6 text-xs sm:text-base font-light tracking-[0.2em] text-white/70 font-sans uppercase">
           {t("tagline")}
         </p>
       </div>

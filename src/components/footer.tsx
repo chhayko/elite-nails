@@ -10,9 +10,9 @@ export function Footer() {
   const locale = useLocale();
 
   return (
-    <footer className="relative pt-16 pb-12 px-6 bg-charcoal/20 backdrop-blur-md">
+    <footer className="relative pt-12 pb-10 sm:pt-16 sm:pb-12 px-5 sm:px-6 bg-charcoal/20 backdrop-blur-md">
       <div className="mx-auto max-w-6xl">
-        <div className="flex flex-col items-center gap-12 md:flex-row md:justify-between md:items-start">
+        <div className="flex flex-col items-center gap-10 sm:gap-12 md:flex-row md:justify-between md:items-start">
 
           {/* Left — branding */}
           <div className="text-center md:text-left">
