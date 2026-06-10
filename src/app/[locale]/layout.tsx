@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import Script from "next/script";
-import { NextIntlClientProvider } from "next-intl";
+import { notFound } from "next/navigation";
+import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 import { CustomCursor } from "@/components/custom-cursor";
 import { CookieConsent } from "@/components/cookie-consent";
 import "../globals.css";
@@ -160,6 +162,10 @@ const localeToHtmlLang: Record<string, string> = {
   ru: "ru",
 };
 
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 export default async function LocaleLayout({
   children,
   params,
@@ -168,6 +174,10 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+
+  // Reject unknown locales before they reach setRequestLocale or the
+  // dynamic messages import below.
+  if (!hasLocale(routing.locales, locale)) notFound();
 
   // Explicitly seed the locale into next-intl's request context so that
   // getMessages() and useTranslations() always use the URL's locale,

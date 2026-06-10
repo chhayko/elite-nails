@@ -1,6 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const locales = [
@@ -12,23 +13,31 @@ const locales = [
 
 const LOCALE_CODES = locales.map((l) => l.code);
 
+// Only the homepage and service pages exist in all four locales; city pages,
+// blog, lash-laminatie and privacybeleid are Dutch-only and would 404.
+const existsInAllLocales = (path: string) =>
+  path === "/" || path.startsWith("/diensten");
+
+const stripLocale = (path: string) =>
+  path.replace(new RegExp(`^\\/(${LOCALE_CODES.join("|")})(\\b|$)`), "") || "/";
+
 export function LanguageSwitcher() {
   const locale = useLocale();
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   const current = locales.find((l) => l.code === locale) ?? locales[0];
+
+  // On Dutch-only pages there is nothing to switch to — hide the switcher
+  // instead of offering links that 404.
+  if (!existsInAllLocales(stripLocale(pathname))) return null;
 
   const switchLocale = (newLocale: string) => {
     setOpen(false);
     if (newLocale === locale) return;
 
     // Hard navigation — guarantees server components re-render with new locale
-    const path = window.location.pathname;
-    // Strip existing locale prefix (e.g. /en/diensten/biab → /diensten/biab)
-    const withoutLocale = path.replace(
-      new RegExp(`^\\/(${LOCALE_CODES.join("|")})(\\b|$)`),
-      ""
-    ) || "/";
+    const withoutLocale = stripLocale(window.location.pathname);
 
     window.location.href = `/${newLocale}${withoutLocale === "/" ? "" : withoutLocale}`;
   };

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { SERVICE_SLUGS } from "@/lib/service-slugs";
 
 type ServiceEntry = {
   name: string;
@@ -577,7 +578,7 @@ const nlSeoMeta: Record<string, { title: string; description: string }> = {
 };
 
 const locales = ["en", "nl", "fr", "ru"];
-const slugs = ["russische-manicure", "biab", "gelnagels", "pedicure", "wimpers-lamineren", "wenkbrauw-laminatie"];
+const slugs: string[] = [...SERVICE_SLUGS];
 
 // Navigation labels per locale (matches serviceData names)
 function getServiceName(locale: string, slug: string): string {

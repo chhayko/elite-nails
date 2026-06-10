@@ -1,15 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { X, Menu } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function Navbar() {
   const t = useTranslations("nav");
+  const locale = useLocale();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  // The blog only exists in Dutch — don't offer it on other locales
+  const showBlog = locale === "nl";
 
   const links = [
     { href: "#about",           label: t("about") },
@@ -58,12 +61,14 @@ export function Navbar() {
                 {link.label}
               </a>
             ))}
-            <a
-              href="/nl/blog"
-              className="text-xs font-medium uppercase tracking-[0.2em] transition-colors duration-500 font-sans hover:opacity-70 text-white/90"
-            >
-              Blog
-            </a>
+            {showBlog && (
+              <a
+                href="/nl/blog"
+                className="text-xs font-medium uppercase tracking-[0.2em] transition-colors duration-500 font-sans hover:opacity-70 text-white/90"
+              >
+                Blog
+              </a>
+            )}
           </div>
 
           <div className="flex items-center gap-4">
@@ -110,13 +115,15 @@ export function Navbar() {
                 {link.label}
               </a>
             ))}
-            <a
-              href="/nl/blog"
-              onClick={() => setMobileOpen(false)}
-              className="text-sm font-medium uppercase tracking-[0.2em] text-white/80 hover:text-white transition-colors font-sans"
-            >
-              Blog
-            </a>
+            {showBlog && (
+              <a
+                href="/nl/blog"
+                onClick={() => setMobileOpen(false)}
+                className="text-sm font-medium uppercase tracking-[0.2em] text-white/80 hover:text-white transition-colors font-sans"
+              >
+                Blog
+              </a>
+            )}
             <a
               href="https://www.instagram.com/elite_nails_lierde/"
               target="_blank"

@@ -113,7 +113,8 @@ export function TestimonialsMinimal() {
   const [googleRating, setGoogleRating] = useState<{ rating: number; total: number } | null>(null);
 
   useEffect(() => {
-    fetch("/api/reviews")
+    const controller = new AbortController();
+    fetch("/api/reviews", { signal: controller.signal })
       .then((r) => r.json())
       .then((data) => {
         if (data.reviews?.length) {
@@ -138,6 +139,7 @@ export function TestimonialsMinimal() {
       .catch(() => {
         // Silently fall back to DEFAULT_TESTIMONIALS (real Google + photo clients)
       });
+    return () => controller.abort();
   }, []);
 
   const rating = googleRating?.rating ?? 5.0;
