@@ -146,10 +146,10 @@ export function TestimonialsMinimal() {
   const total = googleRating?.total ?? 2;
 
   return (
-    <div className="w-full max-w-xl mx-auto px-6 py-16">
+    <div className="w-full max-w-xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
 
       {/* Google rating badge */}
-      <div className="flex items-center gap-2 mb-10 justify-center">
+      <div className="flex items-center gap-2 mb-8 sm:mb-10 justify-center">
         <GoogleIcon size={18} />
         <span className="text-white/60 text-xs font-sans tracking-wide">
           {rating.toFixed(1)} · {total} Google {total === 1 ? "review" : "reviews"}
@@ -157,12 +157,12 @@ export function TestimonialsMinimal() {
       </div>
 
       {/* Quote */}
-      <div className="relative min-h-[120px] mb-12">
+      <div className="relative min-h-[160px] sm:min-h-[120px] mb-10 sm:mb-12">
         {merged.map((t, i) => (
           <p
             key={i}
             className={`
-              absolute inset-0 text-xl md:text-2xl font-light leading-relaxed text-white font-serif
+              absolute inset-0 text-lg sm:text-xl md:text-2xl font-light leading-relaxed text-white font-serif
               transition-all duration-500 ease-out
               ${active === i
                 ? "opacity-100 translate-y-0 blur-0"
@@ -176,14 +176,14 @@ export function TestimonialsMinimal() {
       </div>
 
       {/* Author Row */}
-      <div className="flex items-center gap-6">
-        <div className="flex -space-x-2">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+        <div className="flex -space-x-2 flex-wrap gap-y-2 justify-start">
           {merged.map((t, i) => (
             <Avatar key={i} t={t} active={active === i} onClick={() => setActive(i)} />
           ))}
         </div>
 
-        <div className="h-8 w-px bg-white/20" />
+        <div className="hidden sm:block h-8 w-px bg-white/20" />
 
         <div className="relative flex-1 min-h-[44px]">
           {merged.map((t, i) => (

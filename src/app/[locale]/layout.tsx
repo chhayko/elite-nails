@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import Script from "next/script";
 import { notFound } from "next/navigation";
@@ -21,6 +21,14 @@ const inter = Inter({
   subsets: ["latin", "cyrillic"],
   weight: ["300", "400", "500", "600"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+  themeColor: "#1A1A1E",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -118,7 +126,7 @@ const jsonLd = {
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "5.0",
-    reviewCount: "2",
+    reviewCount: "15",
     bestRating: "5",
     worstRating: "1",
   },
@@ -218,7 +226,7 @@ export default async function LocaleLayout({
         </Script>
       </head>
       <body
-        className={`${cormorant.variable} ${inter.variable} font-sans antialiased cursor-none`}
+        className={`${cormorant.variable} ${inter.variable} font-sans antialiased overflow-x-hidden`}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}

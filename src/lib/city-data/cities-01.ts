@@ -9,7 +9,7 @@ export const CITIES_01: Record<string, CityPage> = {
     metaTitle: "Nagelstudio Geraardsbergen | Russian Manicure | Elite Nails",
     metaDescription:
       "Nagelstudio dicht bij Geraardsbergen? Elite Nails in Sint-Martens-Lierde, op 10 min. Russische manicure, BIAB, gelnagels & lash laminatie. Boek nu!",
-    h1: "Nagelstudio in de buurt van Geraardsbergen — Elite Nails Lierde",
+    h1: "Nagelstudio Geraardsbergen — Elite Nails Lierde",
     intro: [
       "Ben je op zoek naar een professionele nagelstudio dichtbij Geraardsbergen? Elite Nails bevindt zich in Sint-Martens-Lierde, op amper 10 minuten rijden van Geraardsbergen. Ons cozy studio biedt een volledig gamma aan nagelbehandelingen, met als specialiteit de Russische manicure — een techniek die precisie en hygiëne naar een hoger niveau tilt.",
       "Veel klanten uit Geraardsbergen, Idegem, Moerbeke en de omliggende deelgemeenten kiezen bewust voor Elite Nails. Niet alleen door de korte rijafstand, maar ook omdat de kwaliteit spreekt voor zich. Bij ons sta je centraal: geen haast, geen compromissen op het vlak van veiligheid of afwerking.",
@@ -78,7 +78,7 @@ export const CITIES_01: Record<string, CityPage> = {
     metaTitle: "Nagelstudio Ninove | Russian Manicure & BIAB | Elite Nails",
     metaDescription:
       "Russian manicure dicht bij Ninove? Elite Nails in Sint-Martens-Lierde, op 15 min. BIAB, gelnagels, wimpers & wenkbrauwen lamineren. Boek nu!",
-    h1: "Nagelstudio dicht bij Ninove — Elite Nails Sint-Martens-Lierde",
+    h1: "Nagelstudio Ninove — Elite Nails Sint-Martens-Lierde",
     intro: [
       "Ben je woonachtig in Ninove of omstreken en op zoek naar een nagelstudio die kwaliteit bovenaan stelt? Elite Nails in Sint-Martens-Lierde is op circa 15 minuten van Ninove bereikbaar en staat bekend om haar specialisatie in de Russische manicure. Ons studio verwelkomt dagelijks klanten uit Ninove, Pollare, Appelterre-Eichem en de bredere Ninoofse regio.",
       "Bij Elite Nails werken we in een kleine, persoonlijke setting. U krijgt de tijd en aandacht die uw nagels verdienen. 'Where Precision Meets Beauty' — dat is onze belofte aan elke klant.",
@@ -113,7 +113,7 @@ export const CITIES_01: Record<string, CityPage> = {
     metaTitle: "Nagelstudio Brakel | Russian Manicure | Elite Nails Lierde",
     metaDescription:
       "Nagelstudio dicht bij Brakel? Elite Nails in Sint-Martens-Lierde, op 10 min. Russische manicure, BIAB, gelnagels, lash & brow laminatie. Boek nu!",
-    h1: "Nagelstudio dicht bij Brakel — Elite Nails Lierde",
+    h1: "Nagelstudio Brakel — Elite Nails Lierde",
     intro: [
       "Ben je op zoek naar een kwalitatieve nagelstudio dicht bij Brakel? Elite Nails in Sint-Martens-Lierde verwelkomt u op amper 10 minuten van Brakel. Ons studio is gespecialiseerd in de Russische manicure — een droge, hygiënische techniek die superieure resultaten levert — en biedt daarnaast een ruim aanbod aan nagelbehandelingen voor klanten uit Brakel, Elst, Zegelsem, Michelbeke en de ruimere regio.",
       "Elite Nails is de enige gespecialiseerde studio voor Russische manicure in de regio Lierde-Brakel. U rijdt minder dan 10 minuten en belandt in een cozy studio waar precisie en comfort hand in hand gaan.",
@@ -147,7 +147,7 @@ export const CITIES_01: Record<string, CityPage> = {
     metaTitle: "Nagelstudio Ronse | Russian Manicure & BIAB | Elite Nails",
     metaDescription:
       "Nagelstudio bij Ronse? Elite Nails in Sint-Martens-Lierde op 20 min. Russische manicure, BIAB en gelnagels. Boek via Instagram!",
-    h1: "Nagelstudio in de buurt van Ronse — Elite Nails Sint-Martens-Lierde",
+    h1: "Nagelstudio Ronse — Elite Nails Sint-Martens-Lierde",
     intro: [
       "Ben je woonachtig in Ronse of een omliggende gemeente en op zoek naar een nagelstudio die kwaliteit en precisie vooropstelt? Elite Nails in Sint-Martens-Lierde ligt op circa 20 minuten rijden van Ronse — een vlotte rit via de N36 of N60. Klanten uit Ronse, Kluisbergen, Maarkedal en Horebeke vinden hun weg naar ons gezellige, discrete studio.",
       "Bij Elite Nails draait alles om precisie en persoonlijke aandacht. We nemen de tijd voor elke klant en werken met gecertificeerd professioneel materiaal. Je merkt het verschil al bij de eerste behandeling.",
@@ -207,7 +207,7 @@ export const CITIES_01: Record<string, CityPage> = {
     metaTitle: "Nagels Zottegem | Nagelstudio & Gelnagels | Elite Nails Lierde",
     metaDescription:
       "Nagels in Zottegem? Elite Nails in Sint-Martens-Lierde, op 15 min. Russische manicure, BIAB, gelnagels & lash laminatie. Boek nu!",
-    h1: "Nagels bij Zottegem — Nagelstudio Elite Nails Sint-Martens-Lierde",
+    h1: "Nagels Zottegem — Nagelstudio Elite Nails Sint-Martens-Lierde",
     intro: [
       "Woon je in Zottegem of een nabijgelegen gemeente en ben je op zoek naar een nagelstudio gespecialiseerd in de Russische manicure? Elite Nails in Sint-Martens-Lierde ligt op slechts 15 minuten rijden van Zottegem en verwelkomt klanten uit Zottegem, Sint-Lievens-Houtem, Herzele, Grotenberge en de ruimere regio.",
       "Elite Nails is een klein, persoonlijk studio waar elke klant de volle aandacht krijgt. We werken zonder haast, met oog voor detail — of het nu gaat om een simpele nagelverzorging of een volledige behandeling met BIAB en lash laminatie.",
@@ -279,7 +279,7 @@ export const CITIES_01: Record<string, CityPage> = {
     metaTitle: "Nagelstudio Horebeke | Russian Manicure & BIAB | Elite Nails",
     metaDescription:
       "Nagelstudio vlakbij Horebeke? Elite Nails in Sint-Martens-Lierde op 5 min. Russische manicure, BIAB, gelnagels & wimpers lamineren. Boek nu!",
-    h1: "Nagelstudio vlakbij Horebeke — Elite Nails Lierde",
+    h1: "Nagelstudio Horebeke — Elite Nails Lierde",
     intro: [
       "Woon je in Horebeke en ben je op zoek naar een professionele nagelstudio? Elite Nails in Sint-Martens-Lierde is letterlijk om de hoek — op slechts 5 minuten rijden. Ons studio is gespecialiseerd in de Russische manicure en biedt een volledig aanbod aan nagelbehandelingen in een rustige, persoonlijke sfeer.",
       "Klanten uit Sint-Maria-Horebeke en Sint-Kornelis-Horebeke zijn bij Elite Nails altijd van harte welkom. De korte afstand en de hoge kwaliteit maken ons de logische keuze voor iedereen uit de buurt van Horebeke die op zoek is naar verzorgde, mooie nagels.",
@@ -314,7 +314,7 @@ export const CITIES_01: Record<string, CityPage> = {
     metaTitle: "Nagelstudio Herzele | Russian Manicure & BIAB | Elite Nails",
     metaDescription:
       "Nagelstudio dicht bij Herzele? Elite Nails in Sint-Martens-Lierde, op 12 min. Russische manicure, BIAB, gelnagels, lash & brow laminatie. Boek!",
-    h1: "Nagelstudio dicht bij Herzele — Elite Nails Sint-Martens-Lierde",
+    h1: "Nagelstudio Herzele — Elite Nails Sint-Martens-Lierde",
     intro: [
       "Ben je woonachtig in Herzele, Borsbeke, Ressegem of een deelgemeente in de buurt en op zoek naar een professionele nagelstudio? Elite Nails in Sint-Martens-Lierde ligt op circa 12 minuten van Herzele en is gespecialiseerd in de Russische manicure — een droge techniek die zorgt voor langdurige, perfect gehechte nagels.",
       "Ons kleine, persoonlijke studio is een plek waar kwaliteit en rust centraal staan. Klanten uit Herzele rijden graag even voor een behandeling die het verschil maakt. Van BIAB tot lash laminatie — bij Elite Nails vind je alles onder één dak.",
@@ -349,7 +349,7 @@ export const CITIES_01: Record<string, CityPage> = {
     metaTitle: "Nagelstudio Zwalm | Russian Manicure | Elite Nails Lierde",
     metaDescription:
       "Nagelstudio bij Zwalm? Elite Nails in Sint-Martens-Lierde, op 12 min. Russische manicure, BIAB, gelnagels, lash & brow laminatie. Boek nu!",
-    h1: "Nagelstudio in de buurt van Zwalm — Elite Nails Lierde",
+    h1: "Nagelstudio Zwalm — Elite Nails Lierde",
     intro: [
       "Op zoek naar een kwalitatieve nagelstudio dicht bij Zwalm? Elite Nails in Sint-Martens-Lierde verwelkomt klanten uit Zwalm, Munkzwalm, Rozebeke, Nederzwalm en de omliggende deelgemeenten. Ons studio ligt op circa 12 minuten en is gespecialiseerd in de Russische manicure — de droge nagelbehandelingstechniek die steeds populairder wordt in de regio.",
       "Bij Elite Nails kies je voor kwaliteit en persoonlijke aandacht. We werken op afspraak, zonder haast, en met oog voor elk detail. Van de eerste consultatie tot de laatste hand aan je nagels.",
@@ -384,7 +384,7 @@ export const CITIES_01: Record<string, CityPage> = {
     metaTitle: "Nagelstudio Maarkedal | Russian Manicure | Elite Nails",
     metaDescription:
       "Nagelstudio bij Maarkedal? Elite Nails in Sint-Martens-Lierde, op 12 min. Russische manicure, BIAB, gelnagels & lash laminatie. Boek nu!",
-    h1: "Nagelstudio dicht bij Maarkedal — Elite Nails Lierde",
+    h1: "Nagelstudio Maarkedal — Elite Nails Lierde",
     intro: [
       "Ben je woonachtig in Maarkedal of een nabijgelegen gemeente zoals Schorisse, Nukerke of Etikhove? Elite Nails in Sint-Martens-Lierde is op circa 12 minuten bereikbaar en biedt een volledig aanbod aan professionele nagelbehandelingen. Ons studio is gespecialiseerd in de Russische manicure — een techniek die je nagels grondig en hygiënisch verzorgt.",
       "Elite Nails trekt klanten uit Maarkedal en de ruimere Oudenaarde-regio aan dankzij kwaliteit, precisie en een persoonlijke aanpak. Boek je afspraak via Instagram.",

@@ -2,8 +2,26 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-/* Hide default cursor sitewide — replaced by CustomCursor component */
-*, *::before, *::after { cursor: none !important; }
+/* Hide default cursor sitewide — only on devices with a fine pointer (mouse/trackpad).
+   Touch devices keep native cursor/touch behaviour so the custom cursor never fights with taps. */
+@media (pointer: fine) {
+  *, *::before, *::after { cursor: none !important; }
+}
+
+/* Prevent horizontal scrolling sitewide — enforced on html, body and the root layout.
+   Combined with `overflow-x: clip` where supported so fixed/absolute children can't push past. */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+@supports (overflow-x: clip) {
+  html, body { overflow-x: clip; }
+}
+
+/* Belt-and-braces for any element that accidentally requests pixel widths > viewport */
+img, video, canvas, svg, iframe { max-width: 100%; }
 
 @custom-variant dark (&:is(.dark *));
 

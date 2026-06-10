@@ -2,6 +2,7 @@
 // ReactLenis is wrapped in LenisWrapper (a client component) so smooth scrolling
 // still hydrates client-side without making the entire page CSR-only.
 
+import Link from "next/link";
 import type { Metadata } from "next";
 import { LenisWrapper }    from "@/components/lenis-wrapper";
 import { ScrollVideo }     from "@/components/scroll-video";
@@ -96,6 +97,22 @@ export default function Home() {
           <Testimonials />
           <SectionDivider text="Questions?   Get in Touch   Book Now   Elite Nails Lierde" />
           <ContactBooking />
+          {/* Region links — internal SEO links to all city landing pages */}
+          <section className="px-6 md:px-16 py-10 border-t border-white/10">
+            <p className="text-cream/40 text-xs uppercase tracking-widest mb-5">Nagelstudio regio's</p>
+            <div className="flex flex-wrap gap-x-6 gap-y-3">
+              {[
+                ["Zottegem","zottegem"],["Geraardsbergen","geraardsbergen"],["Ninove","ninove"],
+                ["Ronse","ronse"],["Oudenaarde","oudenaarde"],["Brakel","brakel"],
+                ["Herzele","herzele"],["Aalst","aalst"],["Denderleeuw","denderleeuw"],
+                ["Horebeke","horebeke"],["Zwalm","zwalm"],["Kluisbergen","kluisbergen"],
+              ].map(([city, slug]) => (
+                <Link key={slug} href={`/nl/nagelstudio-${slug}`} className="text-cream/50 hover:text-cream text-sm transition-colors">
+                  Nagelstudio {city}
+                </Link>
+              ))}
+            </div>
+          </section>
           <SectionDivider text="Elite Nails   Sint-Martens-Lierde   Belgium   Clean & Safe" />
           <Footer />
         </div>

@@ -34,6 +34,11 @@ export function CustomCursor() {
   const visibleRef = useRef(true);
 
   useEffect(() => {
+    // Skip entirely on touch / coarse-pointer devices — the custom cursor is meaningless there
+    // and the canvas overlay can interfere with mobile gestures.
+    if (typeof window === "undefined") return;
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+
     const dot = dotRef.current;
     const ring = ringRef.current;
     const canvas = canvasRef.current;
@@ -140,17 +145,17 @@ export function CustomCursor() {
 
   return (
     <>
-      {/* Particle canvas — sits above everything */}
+      {/* Particle canvas — sits above everything. Hidden on touch devices via media query. */}
       <canvas
         ref={canvasRef}
-        className="pointer-events-none fixed inset-0 z-[9998]"
+        className="pointer-events-none fixed inset-0 z-[9998] [@media(pointer:coarse)]:hidden"
         style={{ mixBlendMode: "screen" }}
       />
 
       {/* Outer ring — lags */}
       <div
         ref={ringRef}
-        className="pointer-events-none fixed top-0 left-0 z-[9999] rounded-full"
+        className="pointer-events-none fixed top-0 left-0 z-[9999] rounded-full [@media(pointer:coarse)]:hidden"
         style={{
           width: 24,
           height: 24,
@@ -164,7 +169,7 @@ export function CustomCursor() {
       {/* Inner dot — instant */}
       <div
         ref={dotRef}
-        className="pointer-events-none fixed top-0 left-0 z-[9999] rounded-full"
+        className="pointer-events-none fixed top-0 left-0 z-[9999] rounded-full [@media(pointer:coarse)]:hidden"
         style={{
           width: 12,
           height: 12,

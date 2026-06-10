@@ -36,13 +36,14 @@ function BookingCTA() {
       href="https://www.instagram.com/elite_nails_lierde/"
       target="_blank"
       rel="noopener noreferrer"
-      className="relative inline-block group cursor-pointer w-full max-w-xl mx-auto"
+      className="relative block group cursor-pointer w-full max-w-xl mx-auto"
     >
-      <div className="relative py-14">
+      <div className="relative py-10 sm:py-14">
         <div className="absolute inset-0">
           <motion.svg
             width="100%" height="100%"
             viewBox="0 0 800 300"
+            preserveAspectRatio="none"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -68,7 +69,7 @@ function BookingCTA() {
             {t("eyebrow")}
           </motion.p>
           <motion.h3
-            className="font-serif text-3xl md:text-4xl text-white group-hover:text-mauve-light transition-colors duration-300 tracking-tight"
+            className="font-serif text-2xl sm:text-3xl md:text-4xl text-white group-hover:text-mauve-light transition-colors duration-300 tracking-tight"
             initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ delay: 0.55, duration: 0.7 }}
           >
@@ -255,7 +256,7 @@ export function ContactBooking() {
     <>
       <section
         id="contact"
-        className="relative overflow-hidden py-24 px-6 bg-charcoal/20 backdrop-blur-md"
+        className="relative overflow-hidden py-16 sm:py-24 px-5 sm:px-6 bg-charcoal/20 backdrop-blur-md"
       >
         <Particles className="absolute inset-0 z-0" quantity={40} color="#9B8AA0" staticity={60} ease={60}/>
 
@@ -263,12 +264,12 @@ export function ContactBooking() {
 
           {/* Section heading */}
           <BlurFade delay={0.1} inView>
-            <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-mauve-light font-sans">
+            <p className="mb-3 sm:mb-4 text-[11px] sm:text-xs font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-mauve-light font-sans">
               {t("eyebrow")}
             </p>
           </BlurFade>
           <BlurFade delay={0.2} inView>
-            <h2 className="font-serif text-4xl font-light text-white md:text-5xl lg:text-6xl leading-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight">
               {t("heading")}
             </h2>
           </BlurFade>

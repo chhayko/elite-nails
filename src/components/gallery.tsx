@@ -8,17 +8,17 @@ export function Gallery() {
   const t = useTranslations("gallery");
 
   return (
-    <section id="gallery" className="relative py-24 bg-charcoal/20 backdrop-blur-md">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="text-center mb-16">
+    <section id="gallery" className="relative py-16 sm:py-24 bg-charcoal/20 backdrop-blur-md overflow-x-hidden">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+        <div className="text-center mb-10 sm:mb-16">
           <BlurFade delay={0.1} inView>
-            <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-mauve-light font-sans">
+            <p className="mb-3 sm:mb-4 text-[11px] sm:text-xs font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-mauve-light font-sans">
               {t("eyebrow")}
             </p>
           </BlurFade>
 
           <BlurFade delay={0.2} inView>
-            <h2 className="font-serif text-4xl font-light text-white md:text-5xl">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-white leading-tight">
               {t("title")}
             </h2>
           </BlurFade>

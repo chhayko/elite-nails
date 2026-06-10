@@ -103,24 +103,74 @@ function AccordionItem({
   );
 }
 
+function MobileServiceCard({
+  item,
+  locale,
+  name,
+  role,
+}: {
+  item: (typeof servicesSlugs)[0];
+  locale: string;
+  name: string;
+  role: string;
+}) {
+  return (
+    <Link
+      href={`/${locale}/diensten/${item.slug}`}
+      className="relative block w-full h-56 rounded-2xl overflow-hidden"
+    >
+      <Image
+        src={item.imageUrl}
+        alt={name}
+        fill
+        sizes="(max-width: 640px) 100vw, 50vw"
+        className="object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+      <div className="absolute bottom-5 left-5 right-5">
+        <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-mauve-light font-sans mb-1">
+          {role}
+        </p>
+        <h3 className="text-white font-serif text-xl font-light">{name}</h3>
+      </div>
+    </Link>
+  );
+}
+
 export function ServicesAccordion() {
   const [activeIndex, setActiveIndex] = useState(0);
   const locale = useLocale();
   const t = useTranslations("services.items");
 
   return (
-    <div className="flex flex-row items-center justify-center gap-2 overflow-x-auto py-4 px-2">
-      {servicesSlugs.map((item, index) => (
-        <AccordionItem
-          key={item.id}
-          item={item}
-          isActive={index === activeIndex}
-          onMouseEnter={() => setActiveIndex(index)}
-          locale={locale}
-          name={t(item.nameKey)}
-          role={t(item.roleKey)}
-        />
-      ))}
-    </div>
+    <>
+      {/* Mobile: vertical stacked cards — no horizontal scroll, fits any viewport */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10 md:hidden">
+        {servicesSlugs.map((item) => (
+          <MobileServiceCard
+            key={item.id}
+            item={item}
+            locale={locale}
+            name={t(item.nameKey)}
+            role={t(item.roleKey)}
+          />
+        ))}
+      </div>
+
+      {/* Desktop / tablet: original interactive accordion */}
+      <div className="hidden md:flex flex-row items-center justify-center gap-2 overflow-x-auto py-4 px-2 mt-6">
+        {servicesSlugs.map((item, index) => (
+          <AccordionItem
+            key={item.id}
+            item={item}
+            isActive={index === activeIndex}
+            onMouseEnter={() => setActiveIndex(index)}
+            locale={locale}
+            name={t(item.nameKey)}
+            role={t(item.roleKey)}
+          />
+        ))}
+      </div>
+    </>
   );
 }

@@ -159,24 +159,24 @@ export function TreatmentQuiz() {
   };
 
   return (
-    <section id="quiz" className="relative py-24 px-6 overflow-hidden">
+    <section id="quiz" className="relative py-16 sm:py-24 px-5 sm:px-6 overflow-hidden">
       <div className="mx-auto max-w-2xl">
 
         {/* Heading */}
         <BlurFade delay={0.1} inView>
-          <p className="text-center text-xs font-medium uppercase tracking-[0.4em] text-mauve-light font-sans mb-4">
+          <p className="text-center text-[11px] sm:text-xs font-medium uppercase tracking-[0.3em] sm:tracking-[0.4em] text-mauve-light font-sans mb-3 sm:mb-4">
             Personalised Advice
           </p>
-          <h2 className="text-center font-serif text-4xl md:text-5xl font-light text-white leading-tight">
+          <h2 className="text-center font-serif text-3xl sm:text-4xl md:text-5xl font-light text-white leading-tight">
             Find Your Treatment
           </h2>
-          <div className="mx-auto mt-5 mb-12 h-px w-16 bg-mauve/40" />
+          <div className="mx-auto mt-5 mb-10 sm:mb-12 h-px w-16 bg-mauve/40" />
         </BlurFade>
 
         {/* Card */}
         <BlurFade delay={0.2} inView>
           <div className="relative rounded-2xl border border-white/10 bg-charcoal/30 backdrop-blur-xl
-                          px-8 py-10 md:px-12 md:py-12 min-h-[300px] overflow-hidden">
+                          px-5 py-8 sm:px-8 sm:py-10 md:px-12 md:py-12 min-h-[300px] overflow-hidden">
             <AnimatePresence mode="wait" custom={dir}>
 
               {step < QUESTIONS.length && question ? (
@@ -196,7 +196,7 @@ export function TreatmentQuiz() {
                   </p>
 
                   {/* Question */}
-                  <h3 className="font-serif text-2xl md:text-3xl font-light text-white mb-8 leading-snug">
+                  <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-light text-white mb-6 sm:mb-8 leading-snug">
                     {question.text}
                   </h3>
 
