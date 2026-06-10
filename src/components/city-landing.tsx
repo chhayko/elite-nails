@@ -38,8 +38,8 @@ export function CityLanding({ data }: Props) {
     },
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "5.0",
-      reviewCount: "2",
+      ratingValue: "5",
+      reviewCount: "15",
       bestRating: "5",
       worstRating: "1",
     },
@@ -108,7 +108,7 @@ export function CityLanding({ data }: Props) {
           <div className="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-charcoal/40 to-charcoal" />
           <div className="relative z-10 max-w-4xl">
             <p className="text-mauve-light text-xs tracking-[0.35em] uppercase mb-4">
-              Nagelstudio in de buurt van {data.city}
+              Nagelstudio {data.city}
             </p>
             <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-light text-cream leading-tight text-balance">
               {data.h1}
