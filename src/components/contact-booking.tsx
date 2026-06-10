@@ -129,6 +129,8 @@ function InquiryModal({
   const [name,    setName]    = useState("");
   const [email,   setEmail]   = useState("");
   const [msg,     setMsg]     = useState("");
+  // Honeypot: hidden field real users never fill; bots auto-filling forms do
+  const [website, setWebsite] = useState("");
   const [status,  setStatus]  = useState<"idle"|"loading"|"success"|"error">("idle");
 
   useEffect(() => {
@@ -145,6 +147,7 @@ function InquiryModal({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (website) { setStatus("success"); return; }
     setStatus("loading");
     try {
       const res = await fetch("https://formsubmit.co/ajax/info@elitenails.biz", {
@@ -194,6 +197,9 @@ function InquiryModal({
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              <input type="text" name="website" value={website} onChange={e => setWebsite(e.target.value)}
+                tabIndex={-1} autoComplete="off" aria-hidden="true"
+                className="absolute -left-[9999px] h-0 w-0 opacity-0" />
               {/* Service */}
               <div>
                 <label className="block text-xs font-medium uppercase tracking-[0.15em] text-white/50 font-sans mb-1.5">{t("modalService")}</label>
@@ -206,21 +212,21 @@ function InquiryModal({
               {/* Name */}
               <div>
                 <label className="block text-xs font-medium uppercase tracking-[0.15em] text-white/50 font-sans mb-1.5">{t("modalName")}</label>
-                <input type="text" required value={name} onChange={e => setName(e.target.value)}
+                <input type="text" required maxLength={100} value={name} onChange={e => setName(e.target.value)}
                   placeholder={t("modalNamePlaceholder")}
                   className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white placeholder-white/30 font-sans focus:border-mauve/50 focus:outline-none focus:ring-1 focus:ring-mauve/30 transition-colors"/>
               </div>
               {/* Email */}
               <div>
                 <label className="block text-xs font-medium uppercase tracking-[0.15em] text-white/50 font-sans mb-1.5">{t("modalEmail")}</label>
-                <input type="email" required value={email} onChange={e => setEmail(e.target.value)}
+                <input type="email" required maxLength={150} value={email} onChange={e => setEmail(e.target.value)}
                   placeholder={t("modalEmailPlaceholder")}
                   className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white placeholder-white/30 font-sans focus:border-mauve/50 focus:outline-none focus:ring-1 focus:ring-mauve/30 transition-colors"/>
               </div>
               {/* Message */}
               <div>
                 <label className="block text-xs font-medium uppercase tracking-[0.15em] text-white/50 font-sans mb-1.5">{t("modalMessage")}</label>
-                <textarea rows={4} value={msg} onChange={e => setMsg(e.target.value)}
+                <textarea rows={4} maxLength={2000} value={msg} onChange={e => setMsg(e.target.value)}
                   placeholder={t("modalMessagePlaceholder")}
                   className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white placeholder-white/30 font-sans focus:border-mauve/50 focus:outline-none focus:ring-1 focus:ring-mauve/30 transition-colors resize-none"/>
               </div>

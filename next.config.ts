@@ -5,6 +5,21 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  async redirects() {
+    return [
+      // Legacy unprefixed URLs that are still indexed by Google
+      {
+        source: "/diensten/:slug",
+        destination: "/nl/diensten/:slug",
+        permanent: true,
+      },
+      {
+        source: "/blog/:slug*",
+        destination: "/nl/blog/:slug*",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     unoptimized: true,
     remotePatterns: [
