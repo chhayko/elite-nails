@@ -16,7 +16,7 @@ import { ContactBooking }  from "@/components/contact-booking";
 import { Footer }          from "@/components/footer";
 import { SectionDivider }  from "@/components/section-divider";
 
-const BASE_URL = "https://www.elitenails.biz";
+import { BASE_URL } from "@/lib/site";
 
 const homeMeta: Record<string, { title: string; description: string }> = {
   nl: {

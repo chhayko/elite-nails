@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { BASE_URL } from "@/lib/site";
 import { CustomCursor } from "@/components/custom-cursor";
 import { CookieConsent } from "@/components/cookie-consent";
 import "../globals.css";
@@ -20,8 +21,6 @@ const inter = Inter({
   subsets: ["latin", "cyrillic"],
   weight: ["300", "400", "500", "600"],
 });
-
-const BASE_URL = "https://www.elitenails.biz";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

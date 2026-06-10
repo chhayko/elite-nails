@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { POSTS } from "@/lib/blog-data";
 
-const BASE_URL = "https://www.elitenails.biz";
+import { BASE_URL } from "@/lib/site";
 
 type Props = { params: Promise<{ locale: string }> };
 

@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 
-const BASE_URL = "https://www.elitenails.biz";
+import { BASE_URL } from "@/lib/site";
 const CANONICAL = `${BASE_URL}/nl/lash-laminatie-zottegem`;
 
 type Props = { params: Promise<{ locale: string }> };

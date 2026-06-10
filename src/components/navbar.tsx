@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { X, Menu } from "lucide-react";
@@ -62,12 +63,12 @@ export function Navbar() {
               </a>
             ))}
             {showBlog && (
-              <a
+              <Link
                 href="/nl/blog"
                 className="text-xs font-medium uppercase tracking-[0.2em] transition-colors duration-500 font-sans hover:opacity-70 text-white/90"
               >
                 Blog
-              </a>
+              </Link>
             )}
           </div>
 
@@ -116,13 +117,13 @@ export function Navbar() {
               </a>
             ))}
             {showBlog && (
-              <a
+              <Link
                 href="/nl/blog"
                 onClick={() => setMobileOpen(false)}
                 className="text-sm font-medium uppercase tracking-[0.2em] text-white/80 hover:text-white transition-colors font-sans"
               >
                 Blog
-              </a>
+              </Link>
             )}
             <a
               href="https://www.instagram.com/elite_nails_lierde/"

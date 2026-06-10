@@ -2,7 +2,7 @@ import Link from "next/link";
 import Script from "next/script";
 import { CityPage } from "@/lib/city-data";
 
-const BASE_URL = "https://www.elitenails.biz";
+import { BASE_URL } from "@/lib/site";
 
 type Props = {
   data: CityPage;

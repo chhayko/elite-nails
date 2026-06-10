@@ -4,7 +4,7 @@ import Link from "next/link";
 import Script from "next/script";
 import { POSTS } from "@/lib/blog-data";
 
-const BASE_URL = "https://www.elitenails.biz";
+import { BASE_URL } from "@/lib/site";
 
 const slugs = Object.keys(POSTS);
 

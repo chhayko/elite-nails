@@ -3,7 +3,7 @@ import { CITIES } from "@/lib/city-data";
 import { POSTS } from "@/lib/blog-data";
 import { SERVICE_SLUGS } from "@/lib/service-slugs";
 
-const BASE_URL = "https://www.elitenails.biz";
+import { BASE_URL } from "@/lib/site";
 const locales = ["en", "nl", "fr", "ru"];
 
 // Update when page content meaningfully changes — a fake "always new"
