@@ -1,6 +1,7 @@
 "use client";
 
 import React, { forwardRef } from "react";
+import Image from "next/image";
 
 const images = {
   left: [
@@ -31,11 +32,13 @@ const StickyScrollGallery = forwardRef<HTMLElement>((props, ref) => {
         {/* Left column — scrolls */}
         <div className="grid gap-2 col-span-4">
           {images.left.map((img, i) => (
-            <figure key={`left-${i}`} className="w-full">
-              <img
+            <figure key={`left-${i}`} className="relative w-full h-96">
+              <Image
                 src={img.src}
                 alt={img.alt}
-                className="transition-all duration-300 w-full h-96 align-bottom object-cover rounded-lg"
+                fill
+                sizes="33vw"
+                className="transition-all duration-300 object-cover rounded-lg"
               />
             </figure>
           ))}
@@ -44,11 +47,13 @@ const StickyScrollGallery = forwardRef<HTMLElement>((props, ref) => {
         {/* Center column — sticky */}
         <div className="sticky top-0 h-screen w-full col-span-4 gap-2 grid grid-rows-3">
           {images.center.map((img, i) => (
-            <figure key={`center-${i}`} className="w-full h-full">
-              <img
+            <figure key={`center-${i}`} className="relative w-full h-full">
+              <Image
                 src={img.src}
                 alt={img.alt}
-                className="transition-all duration-300 h-full w-full align-bottom object-cover rounded-lg"
+                fill
+                sizes="33vw"
+                className="transition-all duration-300 object-cover rounded-lg"
               />
             </figure>
           ))}
@@ -57,11 +62,13 @@ const StickyScrollGallery = forwardRef<HTMLElement>((props, ref) => {
         {/* Right column — scrolls */}
         <div className="grid gap-2 col-span-4">
           {images.right.map((img, i) => (
-            <figure key={`right-${i}`} className="w-full">
-              <img
+            <figure key={`right-${i}`} className="relative w-full h-96">
+              <Image
                 src={img.src}
                 alt={img.alt}
-                className="transition-all duration-300 w-full h-96 align-bottom object-cover rounded-lg"
+                fill
+                sizes="33vw"
+                className="transition-all duration-300 object-cover rounded-lg"
               />
             </figure>
           ))}

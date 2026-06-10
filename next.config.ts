@@ -21,7 +21,6 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
-    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -30,6 +29,11 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "plus.unsplash.com",
+      },
+      {
+        // Google review profile photos (minimal-testimonial.tsx)
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
       },
     ],
   },

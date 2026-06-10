@@ -25,21 +25,13 @@ export function ScrollVideo() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Preload all frames
-    const frames: HTMLImageElement[] = [];
-    let loadedCount = 0;
-
-    for (let i = 1; i <= FRAME_COUNT; i++) {
-      const img = new Image();
-      img.src = getFrameSrc(i);
-      img.onload = () => {
-        loadedCount++;
-        // Draw first frame as soon as it's ready
-        if (i === 1) drawFrame(0);
-      };
-      frames.push(img);
-    }
-    framesRef.current = frames;
+    // Load the first frames eagerly so the hero paints fast, then fetch the
+    // rest in idle-time batches instead of firing 145 requests on mount
+    // (they compete with above-the-fold resources and hurt LCP).
+    const EAGER_FRAMES = 12;
+    const BATCH_SIZE = 24;
+    const frames: HTMLImageElement[] = new Array(FRAME_COUNT);
+    let lastDrawn = -1;
 
     const drawFrame = (index: number) => {
       const img = frames[index];
@@ -53,7 +45,39 @@ export function ScrollVideo() {
       const x = (canvas.width - w) / 2;
       const y = (canvas.height - h) / 2;
       ctx.drawImage(img, x, y, w, h);
+      lastDrawn = index;
     };
+
+    const loadFrame = (i: number) => {
+      if (frames[i - 1]) return;
+      const img = new Image();
+      img.src = getFrameSrc(i);
+      // Draw first frame as soon as it's ready
+      if (i === 1) img.onload = () => drawFrame(0);
+      frames[i - 1] = img;
+    };
+
+    for (let i = 1; i <= Math.min(EAGER_FRAMES, FRAME_COUNT); i++) loadFrame(i);
+    framesRef.current = frames;
+
+    const scheduleIdle = (cb: () => void): number =>
+      typeof window.requestIdleCallback === "function"
+        ? window.requestIdleCallback(cb, { timeout: 1500 })
+        : window.setTimeout(cb, 200);
+    const cancelIdle = (handle: number) => {
+      if (typeof window.cancelIdleCallback === "function") window.cancelIdleCallback(handle);
+      else window.clearTimeout(handle);
+    };
+
+    let nextFrame = EAGER_FRAMES + 1;
+    let idleHandle = 0;
+    const loadRemaining = () => {
+      const end = Math.min(nextFrame + BATCH_SIZE - 1, FRAME_COUNT);
+      for (let i = nextFrame; i <= end; i++) loadFrame(i);
+      nextFrame = end + 1;
+      if (nextFrame <= FRAME_COUNT) idleHandle = scheduleIdle(loadRemaining);
+    };
+    idleHandle = scheduleIdle(loadRemaining);
 
     const onScroll = () => {
       const scrollTop = window.scrollY;
@@ -68,17 +92,26 @@ export function ScrollVideo() {
     };
 
     const tick = () => {
-      drawFrame(currentFrameRef.current);
+      // Only repaint when the target frame changed — a fullscreen canvas
+      // redraw every animation frame burns battery while idle.
+      if (lastDrawn !== currentFrameRef.current) drawFrame(currentFrameRef.current);
       rafRef.current = requestAnimationFrame(tick);
+    };
+
+    const onResize = () => {
+      lastDrawn = -1;
+      drawFrame(currentFrameRef.current);
     };
 
     rafRef.current = requestAnimationFrame(tick);
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", () => drawFrame(currentFrameRef.current));
+    window.addEventListener("resize", onResize);
 
     return () => {
       cancelAnimationFrame(rafRef.current);
+      cancelIdle(idleHandle);
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
     };
   }, []);
 

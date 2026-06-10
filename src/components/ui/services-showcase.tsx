@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 export interface ServiceItem {
@@ -133,17 +134,19 @@ function PhotoCard({
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-xl cursor-pointer flex-shrink-0 transition-opacity duration-400",
+        "relative overflow-hidden rounded-xl cursor-pointer flex-shrink-0 transition-opacity duration-400",
         className,
         isDimmed ? "opacity-60" : "opacity-100"
       )}
       onMouseEnter={() => onHover(service.id)}
       onMouseLeave={() => onHover(null)}
     >
-      <img
+      <Image
         src={service.image}
         alt={service.name}
-        className="w-full h-full object-cover transition-[filter] duration-500"
+        fill
+        sizes="(max-width: 768px) 50vw, 400px"
+        className="object-cover transition-[filter] duration-500"
         style={{
           filter: isActive
             ? "grayscale(0) brightness(1)"

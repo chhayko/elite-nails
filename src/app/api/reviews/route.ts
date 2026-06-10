@@ -65,11 +65,18 @@ export async function GET() {
       })
     );
 
-    return NextResponse.json({
-      reviews,
-      rating: result.rating,
-      total: result.user_ratings_total,
-    });
+    return NextResponse.json(
+      {
+        reviews,
+        rating: result.rating,
+        total: result.user_ratings_total,
+      },
+      {
+        headers: {
+          "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=604800",
+        },
+      }
+    );
   } catch (err) {
     console.error("Google Places API error:", err);
     return NextResponse.json({ reviews: [], error: "Fetch failed" });

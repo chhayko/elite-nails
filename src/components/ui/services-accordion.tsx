@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 
 const servicesSlugs = [
@@ -74,10 +75,12 @@ function AccordionItem({
       `}
       onMouseEnter={onMouseEnter}
     >
-      <img
+      <Image
         src={item.imageUrl}
         alt={name}
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700"
+        fill
+        sizes="340px"
+        className="object-cover transition-transform duration-700"
         style={{ transform: isActive ? "scale(1.05)" : "scale(1)" }}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
